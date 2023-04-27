@@ -7,7 +7,7 @@ function About() {
     <div className="about">
       <Container maxWidth="xl">
         <Grid item xs={12} md={4}>
-          <Box sx={{marginTop: 10, width: '80vw', marginLeft: 10 }}>
+          <Box sx={{marginTop: 10, width: '80vw', marginLeft: 10, height: '70vh' }}>
             <Typography
               component="div"
               variant="h2"
