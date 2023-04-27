@@ -6,7 +6,6 @@ import './Login.css'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/authService'
 import { getProfile } from '../../services/userService'
-import { useNavigate } from 'react-router-dom' 
 import AdminDashBoard from '../../Page/AdminDashBoard/AdminDashBoard'
 
 
@@ -31,9 +30,9 @@ function Login() {
     const resprofile = getProfile()
     if(resprofile.role === 'admin')
     {
-      navigate('./admindashboard')
+      navigate('/admindashboard')
     }else{
-      navigate('/welcome')
+      navigate('/home')
     }
   }
 
