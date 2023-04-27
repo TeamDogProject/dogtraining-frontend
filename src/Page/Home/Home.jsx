@@ -1,11 +1,14 @@
 
+import MediaCard from '../../Components/Cards/Cards'
+import CarouselRatio from './Carroussel/Carroussel'
 import './Home.css'
-import CarouselComponent from './Carroussel/Carroussel'
+
 
 function Home() {
   return (
     <div className='home'>
-      <CarouselComponent />
+      <CarouselRatio />
+      <MediaCard />
       
     </div>
   )
