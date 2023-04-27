@@ -42,10 +42,20 @@ function Login() {
             <Divider />
           </CardContent>
           <CardActions sx={{ display: ' flex', justifyContent: 'flex-end' }}>
-            <Button size="small" color="secondary" variant="contained">
+            <Button
+              size="small"
+              color="secondary"
+              variant="contained"
+              sx={{ backgroundColor: '#088395' }}
+            >
               Register
             </Button>
-            <Button size="small" color="primary" variant="contained">
+            <Button
+              size="small"
+              color="primary"
+              variant="contained"
+              sx={{ backgroundColor: '#0A4D68' }}
+            >
               Login
             </Button>
           </CardActions>
