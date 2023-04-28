@@ -29,7 +29,7 @@ function Login() {
     const result = await login(form)
     const resprofile = await getProfile()
     console.log(resprofile)
-    if(resprofile.role == 'admin')
+    if(resprofile.role === 'admin')
     {
       navigate('/adminDashBoard')
     }else {

@@ -4,17 +4,25 @@ import router from './router'
 import './assets/fonts/roboto'
 import { UserContext } from './context/user'
 import { useState } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+// Creating a client
+
+const queryClient = new QueryClient()
 
 function App() {
 
-  const [user, setUser]= useState({})
-  const obj = {user, setUser}
+  const [user, setUser] = useState({})
+  const obj = { user, setUser }
 
   return (
+    // Providing to hole the app the client
     <div className="App">
-      <UserContext.Provider value={obj}>
-        <RouterProvider router={router} />
-      </UserContext.Provider>
+      <QueryClientProvider client={queryClient}>
+        <UserContext.Provider value={obj}>
+          <RouterProvider router={router} />
+        </UserContext.Provider>
+      </QueryClientProvider>
     </div>
   )
 }
