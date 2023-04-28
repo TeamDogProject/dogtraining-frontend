@@ -2,7 +2,7 @@ import { Card, CardHeader, TextField, IconButton, Divider, CardActions, CardCont
 import { blue, grey } from '@mui/material/colors'
 import React, { useState } from 'react'
 import { VisibilityOff, Lock, Visibility } from '@mui/icons-material'
-
+import './SignUpPage.css'
 
 
 function SignUpUser() {
@@ -13,8 +13,30 @@ function SignUpUser() {
     const [userDNI, setUserDNI] = useState('')
     const [userEmail, setUserEmail] = useState('')
     const [userPhone, setUserPhone] = useState('')
+    const [userConfirmPassword, setconfirmPassword] = useState ('')
+    const [userPassword, setPassword] = useState('')
+    const [passwordValidate, setPasswordValidate]= useState(false)
+    const [similarPassword, setNotSimilarPassword] = useState(false)
 
     const [isPassVisible, setIsPassVisible] = useState(false)
+
+    const handlePassword = (e)=>{
+      setPassword(e.target.value)
+          if (
+            userPassword.length > 8 &&
+            userPassword.includes('^(?=w*d)(?=w*[A-Z])(?=w*[a-z])S{8,16}')
+          ) {
+            setPasswordValidate(true)
+          } else {
+            setPasswordValidate(false)
+          }
+    }
+
+    const handleChangePassword = (e) =>{
+       setconfirmPassword(e.target.value) 
+
+
+    }
 
   const handlePass = (e)=>{
         setIsPassVisible(!isPassVisible)
@@ -111,7 +133,9 @@ function SignUpUser() {
             <TextField
               sx={{ marginLeft: 0, width: 250 }}
               label="Password"
+              onChange={handlePassword}
               variant="outlined"
+              color={passwordValidate ? 'success' : 'warning'}
               margin="dense"
               type={isPassVisible ? 'text' : 'password'}
               InputProps={{
@@ -127,6 +151,7 @@ function SignUpUser() {
             <TextField
               sx={{ marginLeft: 3, width: 233 }}
               label=" Confirm Password"
+              onChange={handleChangePassword}
               variant="outlined"
               margin="dense"
               type={isPassVisible ? 'text' : 'password'}

@@ -9,7 +9,7 @@ function SignUpPage(){
   return (
     <div className="signUpPage">
       
-        <SignUpDog />
+        <SignUpUser />
       
     </div>
   )
