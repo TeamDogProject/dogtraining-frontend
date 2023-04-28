@@ -14,7 +14,14 @@ function Login() {
   return (
     <>
       <div className="containerLogin">
-        <Card sx={{ width: '700px', backgroundColor: blue[100] }} raised={true}>
+        <Card
+          sx={{
+            width: '700px',
+            backgroundColor: 'white',
+            border: '2px #088395 solid',
+          }}
+          raised={true}
+        >
           <CardHeader title="Login"> </CardHeader>
           <CardContent>
             <TextField

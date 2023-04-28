@@ -10,9 +10,9 @@ import {
   Box,
   Container,
   Typography,
+  Grid,
 } from '@mui/material'
 import React, { useState } from 'react'
-import PetsIcon from '@mui/icons-material/Pets'
 
 function SignUpDog() {
   const [Dogname, seDogtName] = useState('')
@@ -49,87 +49,113 @@ function SignUpDog() {
   return (
     <>
       <div className="containerSignUp">
-        <Card
-          sx={{
-            height: '400px',
-            width: '100vw',
-            backgroundColor: 'white',
-            padding: 1,
-            border: 0,
-          }}
-        >
-          <CardContent>
-            <CardHeader title="Dog Registration Form"></CardHeader>
-            <TextField
-              sx={{ width: 300 }}
-              label="Dog Name"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeDogName}
-            />
+        <Grid xs={8} md={12}>
+          <Card
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignContent: 'center',
+              width: '800px',
+              backgroundColor: 'white',
+              padding: 1,
+              border: '2px #088395 solid',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <CardContent sx={{ marginLeft: 5 }}>
+              <CardHeader title="Dog Registration Form"></CardHeader>
+              <TextField
+                sx={{ width: 500 }}
+                label="Dog Name"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeDogName}
+              />
 
-            <TextField
-              sx={{ marginLeft: 2, width: 400 }}
-              label="Breed of dog"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeDogBreed}
-            />
+              <TextField
+                sx={{ marginLeft: 0, width: 500 }}
+                label="Breed of dog"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeDogBreed}
+              />
 
-            <TextField
-              sx={{ marginLeft: 2, width: 250 }}
-              label="Age"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeDogAge}
-            />
+              <TextField
+                sx={{ marginLeft: 0, width: 242 }}
+                label="Age"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeDogAge}
+              />
 
-            <TextField
-              sx={{ marginLeft: 2 }}
-              label="Chip Number"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeDogChip}
-            />
+              <TextField
+                sx={{ marginLeft: 2, width: 246 }}
+                label="Chip Number"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeDogChip}
+              />
 
-            <TextField
-              sx={{ width: '84vw' }}
-              label="Describe your dog's behavior problems"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeDogProblem}
-            />
+              <TextField
+                sx={{ width: 500 }}
+                label="Describe your dog's behavior problems"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeDogProblem}
+              />
 
-            <Card color='primary' variant="outlined" sx={{marginRight:1, padding: 1, fontFamily: 'roboto', display:'flex', justifyContent: 'flex-start', width:400 }}>
-            <Typography  color="text.secondary" sx={{paddingBottom:1,right:20, paddingTop:1 , display:'flex', flexDirection: 'row'}}>
-            <label htmlFor="upload-photo">
-            
-            Select a photo of your dog
-            
-            <input id="upload-photo" type="file" accept="image/*" />
+              <Card
+                color="primary"
+                variant="outlined"
+                sx={{
+                  marginRight: 1,
+                  padding: '0 5',
+                  fontFamily: 'roboto',
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  width: 500,
+                }}
+              >
+                <Typography
+                  color="text.secondary"
+                  sx={{
+                    paddingBottomg: 1,
+                    marginLeft: 10,
+                    right: 20,
+                    paddingTop: 1,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'start',
+                  }}
+                >
+                  <label htmlFor="upload-photo">
+                    Select a photo of your dog
+                    <input id="upload-photo" type="file" accept="image/*" />
+                  </label>
+                </Typography>
+              </Card>
+            </CardContent>
 
-            </label>
-            </Typography>
-            </Card>
-            
-            
-
-
-          </CardContent>
-
-          <Divider sx={{ paddingTop: 4 }} />
-
-          <CardActions sx={{ display: ' flex', justifyContent: 'flex-center' }}>
-            <Button
-              size="small"
-              color="secondary"
-              variant="contained"
-              sx={{ backgroundColor: '#088395', borderTop: 2, marginLeft: 5 }}
+            <CardActions
+              sx={{ display: ' flex', justifyContent: 'flex-center' }}
             >
-              Register Dog
-            </Button>
-          </CardActions>
-        </Card>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                sx={{
+                  backgroundColor: '#088395',
+                  borderTop: 2,
+                  marginLeft: 2,
+                  marginRight: 3,
+                }}
+              >
+                Register Dog
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
       </div>
     </>
   )
