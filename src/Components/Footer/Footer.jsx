@@ -27,12 +27,18 @@ function Footer() {
     const footerElements = elements.map((column) => {
       return (
         <Grid item xs={12} md={4}>
-          <Box borderBottom={1}>
-            
-              <Typography sx={{fontfamily:'monospace', fontSize: 12, color: 'white', fontWeight: 'bold', padding:1}}>
-                {column.header}
-              </Typography>
-            
+          <Box borderBottom={1} >
+            <Typography
+              sx={{
+                fontfamily: 'monospace',
+                fontSize: 12,
+                color: 'white',
+                fontWeight: 'bold',
+                padding: 1,
+              }}
+            >
+              {column.header}
+            </Typography>
           </Box>
           {column.links.map((link, idx) => {
             return (
@@ -48,7 +54,6 @@ function Footer() {
                     {link.name}
                   </Button>
                 </Link>
-                
               </Box>
             )
           })}
@@ -64,7 +69,7 @@ function Footer() {
      const footerElementsSocial = elements2.map((column) => {
        return (
          <Grid item xs={12} md={4}>
-           <Box borderBottom={1}>
+           <Box borderBottom={1} >
              <Typography
                sx={{
                  fontfamily: 'monospace',
@@ -88,8 +93,10 @@ function Footer() {
                      padding: 1,
                    }}
                  >
-                   <a className='socialLink' href={`${link.url}`}> {link.name}</a>
-
+                   <a className="socialLink" href={`${link.url}`}>
+                     
+                     {link.name}
+                   </a>
                  </Typography>
                </Box>
              )
@@ -109,15 +116,14 @@ function Footer() {
           marginBottom: 0,
           position: 'relative',
           bottom: 0,
-          
           width: '100vw',
-          display:'flex', 
-          flexDirection: 'column'
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        <Box bgcolor="primary.main" color="white" padding={1}>
+        <Box bgcolor="#0A4D68" color="white" padding={1}>
           <Container>
-            <Grid container columnSpacing={5} >
+            <Grid container columnSpacing={5}>
               {generateFooterElements()} {generateFooterElementsSocial()}
             </Grid>
           </Container>
