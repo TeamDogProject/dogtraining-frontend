@@ -27,11 +27,12 @@ function Login() {
   const onLogin = async() => {
     const form = {email, password}
     const result = await login(form)
-    const resprofile = getProfile()
-    if(resprofile.role === 'admin')
+    const resprofile = await getProfile()
+    console.log(resprofile)
+    if(resprofile.role == 'admin')
     {
-      navigate('/admindashboard')
-    }else{
+      navigate('/adminDashBoard')
+    }else {
       navigate('/home')
     }
   }
