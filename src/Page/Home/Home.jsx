@@ -1,6 +1,6 @@
 
 import './Home.css'
-import CarouselComponent from './Carroussel/Carroussel'
+import CarouselComponent from './Carroussel'
 
 function Home() {
   return (
