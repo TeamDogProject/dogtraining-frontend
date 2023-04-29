@@ -3,7 +3,7 @@ import listAllDogs from '../../../services/listAllDogs';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
-
+import api from '../../../services/config';
 
 const ListDogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -17,17 +17,19 @@ const ListDogs = () => {
     getDogs();
   }, []);
 
-  const handleDeleteButton = () => {
-    console.log('Haciendo click en el boton delete')
-  } 
-
-  const handleEditButton = () => {
-    console.log('Haciendo click en el boton edit')
-  }
-
-  const handleAddButton = () => {
-    console.log('Haciendo click en el boton add')
-  }
+  const deleteDog = async (id) => {
+    try {
+      const { data } = await api.delete(`/dogs/${id}`, {
+        headers: {
+          'token': localStorage.getItem('token')
+        }
+      });
+      setDogs(prevDogs => prevDogs.filter(dog => dog.id !== id));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function displayDogs() {
     return (
@@ -45,7 +47,7 @@ const ListDogs = () => {
               <TableHead>
                 <TableHead>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
-                    <button onClick={handleAddButton} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:100, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Dog</button>
+                    <button style={{ marginLeft:5, backgroundColor:'green', border:'none',width:100, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Dog</button>
                     </Typography>
                 </TableHead>
                 <TableRow>
@@ -111,8 +113,8 @@ const ListDogs = () => {
                     </TableCell>
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <button onClick={handleEditButton} style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                            <button onClick={handleDeleteButton} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            <button style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
+                            <button  onClick={() => deleteDog(dog.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
                   </TableRow>
