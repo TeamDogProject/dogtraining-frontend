@@ -53,7 +53,7 @@ function Contact() {
           backgroundColor: 'white',
           padding: '1%',
           border: '2px #088395 solid',
-          marginTop: 10
+          marginTop: 5
         }}
       >
         <CardHeader title="Contact Form"></CardHeader>
@@ -130,7 +130,7 @@ function Contact() {
             />
             <p className="consentimiento">
               Consiento el uso de mis datos personales para recibir publicidad
-                de su interés, con opción a darme de baja en cualquier momento.*
+                de su entidad con opción a darme de baja en cualquier momento.*
               </p>
             </div>
 
