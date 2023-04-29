@@ -3,6 +3,8 @@ import listAllDogs from '../../../services/listAllDogs';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
+import EditDogs from './EditDogs/EditDogs';
+
 
 const ListDogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -92,7 +94,9 @@ const ListDogs = () => {
                       </Typography>
                     </TableCell>
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
-                      Add / Delete
+                          <div>
+                            <EditDogs/>
+                          </div>
                     </TableCell>
                   </TableRow>
                 ))}
