@@ -91,7 +91,9 @@ const ListDogs = () => {
                         {dog.problem}
                       </Typography>
                     </TableCell>
-                    <TableCell>{/* add actions here */}</TableCell>
+                    <TableCell style={{ color: 'white', fontSize: 17 }}>
+                      Add / Delete
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

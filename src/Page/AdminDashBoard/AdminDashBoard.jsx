@@ -95,7 +95,7 @@ function AdminDashBoard() {
               </List>
       </Grid>
       <Grid item xs={12} sm={12} style={{ marginTop:30}}>
-          <Box sx={{ bgcolor: '#002DB3', height: 200, position:'relative', marginTop:29, padding:2}}>
+          <Box sx={{ bgcolor: '#002DB3', height: '100%', position:'relative', marginTop:29, padding:2}}>
                     {
                       showContent()
                     }

@@ -43,7 +43,9 @@ const ListUsers = () => {
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.email}</Typography></TableCell>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.phone}</Typography></TableCell>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
-                  <TableCell></TableCell>
+                  <TableCell style={{ color: 'white', fontSize: 17 }}>
+                      Add / Delete
+                    </TableCell>
                 </TableRow>
               ))}
             </TableBody>
