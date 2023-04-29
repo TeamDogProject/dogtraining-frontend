@@ -17,7 +17,7 @@ function App() {
 
   return (
     // Providing to hole the app the client
-    <div className="App">
+    <div className="App" style={{ margin:0, padding:0 }}>
       <QueryClientProvider client={queryClient}>
         <UserContext.Provider value={obj}>
           <RouterProvider router={router} />
