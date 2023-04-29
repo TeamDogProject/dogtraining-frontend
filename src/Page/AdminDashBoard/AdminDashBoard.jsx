@@ -8,7 +8,7 @@ import ListBooks from './ListBooks/ListBooks';
 import ListVideos from './ListVideos/ListVideos';
 import ListPackages from './ListPackages/ListPackages';
 import ListUsers from './ListUsers/ListUsers';
-import { Divider, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
@@ -68,25 +68,25 @@ function AdminDashBoard() {
                     </ListItemText>
                   </ListItemButton>
                 </ListItem>
-                <Divider style={{ borderColor:'white' }} />
+              
                 <ListItemButton>
                     <ListItemText>
                       <Link onClick={handleClickBooks} style={{ textDecoration:'none', color:'white' }}>Books</Link>
                     </ListItemText>
                 </ListItemButton>
-                <Divider style={{ borderColor:'white' }} />
+              
                 <ListItemButton>
                     <ListItemText>
                       <Link onClick={handleClickVideos} style={{ textDecoration:'none', color:'white' }}>Videos</Link>
                     </ListItemText>
                 </ListItemButton>
-                <Divider style={{ borderColor:'white' }} />
+               
                 <ListItemButton>
                     <ListItemText>
                       <Link onClick={handleClickPackages} style={{ textDecoration:'none', color:'white' }}>Packages</Link>
                     </ListItemText>
                 </ListItemButton>
-                <Divider style={{ borderColor:'white' }} />
+                
                 <ListItemButton>
                     <ListItemText>
                       <Link onClick={handleClickUsers} style={{ textDecoration:'none', color:'white' }}>Users</Link>
@@ -95,7 +95,7 @@ function AdminDashBoard() {
               </List>
       </Grid>
       <Grid item xs={12} sm={12} style={{ marginTop:30}}>
-          <Box sx={{ bgcolor: '#002DB3', height: '100%', position:'relative', marginTop:29, padding:2}}>
+          <Box sx={{ bgcolor: '#0E2B44', height: '100%', position:'relative', marginTop:29, padding:2}}>
                     {
                       showContent()
                     }
