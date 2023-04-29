@@ -5,22 +5,20 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Checkbox,
   Divider,
-  TextField,
-  Typography,
   Grid,
+  TextField,
+  Typography
 } from '@mui/material'
-import Checkbox from '@mui/material/Checkbox'
 import { useState } from 'react'
-
 
 function Contact() {
   const [name, setName] = useState('')
   const [surname, setSurName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
-
-  const [DescriptionContactText, setDescriptionContactText] = useState('')
+  const [descriptionContactText, setDescriptionContactText] = useState('')
 
   const handleChangeName = (e) => {
     setName(e.target.value)
@@ -44,94 +42,95 @@ function Contact() {
 
   return (
     <div className="contactPage">
-      <Grid item xs={12} sm={6}>
-        <Card
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignContent: 'center',
+      <Card
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+          maxWidth: '800px',
+          margin: '0 auto',
+          backgroundColor: 'white',
+          padding: '1%',
+          border: '2px #088395 solid',
+          marginTop: 10
+        }}
+      >
+        <CardHeader title="Contact Form"></CardHeader>
 
-            width: '100vh',
-            backgroundColor: 'white',
-            padding: 1,
-            border: '2px #088395 solid',
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: 80,
-
-            overflow: 'scroll',
-          }}
-        >
-          <CardContent sx={{ marginLeft: 5 }}>
-            <CardHeader title="Contact Form"></CardHeader>
-
-            <TextField
-              sx={{ width: 500 }}
-              label="Name"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeName}
-            />
-
-            <TextField
-              sx={{ marginLeft: 0, width: 500 }}
-              label="Surname"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeSurname}
-            />
-
-            <TextField
-              sx={{ marginLeft: 0, width: 250 }}
-              label="Email"
-              variant="outlined"
-              margin="dense"
-              onChange={handleChangeUserEmail}
-            />
-
-            <TextField
-              sx={{ marginLeft: 0,marginLeft:1}}
-              label="Phone"
-              variant="outlined"
-              margin="dense"
-        
-              onChange={handleChangeUserPhone}
-            />
-
-            <TextField
-              sx={{ width: 500 }}
-              label="Additional information: White here"
-              variant="outlined"
-              margin="dense"
-              onChange={handleDescriptionContactText}
-            />
-
-            <Divider sx={{ paddingTop: 2 }} />
-
-            <div className="politics">
-              <input
-                id="checkCons"
-                type="checkbox"
-                name="politycs"
-                checked={true}
+        <CardContent sx={{ width: '100%' }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Name"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeName}
               />
-              <p className="consentimiento">
-                Consiento el uso de mis datos para los fines indicados en la
-                política de privacidad “SUS DATOS SEGUROS” disponibles en la web
-                www.dogtraining.com*
-              </p>
-            </div>
-
-            <div className="politics">
-              <input
-                id="informacion"
-                type="checkbox"
-                name="información"
-                checked={true}
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Surname"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeSurname}
               />
-              <p className="consentimiento">
-                Consiento el uso de mis datos personales para recibir publicidad
-                de su entidad con opción a darme de baja en cualquier momento.*
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeUserEmail}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Phone"
+                variant="outlined"
+                margin="dense"
+                onChange={handleChangeUserPhone}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Additional information: White here"
+                variant="outlined"
+                margin="dense"
+                onChange={handleDescriptionContactText}
+              />
+            </Grid>
+          </Grid>
+
+          <Divider sx={{ paddingTop: 2 }} />
+
+          <div className="politics">
+            <Checkbox
+              id="checkCons"
+              name="politycs"
+              checked={true}
+            />
+            <p className="consentimiento">
+              Consiento el uso de mis datos para los fines indicados en la
+              política de privacidad “SUS DATOS SEGUROS” disponibles en la web
+              www.dogtraining.com*
+            </p>
+          </div>
+
+          <div className="politics">
+            <Checkbox
+              id="informacion"
+              name="información"
+              checked={true}
+            />
+            <p className="consentimiento">
+              Consiento el uso de mis datos personales para recibir publicidad
+                de su interés, con opción a darme de baja en cualquier momento.*
               </p>
             </div>
 
@@ -221,7 +220,7 @@ function Contact() {
             </div>
           </CardContent>
         </Card>
-      </Grid>
+       
     </div>
   )
 }
