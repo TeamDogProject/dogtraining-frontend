@@ -16,7 +16,7 @@ import { Link } from '@mui/material'
 
 
 
-const pages = ['Home', 'About', 'Login', 'Signup']
+const pages = ['Home', 'About','contact', 'Login', 'Signup']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 function ResponsiveAppBar() {

@@ -4,6 +4,7 @@ import Root from "../Layouts/root";
 import Login from "../Components/Login/Login";
 import About from "../Page/About/About";
 import SignUpPage from "../Page/Signup/SignUpPage";
+import Contact from "../Page/Contact/Contact";
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
             {
                 path:'/signup',
                 element:<SignUpPage />
-            }
+            }, 
+            {
+                path:'/contact',
+                element:<Contact />
+            },
         ]
         
     }

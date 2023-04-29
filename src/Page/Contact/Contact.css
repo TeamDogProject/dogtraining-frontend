@@ -1,0 +1,64 @@
+.contactPage {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    overflow: scroll;
+    margin-bottom: 30px;
+}
+
+.dataProtection {
+
+    padding-top: 10px;
+
+}
+
+#checkCons {
+    margin-top: 22px;
+    margin-right: 10px;
+}
+
+#informacion{
+    margin-top: 22px;
+    margin-right: 10px;
+}
+.politics{
+    display: flex;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.consentimiento {
+    display: block;
+    margin: 10px 0;
+    padding: 5px 0;
+    font-family: roboto;
+}
+
+.ContactBotton {
+
+    text-align: center!important;
+    height: 40px;
+    padding-bottom: 10px;
+}
+
+.iframeDiv {
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+
+
+
+/*.validated {
+    color: green;
+}
+
+.notValidated {
+     color:red;
+    
+}*/
