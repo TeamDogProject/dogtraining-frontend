@@ -53,7 +53,8 @@ function Contact() {
           backgroundColor: 'white',
           padding: '1%',
           border: '2px #088395 solid',
-          marginTop: 5
+          marginTop: 5,
+          justifyContent: 'center',
         }}
       >
         <CardHeader title="Contact Form"></CardHeader>
