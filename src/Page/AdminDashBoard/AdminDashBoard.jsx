@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListDogs from './ListDogs/ListDogs';
 import ListBooks from './ListBooks/ListBooks';
 import ListVideos from './ListVideos/ListVideos';
-import ListPackages from './ListPackages/ListPackages';
+import ListCourses from './ListCourses/ListCourses';
 import ListUsers from './ListUsers/ListUsers';
 import { Typography } from '@mui/material';
 import { useState } from 'react';
@@ -25,8 +25,8 @@ function AdminDashBoard() {
       return <ListBooks />
     } else if (section === 'video') {
       return <ListVideos />
-    } else if (section === 'package') {
-      return <ListPackages />
+    } else if (section === 'course') {
+      return <ListCourses />
     } else if (section === 'user') {
       return <ListUsers />
     }
@@ -42,7 +42,7 @@ function AdminDashBoard() {
     setSection('video')
   }
   const handleClickPackages = () => {
-     setSection('package')
+     setSection('course')
   }
   const handleClickUsers = () => {
     setSection('user')
