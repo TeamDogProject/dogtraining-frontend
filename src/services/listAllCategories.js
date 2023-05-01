@@ -6,6 +6,7 @@ const listAllCategories = async () => {
         'token': localStorage.getItem('token')
     }
  })
+ return data
 }
 
 export default listAllCategories
