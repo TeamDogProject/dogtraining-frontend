@@ -1,12 +1,12 @@
-import api from "./config";
+import api from './config'
 
 const listAllCategories = async () => {
- const { data } = api.get('/categories', {
-    headers:{
-        'token': localStorage.getItem('token')
-    }
- })
- return data
-}
+    const {data} = await api.get('/categories', {
+        headers: {
+            'token': localStorage.getItem('token')
+        }
+    })
+    return data;
+};
 
-export default listAllCategories
+export default listAllCategories;

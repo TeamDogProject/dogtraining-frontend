@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
+
 function AdminDashBoard() {
 
   const [section, setSection] = useState('dog')
@@ -30,7 +31,7 @@ function AdminDashBoard() {
       return <ListCourses />
     } else if (section === 'user') {
       return <ListUsers />
-    } else if (section === 'category') {
+    }else if (section === 'category') {
       return <ListCategories />
     }
   }
@@ -53,6 +54,7 @@ function AdminDashBoard() {
   const handleClickCategories = () => {
     setSection('category')
   }
+ 
 
   return (
     <div>
