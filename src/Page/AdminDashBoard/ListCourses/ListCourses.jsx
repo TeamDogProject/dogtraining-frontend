@@ -20,7 +20,11 @@ const style = {
 };
 
 const ListCourses = () => { 
+
   const [courses, setCourses] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const getCourses = async () => {
     const result = await listAllCourses();
@@ -46,9 +50,6 @@ const ListCourses = () => {
   };
 
   function displayCourses() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>

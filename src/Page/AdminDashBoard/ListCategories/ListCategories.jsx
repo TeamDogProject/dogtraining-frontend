@@ -4,8 +4,7 @@ import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
 import api from '../../../services/config';
-import Button from '@mui/material/Button';
-import {Modal} from '@mui/material';
+import AddNew from './AddNewCategory/AddNewCategory';
 
 const style = {
     position: 'absolute',
@@ -21,6 +20,11 @@ const style = {
 
 const ListCategories =  () => {
     const [ categories, setCategories ] = useState([]);
+    const [categoryName, setCategoryName] = useState("");
+
+    const handleAddNewCategory = (newCategory) => {
+      setCategoryName([...categories, newCategory])
+    }
 
     const getCategories = async () => {
         const result = await listAllCategories();
@@ -30,6 +34,12 @@ const ListCategories =  () => {
     useEffect(()=> {
         getCategories();
     })
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onAddCategory(categoryName);
+      setCategoryName('');
+    };
 
     const deleteCategory = async (id) => {
         try {
@@ -59,74 +69,59 @@ const ListCategories =  () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <TableContainer>
-                <Table>
-                  <TableHead>
+            <TableContainer>
+                  <Table>
                     <TableHead>
-                        <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
-                        <div>
-                            <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:140, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Category</Button>
-                            <Modal
-                              open={open}
-                              onClose={handleClose}
-                              aria-labelledby="modal-modal-title"
-                              aria-describedby="modal-modal-description"
-                            >
-                              <Box sx={style}>
-                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                  Text in a modal
-                                </Typography>
-                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                  Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                </Typography>
-                              </Box>
-                            </Modal>
+                      <TableRow>
+                        <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
+                          <div>
+                            <AddNew onAddCategory={handleAddNewCategory}/>
                           </div>
                         </Typography>
-                    </TableHead>
-                    <TableRow>
-                      <TableCell>
-                        <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                          ID
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                          NAME
-                        </Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                          Actions
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {categories.map((category) => (
-                      <TableRow key={category.id}>
+                      </TableRow>
+                      <TableRow>
                         <TableCell>
                           <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                            {category.id}
+                            ID
                           </Typography>
                         </TableCell>
                         <TableCell>
                           <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                            {category.category_name}
+                            NAME
                           </Typography>
                         </TableCell>
-                        <TableCell style={{ color: 'white', fontSize: 17 }}>
-                              <div>
-                                <button style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                                <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
-                              </div>
+                        <TableCell>
+                          <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                            Actions
+                          </Typography>
                         </TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
+                    </TableHead>
+                    <TableBody>
+                      {categories.map((category) => (
+                        <TableRow key={category.id}>
+                          <TableCell>
+                            <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                              {category.id}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                              {category.category_name}
+                            </Typography>
+                          </TableCell>
+                          <TableCell style={{ color: 'white', fontSize: 17 }}>
+                            <div>
+                              <button style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
+                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+          </Grid>
           </Grid>
         );
       }
