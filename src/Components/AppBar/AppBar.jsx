@@ -2,6 +2,7 @@ import * as React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Typography,Container, Menu, MenuItem, Avatar, Button, Tooltip, Link } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import AdbIcon from '@mui/icons-material/Adb'
+import { useNavigate } from 'react-router-dom'
 
 const pages = ['Home', 'About','contact', 'Login', 'Signup']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -11,10 +12,13 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
+  const navigate = useNavigate()
+
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(token !== null);
   }, []);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -25,11 +29,15 @@ function ResponsiveAppBar() {
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav(null)
+    
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(null)
+    localStorage.removeItem("token")
+    navigate('/login')
+   
   };
  
   return (
@@ -159,7 +167,7 @@ function ResponsiveAppBar() {
               horizontal: 'right',
             }}
             open={Boolean(anchorElUser) && isLoggedIn}
-            onClose={handleCloseUserMenu}
+            onClose={handleCloseUserMenu} //esta función cierra el menu
           >
             {settings.map((setting) => (
               <MenuItem key={setting} onClick={handleCloseUserMenu}>
