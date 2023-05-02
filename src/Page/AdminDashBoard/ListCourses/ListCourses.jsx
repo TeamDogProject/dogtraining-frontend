@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import listAllDogs from '../../../services/listAllDogs';
+import listAllCourses from '../../../services/listAllCourses';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
@@ -19,42 +19,43 @@ const style = {
   p: 4,
 };
 
-const ListDogs = () => {
-  const [dogs, setDogs] = useState([]);
+const ListCourses = () => { 
 
-  const getDogs = async () => {
-    const result = await listAllDogs();
-    setDogs(result);
+  const [courses, setCourses] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const getCourses = async () => {
+    const result = await listAllCourses();
+    setCourses(result);
   };
 
   useEffect(() => {
-    getDogs();
+    getCourses();
   }, []);
 
-  const deleteDog = async (id) => {
+  const deleteCourse = async (id) => {
     try {
-      const { data } = await api.delete(`/dogs/${id}`, {
+      const { data } = await api.delete(`/packages/${id}`, {
         headers: {
           'token': localStorage.getItem('token')
         }
       });
-      setDogs(prevDogs => prevDogs.filter(dog => dog.id !== id));
+      setCourses(prevCourses => prevCourses.filter(course => course.id !== id));
       return data;
     } catch (error) {
       console.log(error);
     }
   };
 
-  function displayDogs() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  function displayCourses() {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
             <Typography variant="h6" color="white" marginLeft={2}>
-              List Dogs
+              List Courses
             </Typography>
           </Box>
         </Grid>
@@ -65,7 +66,7 @@ const ListDogs = () => {
                 <TableHead>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
                     <div>
-                        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:100, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Dogs</Button>
+                        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Course</Button>
                         <Modal
                           open={open}
                           onClose={handleClose}
@@ -92,22 +93,27 @@ const ListDogs = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                      PHOTO
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
                       NAME
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                      VALORATION
+                      DESCRIPTION
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                      PROBLEM
+                      DURATION
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                      PRICE
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                      PLACE
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -118,37 +124,43 @@ const ListDogs = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {dogs.map((dog) => (
-                  <TableRow key={dog.id}>
+                {courses.map((course) => (
+                  <TableRow key={course.id}>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                        {dog.id}
+                        {course.id}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                        {dog.photo}
+                        {course.name}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                        {dog.name}
+                        {course.description}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                        {dog.valoration}
+                        {course.duration}
                       </Typography>
                     </TableCell>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
-                        {dog.problem}
+                        {course.price+'€'}
                       </Typography>
                     </TableCell>
+                    <TableCell>
+                      <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                        {course.place}
+                      </Typography>
+                    </TableCell>
+                    
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
                             <button style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                            <button  onClick={() => deleteDog(dog.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            <button  onClick={() => deleteCourse(course.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
                   </TableRow>
@@ -161,7 +173,7 @@ const ListDogs = () => {
     );
   }
 
-  return <div>{displayDogs()}</div>;
+  return <div>{displayCourses()}</div>;
 };
 
-export default ListDogs;
+export default ListCourses;

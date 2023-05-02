@@ -7,6 +7,7 @@ import ListDogs from "../Page/AdminDashBoard/ListDogs/ListDogs";
 import ListBooks from "../Page/AdminDashBoard/ListBooks/ListBooks";
 import ListVideos from "../Page/AdminDashBoard/ListVideos/ListVideos";
 import ListUsers from "../Page/AdminDashBoard/ListUsers/ListUsers";
+import ListCategories from "../Page/AdminDashBoard/ListCategories/ListCategories";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/listUsers',
         element: <ListUsers />,
+      },
+      {
+        path: '/listCategories',
+        element: <ListCategories />,
       },
     ],
   },
