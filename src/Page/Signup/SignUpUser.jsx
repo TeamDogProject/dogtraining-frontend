@@ -76,17 +76,14 @@ function SignUpUser() {
       <div className="containerSignUp">
         <Card
           sx={{
-            display: 'flex',
-            flexDirection: 'colum',
-            alignContent: 'center',
+            padding: 5,
             width: '100%',
             maxWidth: '800px',
             margin: '0 auto',
             backgroundColor: 'white',
-            padding: '1%',
+           
             border: '2px #088395 solid',
-            display: 'flex',
-            justifyContent: 'center',
+            
           }}
         >
     
