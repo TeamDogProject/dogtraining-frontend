@@ -37,7 +37,7 @@ const ListCourses = () => {
   const [price , setPrice ] = useState('');
   const [place, setPlace ] = useState('');
 
-  const handleSumit = (e) => {
+  const handleSumit = async (e) => {
     e.preventDefault();
     const createNewCourse = {
       name: name, 
@@ -46,8 +46,8 @@ const ListCourses = () => {
       price: price,
       place: place
     };
-    createCourse(createNewCourse);
-    console.log(createCourse);
+    await createCourse(createNewCourse);
+    setCourses(getCourses())
   }
 
   const handleChangeName = (e) => {
@@ -192,7 +192,7 @@ const ListCourses = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {courses.map((course) => (
+                {courses?.length>0 && courses.map((course) => (
                   <TableRow key={course.id}>
                     <TableCell>
                       <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
