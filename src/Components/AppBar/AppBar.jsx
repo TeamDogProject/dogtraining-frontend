@@ -3,20 +3,27 @@ import { AppBar, Box, Toolbar, IconButton, Typography,Container, Menu, MenuItem,
 import MenuIcon from '@mui/icons-material/Menu'
 import AdbIcon from '@mui/icons-material/Adb'
 import { useNavigate } from 'react-router-dom'
-
+import { LogingContext } from '../../context/loginContext';
+import { useContext } from 'react';
 const pages = ['Home', 'About','contact', 'Login', 'Signup']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+{/*   const [isLoggedIn, setIsLoggedIn] = React.useState(false); */}
+
+  const {isLoggedIn, setIsLoggedIn} =  useContext(LogingContext)
+
 
   const navigate = useNavigate()
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(token !== null);
+    setIsLoggedIn(token !== null)
+
+   
+   
   }, []);
 
 
@@ -25,7 +32,7 @@ function ResponsiveAppBar() {
   };
 
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElUser(event.currentTarget)
   };
 
   const handleCloseNavMenu = () => {
@@ -33,12 +40,21 @@ function ResponsiveAppBar() {
     
   };
 
+const handleLogout = () => {
+  localStorage.removeItem("token")
+  navigate('/home')
+  if(isLoggedIn)
+  location.reload()
+}
+
+const handleDashboard = () => {
+  navigate('/dasboard')
+}
+  
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
-    localStorage.removeItem("token")
-    navigate('/login')
-   
-  };
+  
+  }
  
   return (
     <AppBar position="static" sx={{ backgroundColor: '#0A4D68' }}>
@@ -169,11 +185,30 @@ function ResponsiveAppBar() {
             open={Boolean(anchorElUser) && isLoggedIn}
             onClose={handleCloseUserMenu} //esta función cierra el menu
           >
-            {settings.map((setting) => (
+          {  /* {settings.map((setting) => (
               <MenuItem key={setting} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">{setting}</Typography>
-              </MenuItem>
-            ))}
+              </MenuItem> 
+ */}
+ 
+<MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+  <Typography textAlign="center">{settings[0]}</Typography>
+</MenuItem>
+
+<MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+  <Typography textAlign="center">{settings[1]}</Typography>
+</MenuItem>
+
+<MenuItem key={settings[2]} onClick={handleDashboard}>
+  <Typography textAlign="center">{settings[2]}</Typography>
+</MenuItem>
+
+<MenuItem key={settings[3]} onClick={handleLogout}>
+  <Typography textAlign="center">{settings[3]}</Typography>
+</MenuItem>
+              
+
+            
           </Menu>
         </Box>
       </Toolbar>
