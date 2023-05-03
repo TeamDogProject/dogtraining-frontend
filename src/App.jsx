@@ -9,6 +9,7 @@ import { useState } from 'react'
 function App() {
   const [user, setUser] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState({})
+  
   const obj = { user, setUser }
   const obj2 = { isLoggedIn, setIsLoggedIn }
 

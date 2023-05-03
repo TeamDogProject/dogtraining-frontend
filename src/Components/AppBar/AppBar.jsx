@@ -14,7 +14,8 @@ import {
   Link,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import AdbIcon from '@mui/icons-material/Adb'
+import PetsIcon from '@mui/icons-material/Pets';
+
 import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 import { useContext } from 'react'
@@ -76,7 +77,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{ backgroundColor: '#0A4D68' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -144,7 +145,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <PetsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
