@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import listAllCategories from '../../../services/listAllCategories';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
 import api from '../../../services/config';
-import createCategory from '../../../services/CreateCategory';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-import FormLabel from '@mui/material/FormLabel';
-import editCategory from '../../../services/EditCategory';
+import CreateCategoryForm  from './CreateCategoryForm/CreateCategoryForm';
+import EditCategoryForm  from './EditCategoryForm/EditCategoryForm';
+import { editCategory, listAllCategories } from '../../../services/CategoryService';
 
 const style = {
     position: 'absolute',
@@ -24,36 +20,20 @@ const style = {
   };
 
 const ListCategories =  () => {
-
     const [ categories, setCategories ] = useState([]);
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    
 
-    const [ category_name, setCategoryName ] = useState('');
-
-    const handleSubtmit = async (e) => {
-      e.preventDefault();
-      const createNewCategory = {
-        category_name: category_name
-      };
-      await createCategory(createNewCategory);
-      setCategories(getCategories())
-    }
-
-    const handleChangeCategoryName = (e) => {
-      setCategoryName(e.target.value)
-    }
-  
     const getCategories = async () => {
-        const result = await listAllCategories();
-        setCategories(result)
-    };
+      const result = await listAllCategories();
+      setCategories(result)
+  };
 
     useEffect(()=> {
-        getCategories();
-    }, []);
+      getCategories();
+  }, []);
 
+
+  
     const deleteCategory = async (id) => {
         try {
           const { data } = await api.delete(`/categories/${id}`, {
@@ -86,48 +66,7 @@ const ListCategories =  () => {
                       <TableRow>
                         <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
                         <div>
-                        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:135, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Category</Button>
-                        <Modal
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                        >
-                          <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
-                              Create Category Form
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
-                              <form onSubmit={handleSubtmit}>
-                                <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                                <TextField type="text" variant='outlined' value={category_name} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
-                                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
-                              </form>
-                            </Typography>
-                          </Box>
-                        </Modal>
-                        </div>
-                        <div>
-                        <Button onClick={handleOpenEdit} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:135, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Category</Button>
-                        <Modal
-                          open={open}
-                          onClose={handleCloseEdit}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                        >
-                          <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
-                              Edit Category Form
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
-                              <form onSubmit={handleSubtmitEdit}>
-                                <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                                <TextField type="text" variant='outlined' value={category_name} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
-                                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
-                              </form>
-                            </Typography>
-                          </Box>
-                        </Modal>
+                          <CreateCategoryForm/>
                         </div>
                         </Typography>
                       </TableRow>
@@ -164,8 +103,8 @@ const ListCategories =  () => {
                           </TableCell>
                           <TableCell style={{ color: 'white', fontSize: 17 }}>
                             <div>
-                              <button onClick={()=>editCategory(category.id)} style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                              <EditCategoryForm category={{name: category.category_name, id: category.id }}/>
+                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                             </div>
                           </TableCell>
                         </TableRow>

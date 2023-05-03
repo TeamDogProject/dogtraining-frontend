@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import listAllCourses from '../../../services/listAllCourses';
+import { listAllCourses } from '../../../services/CourseService';
 import { FormControl, Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
@@ -9,7 +9,7 @@ import {Modal} from '@mui/material';
 import {FormLabel,TextField, InputLabel} from '@mui/material';
 import {Select} from '@mui/material';
 import {MenuItem} from '@mui/material';
-import createCourse from '../../../services/CreateCourse';
+import { createCourse } from '../../../services/CourseService';
 
 
 const style = {
@@ -37,7 +37,7 @@ const ListCourses = () => {
   const [price , setPrice ] = useState('');
   const [place, setPlace ] = useState('');
 
-  const handleSumit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const createNewCourse = {
       name: name, 
@@ -124,7 +124,7 @@ const ListCourses = () => {
                               Create Course Form
                             </Typography>
                             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
-                              <form onSubmit={handleSumit}>
+                              <form onSubmit={handleSubmit}>
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
                                 <TextField type="text" variant='outlined' value={name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import listAllDogs from '../../../services/listAllDogs';
+import {listAllDogs} from '../../../services/DogService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import Button from '@mui/material/Button';
 import {Modal} from '@mui/material';
-import createDog from '../../../services/CreateDog';
+import {createDog} from '../../../services/DogService';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import editDog from '../../../services/EditDog';
+import {editDog} from '../../../services/DogService';
 
 const style = {
   position: 'absolute',

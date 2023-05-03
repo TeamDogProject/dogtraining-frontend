@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import listAllUsers from '../../../services/listAllUsers';
+import { listAllUsers } from '../../../services/userService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import {Box} from '@mui/material';

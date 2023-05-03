@@ -1,6 +1,6 @@
 import api from "./config";
 
-const editCategory = async () => {
+const saveCategory = async () => {
     const {data} = await api.get('/categories/:id',{
         headers: {
             'token': localStorage.getItem('token')
@@ -9,4 +9,4 @@ const editCategory = async () => {
     return data;
 };
 
-export default editCategory;
+export default saveCategory;
