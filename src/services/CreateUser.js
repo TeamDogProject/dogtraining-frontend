@@ -1,7 +1,7 @@
 import api from './config'
 
-const createCourse = async (obj) => {
-    const {data} = await api.post('/packages/', obj, {
+const createUser = async (obj) => {
+    const {data} = await api.post('/users/', obj, {
         headers: {
             'token': localStorage.getItem('token')
         }
@@ -9,4 +9,4 @@ const createCourse = async (obj) => {
     return data;
 };
 
-export default createCourse;
+export default createUser;

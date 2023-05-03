@@ -11,7 +11,6 @@ import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
 import editCategory from '../../../services/EditCategory';
 
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -70,7 +69,7 @@ const ListCategories =  () => {
       };
     
       function displayCategories() {
-        
+
         return (
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -100,6 +99,28 @@ const ListCategories =  () => {
                             </Typography>
                             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
                               <form onSubmit={handleSubtmit}>
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
+                                <TextField type="text" variant='outlined' value={category_name} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
+                                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
+                              </form>
+                            </Typography>
+                          </Box>
+                        </Modal>
+                        </div>
+                        <div>
+                        <Button onClick={handleOpenEdit} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:135, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Category</Button>
+                        <Modal
+                          open={open}
+                          onClose={handleCloseEdit}
+                          aria-labelledby="modal-modal-title"
+                          aria-describedby="modal-modal-description"
+                        >
+                          <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
+                              Edit Category Form
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
+                              <form onSubmit={handleSubtmitEdit}>
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
                                 <TextField type="text" variant='outlined' value={category_name} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
                                 <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>

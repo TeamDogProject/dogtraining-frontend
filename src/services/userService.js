@@ -1,5 +1,7 @@
 import api from './config'
 
+// GetProfile from user when do Login
+
 const getProfile = async() => {
     try {
         
@@ -14,6 +16,10 @@ const getProfile = async() => {
         return error.message
     }
 }
+
+// List all Users
+
+
 
 export {
     getProfile

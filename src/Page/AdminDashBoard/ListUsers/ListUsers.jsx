@@ -22,6 +22,9 @@ const style = {
 const ListUsers = () => {
 
   const [users, setUsers] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const getUsers = async () => {
     const result = await listAllUsers();
@@ -41,9 +44,7 @@ const ListUsers = () => {
   }
 
   function displayUsers() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
