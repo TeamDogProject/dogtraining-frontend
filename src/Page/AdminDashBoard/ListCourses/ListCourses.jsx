@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import listAllCourses from '../../../services/listAllCourses';
-import { Grid, Typography } from '@mui/material';
+import { FormControl, Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import Button from '@mui/material/Button';
 import {Modal} from '@mui/material';
+import {FormLabel,TextField, InputLabel} from '@mui/material';
+import {Select} from '@mui/material';
+import {MenuItem} from '@mui/material';
+import createCourse from '../../../services/CreateCourse';
+
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -25,6 +30,47 @@ const ListCourses = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [name, setName ] = useState('');
+  const [description, setDescription ] = useState('');
+  const [duration, setDuration ] = useState('');
+  const [price , setPrice ] = useState('');
+  const [place, setPlace ] = useState('');
+
+  const handleSumit = (e) => {
+    e.preventDefault();
+    const createNewCourse = {
+      name: name, 
+      description: description,
+      duration: duration,
+      price: price,
+      place: place
+    };
+    createCourse(createNewCourse);
+    console.log(createCourse);
+  }
+
+  const handleChangeName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value)
+  }
+
+  const handleChangeDuration = (e) => {
+    setDuration(e.target.value)
+  }
+
+  const handleChangePrice = (e) => {
+    setPrice(e.target.value)
+    
+  }
+
+  const handleChangePlace = (e) => {
+    setPlace(e.target.value)
+    
+  }
 
   const getCourses = async () => {
     const result = await listAllCourses();
@@ -74,11 +120,33 @@ const ListCourses = () => {
                           aria-describedby="modal-modal-description"
                         >
                           <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                              Text in a modal
+                            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
+                              Create Course Form
                             </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                            <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
+                              <form onSubmit={handleSumit}>
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
+                                <TextField type="text" variant='outlined' value={name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>
+                                <TextField type="text" variant='outlined' value={description} onChange={handleChangeDescription} sx={{ width:300,  marginLeft:20 }}/>
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Duration</FormLabel>
+                                <TextField type="text" variant='outlined' value={duration} onChange={handleChangeDuration} sx={{ width:300,  marginLeft:20 }}/>
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
+                                <TextField type="text" variant='outlined' value={price} onChange={handleChangePrice} sx={{ width:300,  marginLeft:20 }}/>
+                                <FormLabel sx={{ width:300, marginLeft:20 }}>Place</FormLabel>
+                                <Select
+                                  labelId="place"
+                                  id="demo-simple-select"
+                                  value={place}
+                                  label="Place"
+                                  onChange={handleChangePlace}
+                                  sx={{ width:300,  marginLeft:20 }}
+                                >
+                                  <MenuItem value={'online'}>online</MenuItem>
+                                  <MenuItem value={'face-to-face'}>face-to-face</MenuItem>
+                                </Select>
+                                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
+                              </form>
                             </Typography>
                           </Box>
                         </Modal>
