@@ -1,6 +1,5 @@
 import './Home.css'
 import CarouselComponent from './Carroussel'
-import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/user'
 import { getProfile } from '../../services/userService'
 import { useContext, useEffect } from 'react'
@@ -8,13 +7,6 @@ import { useContext, useEffect } from 'react'
 const Home = () => {
 
   const { user, setUser } = useContext(UserContext)
-
-  const navigate = useNavigate()
-
-  const logout = () => {
-    localStorage.removeItem('token')
-    navigate('/')
-  }
 
   useEffect(()=>{
     getUser()

@@ -11,6 +11,7 @@ import ListBooks from "../Page/AdminDashBoard/ListBooks/ListBooks";
 import ListVideos from "../Page/AdminDashBoard/ListVideos/ListVideos";
 import ListUsers from "../Page/AdminDashBoard/ListUsers/ListUsers";
 import ListCategories from "../Page/AdminDashBoard/ListCategories/ListCategories";
+import Courses from "../Page/Courses/Courses";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,10 @@ const router = createBrowserRouter([
     element: <Root />,
 
     children: [
+      { path:'/courses', 
+        element:<Courses />
 
+      }, 
       {
         path:'/about',
         element: <About />

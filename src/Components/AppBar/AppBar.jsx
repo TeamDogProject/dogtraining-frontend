@@ -1,61 +1,77 @@
-import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography,Container, Menu, MenuItem, Avatar, Button, Tooltip, Link } from '@mui/material';
+import * as React from 'react'
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Menu,
+  MenuItem,
+  Avatar,
+  Button,
+  Tooltip,
+  Link,
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import AdbIcon from '@mui/icons-material/Adb'
 import { useNavigate } from 'react-router-dom'
-import { LogingContext } from '../../context/loginContext';
-import { useContext } from 'react';
-const pages = ['Home', 'About','contact', 'Login', 'Signup']
+import { LogingContext } from '../../context/loginContext'
+import { useContext } from 'react'
+const pages = ['Home', 'About', 'contact', 'courses'] /* 'Login', 'Signup */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings2 = ['Login', 'Signup']
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-{/*   const [isLoggedIn, setIsLoggedIn] = React.useState(false); */}
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  {
+    /*   const [isLoggedIn, setIsLoggedIn] = React.useState(false); */
+  }
 
-  const {isLoggedIn, setIsLoggedIn} =  useContext(LogingContext)
-
+  const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
 
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token')
     setIsLoggedIn(token !== null)
+  }, [])
 
-   
-   
-  }, []);
+  const handleLoginBottom = () => {
+    navigate('/login')
+  }
 
+  const handleSignUp = () =>{
+    navegate('/signup')
+  }
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+    setAnchorElNav(event.currentTarget)
+  }
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
-  };
+  }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
-    
-  };
+  }
 
-const handleLogout = () => {
-  localStorage.removeItem("token")
-  navigate('/home')
-  if(isLoggedIn)
-  location.reload()
-}
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/home')
+    if (isLoggedIn) location.reload()
+  }
 
-const handleDashboard = () => {
-  navigate('/dasboard')
-}
-  
+  const handleDashboard = () => {
+    navigate('/dasboard')
+  }
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
-  
   }
- 
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#0A4D68' }}>
       <Container maxWidth="xl">
@@ -159,62 +175,74 @@ const handleDashboard = () => {
                 </Button>
               </Link>
             ))}
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          {isLoggedIn && (
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-          )}
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser) && isLoggedIn}
-            onClose={handleCloseUserMenu} //esta función cierra el menu
-          >
-          {  /* {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{setting}</Typography>
-              </MenuItem> 
- */}
- 
-<MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
-  <Typography textAlign="center">{settings[0]}</Typography>
-</MenuItem>
+          
+    
+          
 
-<MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
-  <Typography textAlign="center">{settings[1]}</Typography>
-</MenuItem>
+            {isLoggedIn && (
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+            )}
 
-<MenuItem key={settings[2]} onClick={handleDashboard}>
-  <Typography textAlign="center">{settings[2]}</Typography>
-</MenuItem>
+            {!isLoggedIn && (
+              <div>
+                <Button key={settings2[0]} onClick={handleLoginBottom} sx={{ p: 0 }}>
+                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[0]}</Typography>
+                </Button>
+                <Button key={settings2[1]} onClick={handleSignUp} sx={{ p: 0 }}>
+                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[1]}</Typography>
+                </Button>
+              </div>
+            )}
+            
 
-<MenuItem key={settings[3]} onClick={handleLogout}>
-  <Typography textAlign="center">{settings[3]}</Typography>
-</MenuItem>
+
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser) && isLoggedIn}
+              onClose={handleCloseUserMenu} //esta función cierra el menu
+            >
               
 
-            
-          </Menu>
-        </Box>
-      </Toolbar>
-    </Container>
-  </AppBar>
-);
+              <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{settings[0]}</Typography>
+              </MenuItem>
+
+              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{settings[1]}</Typography>
+              </MenuItem>
+
+              <MenuItem key={settings[2]} onClick={handleDashboard}>
+                <Typography textAlign="center">{settings[2]}</Typography>
+              </MenuItem>
+
+              <MenuItem key={settings[3]} onClick={handleLogout}>
+                <Typography textAlign="center">{settings[3]}</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  )
 }
 
-export default ResponsiveAppBar;
+export default ResponsiveAppBar
