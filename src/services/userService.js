@@ -1,3 +1,4 @@
+
 import api from './config'
 
 const getProfile = async() => {
@@ -14,6 +15,10 @@ const getProfile = async() => {
         return error.message
     }
 }
+
+
+
+
 
 export {
     getProfile
