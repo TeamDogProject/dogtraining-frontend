@@ -20,6 +20,10 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+const onSignUp = () => {
+    navigate('/signUp')
+}
+
   const handleChangeEmail = (e) => {
     setEmail(e.target.value)
   }
@@ -103,6 +107,7 @@ function Login() {
               color="secondary"
               variant="contained"
               sx={{ backgroundColor: '#088395' }}
+              onClick={onSignUp}
             >
               Register
             </Button>
