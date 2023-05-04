@@ -70,11 +70,9 @@ function EditCourseForm({course}) {
         setCourses(getCourses())
         }
 
-     
-    
     return(
     <div>
-        <Button onClick={handleOpen} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+        <Button onClick={handleOpen} style={{ marginRight: 5,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
         <Modal
           open={open}
           onClose={handleClose}
@@ -95,13 +93,14 @@ function EditCourseForm({course}) {
                 <TextField type="text" variant='outlined' value={course.duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
                 <TextField type="text" variant='outlined' value={course.price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
-                <InputLabel id="place">Place</InputLabel>
+                <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                 <Select
                     labelId="place"
                     id="place"
-                    value={place}
+                    value={course.place}
                     label="Place`"
                     onChange={handleChangePlace}
+                    sx={{ width:300, marginLeft:20 }}
                 >
                     <MenuItem value={'online'}>Online</MenuItem>
                     <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
@@ -113,7 +112,6 @@ function EditCourseForm({course}) {
         </Modal>
     </div>
     )
-
 }
 
 export default EditCourseForm

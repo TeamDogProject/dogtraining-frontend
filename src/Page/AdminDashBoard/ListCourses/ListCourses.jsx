@@ -17,6 +17,18 @@ const ListCourses = () => {
     setCourses(result);
   };
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   useEffect(() => {
     getCourses();
   }, []);
@@ -132,7 +144,7 @@ const ListCourses = () => {
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
                             <EditCourseForm course={{name: course.name, id: course.id, description: course.description, duration: course.duration, price:course.price, place:course.place }}/>
-                            <button  onClick={() => deleteCourse(course.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            <button  onClick={() => deleteCourse(course.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
                   </TableRow>

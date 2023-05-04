@@ -6,6 +6,7 @@ import api from '../../../services/config';
 import CreateCategoryForm  from './CreateCategoryForm/CreateCategoryForm';
 import EditCategoryForm  from './EditCategoryForm/EditCategoryForm';
 import { editCategory, listAllCategories } from '../../../services/CategoryService';
+import { Button } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -20,8 +21,22 @@ const style = {
   };
 
 const ListCategories =  () => {
+
     const [ categories, setCategories ] = useState([]);
-    
+
+    const [categoryId, setCategoryId] = useState('');
+    const [categoryName, setCategoryName] = useState('');
+    const [showModal, setShowModal] = useState(false)
+
+    const handleOpen = (categoryId, categoryName) => {
+      setShowModal(true)
+      setCategoryId(categoryId)
+      setCategoryName(categoryName)
+    }
+
+    const handleClose = () => {
+      setShowModal(false)
+    }
 
     const getCategories = async () => {
       const result = await listAllCategories();
@@ -51,6 +66,8 @@ const ListCategories =  () => {
       function displayCategories() {
 
         return (
+          <>
+          <EditCategoryForm close={handleClose} show={showModal} categoryId={categoryId} categoryName={categoryName} />
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Box>
@@ -103,7 +120,8 @@ const ListCategories =  () => {
                           </TableCell>
                           <TableCell style={{ color: 'white', fontSize: 17 }}>
                             <div>
-                              <EditCategoryForm category={{name: category.category_name, id: category.id }}/>
+                            <Button onClick={() => handleOpen(category.id,category.category_name)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                              {/* <EditCategoryForm category={{name: category.category_name, id: category.id }}/> */}
                               <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                             </div>
                           </TableCell>
@@ -114,6 +132,7 @@ const ListCategories =  () => {
                 </TableContainer>
             </Grid>
           </Grid>
+          </>
         );
       }
 

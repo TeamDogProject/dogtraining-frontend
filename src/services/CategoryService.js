@@ -35,8 +35,22 @@ const listAllCategories = async () => {
     return data;
 };
 
+// Update a category
+const saveCategory = async (id, category_name) => {
+    const body = {category_name: category_name}
+    const {data} = await api.put(`/categories/${id}`,body,{
+        headers: {
+            'token': localStorage.getItem('token')
+        }
+    })
+    console.log(data)
+    return data
+};
+
+
 export {
     createCategory, 
     editCategory, 
-    listAllCategories
+    listAllCategories, 
+    saveCategory
 }

@@ -103,13 +103,14 @@ const handleSubtmit = async (e) => {
                                 <TextField type="text" variant='outlined' value={duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
                                 <TextField type="text" variant='outlined' value={price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
-                                <InputLabel id="place">Place</InputLabel>
+                                <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                                 <Select
                                     labelId="place"
                                     id="demo-simple-select"
                                     value={place}
                                     label="Place"
                                     onChange={handleChangePlace}
+                                    sx={{  width:300, marginLeft:20  }}
                                 >
                                     <MenuItem value={'online'}>Online</MenuItem>
                                     <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
