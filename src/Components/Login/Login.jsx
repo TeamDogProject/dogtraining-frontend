@@ -31,8 +31,9 @@ function Login() {
   const onLogin = async () => {
     const form = { email, password };
     const result = await login(form);
+   
   
-    if (result) {
+    if (localStorage.getItem('token')) {
       console.log('Inicio de sesión exitoso');
       setIsLoggedIn(true)
       
@@ -43,7 +44,7 @@ function Login() {
         navigate('/adminDashBoard');
       } else {
         console.log('Perfil de usuario detectado');
-        navigate('/home');
+        navigate('/userDashBoard');
       }
     } else {
       console.log('Inicio de sesión fallido');
