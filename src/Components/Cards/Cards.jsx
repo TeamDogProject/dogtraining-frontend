@@ -53,7 +53,10 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
         Reactividad
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      ¿Qué es la reactividad? 
+La reactividad es un problema de aprovechamiento emocional, relacionado con la aparición de respuestas reactivas e involuntarias más allá de su rango de utilidad, impidiendo la conversión de emoción en motivación y la activación del sistema cognitivo, que permitiría elegir alternativas más adecuadas y que implicasen voluntariedad y, en consecuencia, autocontrol.
+En este programa veremos como tratar, mejorar, solucionar los problemas típicos como cuando perro tira de la correa por querer agredir a otro perro, (valencia negativa) o cuando tira por querer jugar o saludar a otro perro ( valencia positiva). Este programa esta diseñado en 6 sesiones presenciales virtualmente, donde veremos una serie de dinámicas como; trabajos de sin impulsividad (autocontrol y control),  paseos sintonizados, 5 intensidades de la emoción, como recuperar e inducir a un perro emocionalmente mas tranquilo. 
+Sesiones: 1 por semana, 1 hora aprox. Precio del paquete 195 euros en formato individualizado. Posibilidad de hacerla grupal presencial online 4 personas.
       </Typography>
     </CardContent>
     <CardActions>
@@ -73,7 +76,13 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
       Gestión del miedo
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      ¿Qué es el miedo? 
+El miedo es una emoción de valencia negativa y genera una sobreactivación que prepara al perro para reaccionar de manera rápida, primeramente huyendo de aquello que lo provoca, aunque ante la posibilidad de huir es fácil que muestre agresividad o incluso indefensión. 
+En este programa identificaremos primero si son miedos generalizados o miedos específicos, que trabajaremos personalizadamente con cada perro, creando unas capacidades fuera de la problemática, para que posteriormente pueda superar exitosamente. 
+El enfoque de trabajo se hará en cuatro niveles, más uno especial en algunos casos. Iremos superando nivel a nivel y trabajaremos todos los sentidos (tacto, equilibrio oído, vista y olfato) o solo algunos, según el caso, con una serie de niveles progresivos paso a paso.
+Primer nivel (pantalla de recuperación, alivio y satisfacción) tacto, equilibrio, moldeados, oído, vista, olfato.
+Niveles 2, 3, 4 serán desafíos montados en domicilio para que el perro afronte y aprenda progresivamente unas habilidades necesarias para desarrollar sus capacidades cognitivas, mejorar su gestión emocional y gestión relacional según el desafío seleccionado.
+Este programa puede tener meses de trabajo, según el perro, por lo tanto Grancanino ha reducido en 10 sesiones (1 por semana) todo el trabajo pero puede que requiera una continuidad por parte de los tutores en cuanto al trabajo. Precio del paquete, 295 euros en formato individualizado.
       </Typography>
     </CardContent>
     <CardActions>
@@ -93,7 +102,23 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
       Frustración
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      El programa para gestionar la frustración de un perro incluye los siguientes contenidos:
+
+Identificación de las situaciones que provocan la frustración del perro, como la falta de atención, la ausencia del dueño, la imposibilidad de acceder a un objeto deseado, etc.
+
+Entrenamiento en habilidades básicas para reducir la frustración, como la paciencia, la autocontrol y la tolerancia a la frustración.
+
+Entrenamiento en obediencia básica para mejorar la comunicación y la relación entre el perro y el dueño, y así evitar situaciones que generen frustración.
+
+Ejercicios de desensibilización y contracondicionamiento para reducir la respuesta emocional del perro ante estímulos que le generen frustración.
+
+Ejercicios de enriquecimiento ambiental para aumentar la estimulación y reducir el aburrimiento, lo que a su vez reduce la probabilidad de que el perro se frustre.
+
+Consejos prácticos para los dueños sobre cómo manejar las situaciones que generan frustración en el perro, como por ejemplo evitar los castigos o recompensar los comportamientos deseables.
+
+Seguimiento y evaluación continua para medir el progreso del perro y ajustar el programa según sea necesario.
+
+En resumen, un programa para gestionar la frustración de un perro que aborda tanto los aspectos conductuales como emocionales del animal, y debe centrarse en el entrenamiento y la educación del dueño para mejorar la relación y la comunicación entre ambos.
       </Typography>
     </CardContent>
     <CardActions>
@@ -113,7 +138,21 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
       Obediencia Básica
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      El programa para gestionar la obediencia básica del perro incluye los siguientes contenidos:
+
+Enseñanza de órdenes básicas como sentarse, echarse, quedarse quieto, acudir al llamado y caminar con correa sin tirar.
+
+Entrenamiento en el uso correcto de los refuerzos positivos, como las golosinas y los elogios, para motivar al perro a realizar las órdenes correctamente.
+
+Identificación de las señales de comunicación no verbal del perro, como el lenguaje corporal y las expresiones faciales, para mejorar la comunicación entre el perro y el dueño.
+
+Entrenamiento en habilidades sociales, como la interacción con otros perros y personas, y la gestión de la agresividad y el miedo.
+
+Consejos prácticos para el manejo de situaciones específicas, como la socialización de cachorros, la corrección de malos hábitos y la prevención de problemas de comportamiento.
+
+Seguimiento y evaluación continua para medir el progreso del perro y ajustar el programa según sea necesario.
+
+En resumen, el programa para gestionar la obediencia básica se centra en el entrenamiento de las órdenes básicas y en la educación del dueño para mejorar la comunicación y la relación con el perro. También debe abordar la gestión de las habilidades sociales y proporcionar consejos prácticos para el manejo de situaciones específicas.
       </Typography>
     </CardContent>
     <CardActions>
@@ -133,7 +172,21 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
       Obediencia Avanzada
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      El programa para gestionar la obediencia avanzada del perro podría incluir los siguientes contenidos:
+
+Enseñanza de órdenes avanzadas, como el salto, el volteo, el traer objetos específicos y la identificación de objetos mediante el olfato.
+
+Entrenamiento en el uso de refuerzos positivos de mayor nivel, como el juego y las actividades recreativas, para motivar al perro a realizar tareas más complejas.
+
+Identificación de las señales de comunicación no verbal del perro a un nivel más avanzado, incluyendo la lectura de las expresiones faciales y las posturas corporales más sutiles.
+
+Entrenamiento en habilidades específicas para actividades deportivas, como el agility, el flyball y el rastreo.
+
+Consejos prácticos para el manejo de situaciones específicas en el contexto de las actividades deportivas, como la corrección de malos hábitos específicos a cada deporte y la prevención de lesiones.
+
+Seguimiento y evaluación continua para medir el progreso del perro y ajustar el programa según sea necesario.
+
+En resumen, un programa para gestionar la obediencia avanzada de un perro debe centrarse en la enseñanza de órdenes más complejas, en el uso de refuerzos positivos de mayor nivel y en la mejora de la comunicación entre el perro y el dueño. También debe abordar habilidades específicas para actividades deportivas y proporcionar consejos prácticos para el manejo de situaciones específicas en el contexto de cada actividad.
       </Typography>
     </CardContent>
     <CardActions>
@@ -193,7 +246,9 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
       Salud Comportamental
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      ¿Qué es la salud comportamental? 
+Es un análisis completo y exhaustivo que abarca cuatro dimensiones; (emocional, cognitiva, social y física) medido por el profesional (cuando el curso se imparta online, la medición se hará a través un cuestionario), donde quedará reflejado con claridad qué dimensiones y bases son necesarias trabajar y mejorar. 
+Este programa está diseñado para mejorar conductas o tener un perro mas feliz independientemente de la problemática que exista. Este paquete se realiza en 6 semanas (sesiones) de 1 hora aproximadamente. El precio del paquete son 195 euros en formato individualizado. Existe la posibilidad de hacer sesiones presenciales u online de hasta 4 personas. Se medirá la salud comportamental al inicio y al final para analizar las mejoras de cada perro.
       </Typography>
     </CardContent>
     <CardActions>
