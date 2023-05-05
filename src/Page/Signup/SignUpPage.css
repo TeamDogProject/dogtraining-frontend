@@ -1,0 +1,21 @@
+.signUpPage {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+
+.validated {
+    color: green;
+}
+
+.notValidated {
+     color:red;
+    
+}

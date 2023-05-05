@@ -1,13 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Page/Home/Home";
+import SignUpPage from "../Page/Signup/SignUpPage";
 import Root from "../Layouts/root";
+import About from "../Page/About/About";
 import Login from "../Components/Login/Login";
+import Contact from "../Page/Contact/Contact";
 import AdminDashBoard from "../Page/AdminDashBoard/AdminDashBoard";
 import ListDogs from "../Page/AdminDashBoard/ListDogs/ListDogs";
 import ListBooks from "../Page/AdminDashBoard/ListBooks/ListBooks";
 import ListVideos from "../Page/AdminDashBoard/ListVideos/ListVideos";
 import ListUsers from "../Page/AdminDashBoard/ListUsers/ListUsers";
 import ListCategories from "../Page/AdminDashBoard/ListCategories/ListCategories";
+import Courses from "../Page/Courses/Courses";
 
 const router = createBrowserRouter([
   {
@@ -15,9 +19,27 @@ const router = createBrowserRouter([
     element: <Root />,
 
     children: [
+      { path:'/courses', 
+        element:<Courses />
+
+      }, 
+      {
+        path:'/about',
+        element: <About />
+
+      },
+      { path: '/signUp',
+      element: <SignUpPage />,
+
+      },
       {
         path: '/home',
         element: <Home />,
+      },
+      { 
+        path: '/contact',
+        element: <Contact />,
+
       },
       {
         path: '/login',

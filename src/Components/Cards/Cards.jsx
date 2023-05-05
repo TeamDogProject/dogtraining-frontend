@@ -6,14 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+
 function MediaCard() {
   return (
     <>
+  <Card sx={{
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-between" }} />
+
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
         image="https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg"
         title="Sin Ansiedad"
+        
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -43,6 +50,7 @@ Este programa esta enfocado a los problemas de ansiedad típicos como:
    
     </Card>
     <Card sx={{ maxWidth: 345 }}>
+
     <CardMedia
       sx={{ height: 140 }}
       image="https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg"
@@ -206,7 +214,22 @@ En resumen, un programa para gestionar la obediencia avanzada de un perro debe c
       Club Cachorro
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      El club Cachorro ofrece las siguientes actividades y contenidos.
+Socialización: El club puede ofrecer oportunidades de socialización para los cachorros, como jugar juntos en un área segura y supervisada, lo que les permite interactuar con otros cachorros y personas de manera positiva.
+
+Ejercicio y juego: Los cachorros necesitan mucho ejercicio y juego para mantenerse saludables y felices. El club puede ofrecer actividades que involucren el juego y el ejercicio, como el lanzamiento de pelotas o juegos de persecución, para mantener a los cachorros activos y ocupados.
+
+Entrenamiento de obediencia básica: El club puede ofrecer entrenamiento básico de obediencia para ayudar a los dueños a enseñar a sus cachorros órdenes básicas como sentarse, quedarse quieto, acudir al llamado y caminar con correa sin tirar.
+
+Educación sobre la salud y la nutrición: El club puede ofrecer información y consejos sobre la salud y la nutrición de los cachorros, como la importancia de la vacunación y la dieta adecuada.
+
+Consejos para el cuidado del cachorro: El club puede proporcionar consejos prácticos para el cuidado del cachorro, como la higiene y la preparación para las visitas al veterinario.
+
+Actividades sociales para dueños de cachorros: El club puede ofrecer actividades sociales para los dueños de cachorros, como charlas y reuniones, lo que les permite compartir experiencias y consejos.
+
+Actividades especiales: El club puede organizar actividades especiales, como fiestas de cumpleaños para cachorros, sesiones de fotos y otras actividades para celebrar los logros y los hitos de los cachorros.
+
+En resumen, el club de cachorros ofrece actividades y contenidos que promuevan la socialización, el ejercicio, la educación y el cuidado de los cachorros, y brindar un espacio seguro y supervisado para que los cachorros interactúen con otros cachorros y personas de manera positiva. Además, también puede ofrecer oportunidades para que los dueños de cachorros compartan experiencias y consejos.
       </Typography>
     </CardContent>
     <CardActions>
@@ -226,7 +249,21 @@ En resumen, un programa para gestionar la obediencia avanzada de un perro debe c
       Olimpiadas Caninas
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam delectus reiciendis molestiae minus molestias dolorum porro labore repellendus! Deserunt modi libero laudantium delectus tenetur deleniti cum. Consequatur, voluptas!r
+      Las olimpiadas caninas son un conjunto de actividades que se realizan en competiciones entre perros y sus dueños. Las actividades y contenidos que pueden tener unas olimpiadas caninas son:
+
+Pruebas de agilidad: Esta actividad se enfoca en la capacidad del perro para superar obstáculos en un circuito establecido. Se miden la velocidad, la habilidad y la agilidad del perro.
+
+Pruebas de obediencia: Esta actividad se enfoca en la capacidad del perro para responder a órdenes básicas y avanzadas. Se miden la obediencia y la capacidad de los perros para realizar tareas precisas y complejas.
+
+Carreras: Esta actividad se enfoca en la velocidad y la resistencia del perro. Se miden la velocidad, la capacidad de correr durante largas distancias y la resistencia del perro.
+
+Juegos y actividades recreativas: Esta actividad se enfoca en la capacidad del perro para jugar y divertirse. Incluye actividades como lanzamiento de pelotas, juegos de buscar y otros juegos interactivos entre el perro y su dueño.
+
+Actividades de búsqueda y rastreo: Esta actividad se enfoca en la capacidad del perro para buscar y rastrear objetos y personas. Incluye actividades como la búsqueda de objetos y la identificación de olores específicos.
+
+Concursos de belleza: Esta actividad se enfoca en la apariencia del perro y su capacidad para cumplir con los estándares de raza. Los perros son juzgados en función de su apariencia, su conformación y su elegancia.
+
+En resumen, las olimpiadas caninas pueden incluir una variedad de actividades para evaluar la capacidad y habilidades de los perros, así como la relación entre el perro y su dueño. Estas actividades pueden incluir pruebas de agilidad, obediencia y carreras, así como juegos y actividades recreativas y de búsqueda y rastreo. También pueden incluir concursos de belleza para juzgar la apariencia del perro y su conformación.
       </Typography>
     </CardContent>
     <CardActions>
