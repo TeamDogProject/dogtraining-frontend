@@ -5,27 +5,49 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateUserForm from './CreateUserForm/CreateUserForm';
+import Button from '@mui/material/Button';
 import EditUserForm from './EditUserForm/EditUserForm';
 
 const ListUsers = () => {
 
   const [users, setUsers] = useState([]);
 
+  const [showModal, setShowModal] = useState(false)
+
+  const [ userId, setUserId ] = useState('');
+  const [ userName, setUserName ] = useState('');
+  const [ userSurname, setSurname ] = useState('');
+  const [ userEmail, setEmail ] = useState('');
+  const [ userIdentityCard, setIdentityCard ] = useState('');
+  const [ userPassword, setPassword ] = useState('');
+  const [userPhone, setPhone] = useState('');
+  const [userConfirmationPassword, setConfirmationPassword] = useState('');
+  const [ userRole, setRole ] = useState('')
+  
+
+  const handleOpen = (userId, userName, userSurname, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
+    
+    setShowModal(true)
+    setUserId(userId)
+    setUserName(userName)
+    setSurname(userSurname)
+    setEmail(userEmail)
+    setIdentityCard(userIdentityCard)
+    setPassword(userPassword)
+    setPhone(userPhone)
+    setConfirmationPassword(userConfirmationPassword)
+    setRole(userRole)
+    
+    console.log(userId, userName, userSurname, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
   const getUsers = async () => {
     const result = await listAllUsers();
     setUsers(result);
-  };
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
   };
 
   useEffect(() => {
@@ -49,6 +71,8 @@ const ListUsers = () => {
   function displayUsers() {
     
     return (
+    <>
+    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword}  />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -86,7 +110,7 @@ const ListUsers = () => {
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <EditUserForm user={{id:user.id, name:user.name, surname:user.surname, email:user.email, identity_card:user.identity_card, password: user.password, phone:user.phone, confirmation_password:user.confirmation_password, role:user.role}}/>
+                          <Button onClick={() => handleOpen(user.id,user.name, user.surname, user.username, user.email, user.identityCard, user.password,user.phone,user.confirmationPassword, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
                             <button  onClick={() => deleteUser(user.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
@@ -97,6 +121,7 @@ const ListUsers = () => {
         </TableContainer>
         </Grid>
       </Grid>
+    </>
     );
   }
   

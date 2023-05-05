@@ -37,6 +37,7 @@ const ListDogs = () => {
     setDogChip(dogChip)
     setDogProblem(dogProblem)
     setDogValoration(dogValoration)
+    console.log(dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration)
   }
 
   const handleClose = () => {
@@ -70,7 +71,7 @@ const ListDogs = () => {
     
     return (
       <>
-      <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
+      <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogPhoto={dogPhoto} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>

@@ -39,9 +39,34 @@ const listAllUsers = async () => {
   return data;
 };
 
+//Update a user
+const saveUser = async (id, name, surname, email, identity_card, password, phone, confirmation_password, role) => {
+    try {
+       const {data} = await api.put(`/users/${id}`, {
+        name: name, 
+        surname: surname,
+        email: email,
+        identity_card: identity_card,
+        password: password,
+        phone: phone,
+        confirmation_password: confirmation_password, 
+        role: role
+      }, {
+        headers: {
+          'token': localStorage.getItem('token'),
+        }
+      });
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
+};
+
 
 export {
     getProfile,
     listAllUsers,
-    createUser
+    createUser,
+    saveUser
 }

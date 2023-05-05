@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { saveDog } from '../../../../services/DogService'
 
 function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration }) {
-
+  console.log(dogPhoto, dogId, dogName)
   const [dog_photo, setPhoto] = useState(dogPhoto)
   const [dog_name, setName] = useState(dogName)
   const [dog_breed, setBreed] = useState(dogBreed)
@@ -106,18 +106,18 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
           <Typography id="modal-modal-description" sx={{ width: 300, marginTop: 4 }}>
             <form onSubmit={handleSaveDog}>
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Photo</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_photo} onChange={handleChangePhoto} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined'  placeholder={dogPhoto} onChange={handleChangePhoto} sx={{ width: 300, marginLeft: 35 }} />
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Name</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_name} onChange={handleChangeName} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogName} onChange={handleChangeName} sx={{ width: 300, marginLeft: 35 }} />
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Breed</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_breed} onChange={handleChangeBreed} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogBreed} onChange={handleChangeBreed} sx={{ width: 300, marginLeft: 35 }} />
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Age</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_age} onChange={handleChangeAge} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogAge} onChange={handleChangeAge} sx={{ width: 300, marginLeft: 35 }} />
               <InputLabel id="sex" sx={{ width: 300, marginLeft: 35 }}>Sex</InputLabel>
               <Select
                 labelId="sex"
                 id="sex"
-                placeholder={dog_sex}
+                placeholder={dogSex}
                 label="Sex"
                 onChange={handleChangeSex}
                 sx={{ width: 300, marginLeft: 35 }}
@@ -126,11 +126,11 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
                 <MenuItem value={'female'}>Female</MenuItem>
               </Select>
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Chip</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_chip} onChange={handleChangeChip} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogChip} onChange={handleChangeChip} sx={{ width: 300, marginLeft: 35 }} />
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Problem</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_problem} onChange={handleChangeProblem} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogProblem} onChange={handleChangeProblem} sx={{ width: 300, marginLeft: 35 }} />
               <FormLabel sx={{ width: 300, marginLeft: 35 }}>Valoration</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={dog_valoration} onChange={handleChangeValoration} sx={{ width: 300, marginLeft: 35 }} />
+              <TextField type="text" variant='outlined' placeholder={dogValoration} onChange={handleChangeValoration} sx={{ width: 300, marginLeft: 35 }} />
               <Button variant="contained" type="submit" style={{ marginTop: 15, marginLeft: 510, color:'white', backgroundColor:'purple' }}>
                 Save
               </Button> 
