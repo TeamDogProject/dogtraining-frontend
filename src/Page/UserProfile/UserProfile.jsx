@@ -37,8 +37,9 @@ function UserProfilePage() {
 
   //para el imput que cambia la contraseña
   const [showForm, setShowForm] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmationPassword, setConfirmationPassword] = useState('');
+  const [password, setPassword] = useState(''); // Estado del campo Password
+  const [confirmationPassword, setConfirmationPassword] = useState('') // Estado del campo confirmation_password
+  const [validateConfirmation, setValidateConfirmation] = useState(null) // si hay match me cambia este estado, para cambiar color imput en función del estado
 
   const navigate = useNavigate()
 
@@ -65,18 +66,29 @@ function UserProfilePage() {
     setPassword(event.target.value);
   };
 
-  const handleConfirmationPasswordChange = (event) => {
-    setConfirmationPassword(event.target.value);
-  };
+ 
+const handleConfirmationPasswordChange = (event) => {
+  setConfirmationPassword(event.target.value);
+  if (password === event.target.value) {
+    setValidateConfirmation(true);
+  } else {
+    setValidateConfirmation(false);
+  }
+};
+
 
   const handleUpdatePassword = async () => {
   try {
+
     if (password !== confirmationPassword) {
-      throw new Error('Passwords do not match');
+      throw new Error('Passwords do not match')
     }
+
+   
     const data  = await changePassword(password)
     console.log(data)
     return data
+
   } catch (error) {
     console.error(error)
   }
@@ -215,6 +227,7 @@ function UserProfilePage() {
                   type="password"
                   variant="outlined"
                   margin="normal"
+                  color={validateConfirmation ? 'success' : 'warning'}
                   fullWidth
                   value={confirmationPassword}
                   onChange={handleConfirmationPasswordChange}
