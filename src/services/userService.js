@@ -50,10 +50,26 @@ const deleteUser = async () => {
     }
 
 
+    const changePassword = async (password) => {
+        try {
+            const {data} = await api.put('/auth/profile/changePassword',{password:password}, { //se pasa como segundo parámetro los cambios que se quieren hacer
+                headers:{
+                    'token': localStorage.getItem('token')
+                }
+            })
+            console.log(data)
+            return data
+        } catch (error) {
+            return(error)
+    
+            }
+        }
+
 
 
 export {
     getProfile,
     getUserDogs,
     deleteUser,
+    changePassword,
 }

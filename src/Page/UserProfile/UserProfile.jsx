@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/config'
 import { getProfile } from '../../services/userService'
 import { deleteUser } from '../../services/userService'
+import {changePassword } from '../../services/userService'
 import { useContext } from 'react'
 import {
   Card,
@@ -12,6 +13,12 @@ import {
   Paper,
   Typography,
   Button,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+
 } from '@mui/material'
 import './UserProfile.css'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -21,11 +28,17 @@ import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 
 
+
+
 function UserProfilePage() {
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
   const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
 
+  //para el imput que cambia la contraseña
+  const [showForm, setShowForm] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmationPassword, setConfirmationPassword] = useState('');
 
   const navigate = useNavigate()
 
@@ -38,6 +51,37 @@ function UserProfilePage() {
     setUserProfile(result)
     console.log(result)
   }
+
+  //cambia Contraseña
+  const handleOpenForm = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleConfirmationPasswordChange = (event) => {
+    setConfirmationPassword(event.target.value);
+  };
+
+  const handleUpdatePassword = async () => {
+  try {
+    if (password !== confirmationPassword) {
+      throw new Error('Passwords do not match');
+    }
+    const data  = await changePassword(password)
+    console.log(data)
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+};
+
 
  
   const handleDeleteUser2 = async () => {
@@ -133,24 +177,56 @@ function UserProfilePage() {
         <CardActions>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <Button
-                variant="contained"
-                sx={{ backgroundColor: '#0A4D68', marginBottom: 2 }}
+            
+            <>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: '#0A4D68', marginBottom: 2 }}
+              onClick={handleOpenForm}
+            >
+              <Typography
+                sx={{
+                  fontFamily: 'Roboto',
+                  fontSize: '0.875rem',
+                  color: 'white',
+                  borderRadius: 4,
+                  fontWeight: 500,
+                  lineHeight: 1.75,
+                }}
+                textAlign="center"
               >
-                <Typography
-                  sx={{
-                    fontFamily: 'Roboto',
-                    fontSize: '0.875rem',
-                    color: 'white',
-                    borderRadius: 4,
-                    fontWeight: 500,
-                    lineHeight: 1.75,
-                  }}
-                  textAlign="center"
-                >
-                  Change Password
-                </Typography>
-              </Button>
+                Change Password
+              </Typography>
+            </Button>
+            <Dialog open={showForm} onClose={handleCloseForm}>
+              <DialogTitle>Change Password</DialogTitle>
+              <DialogContent>
+                <TextField
+                  label="New Password"
+                  type="password"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                <TextField
+                  label="Confirm New Password"
+                  type="password"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  value={confirmationPassword}
+                  onChange={handleConfirmationPasswordChange}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleCloseForm}>Cancel</Button>
+                <Button onClick={handleUpdatePassword}>Save</Button>
+              </DialogActions>
+            </Dialog>
+          </>
+       
               <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
                   <div>
