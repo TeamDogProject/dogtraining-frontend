@@ -35,19 +35,26 @@ const listAllCategories = async () => {
     return data;
 };
 
+
 // Update a category
-const saveCategory = async (id, category_name) => {
-    const body = {category_name: category_name}
-    const {data} = await api.put(`/categories/${id}`,body,{
+const saveCategory = async (id, name) => {
+    try {
+       const {data} = await api.put(`/categories/${id}`, {
+        category_name: name
+      }, {
         headers: {
-            'token': localStorage.getItem('token')
+          'token': localStorage.getItem('token'),
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
         }
-    })
-    console.log(data)
-    return data
+      });
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
 };
 
-
+  
 export {
     createCategory, 
     editCategory, 

@@ -3,32 +3,32 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
-import { createCategory } from '../../../../services/CategoryService';
 import { Box } from '@mui/material';
 import {Typography} from '@mui/material';
 import { useState } from 'react';
 import { saveCategory } from '../../../../services/CategoryService';
 
+
 function EditCategoryForm({show, close, categoryId, categoryName}) {
 
-    // const [open, setOpen] = React.useState(false);
-    const [category_name, setCategoryName ] = useState('');
-    
-    const changeCategory = async (id, name) => {
-      console.log('changeCategory')
-      try {
-        await saveCategory(id,name)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+  const [category_name, setCategoryName ] = useState(categoryName);
 
-    // const handleOpen = () => setOpen(true);
-    const handleClose = () => close();
+  const handleClose = () => close();
 
-    const handleChangeCategoryName = (e) => {
-        setCategoryName(e.target.value)
+  const handleChangeCategoryName = (e) => {
+    setCategoryName(e.target.value)
+  }
+
+  const handleSaveCategory = async (e) => {
+    console.log(categoryId)
+    e.preventDefault();
+    try {
+      await saveCategory(categoryId, category_name);
+      handleClose();
+    } catch (error) {
+      console.log(error);
     }
+  };
   
     const style = {
         position: 'absolute',
@@ -55,10 +55,12 @@ function EditCategoryForm({show, close, categoryId, categoryName}) {
           Edit Category Form
         </Typography>
         <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
-          <form>
+          <form onSubmit={handleSaveCategory}>
             <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-            <TextField type="text" variant='outlined' placeholder={categoryName} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
-            <button onClick={ () => console.log('Holae') } style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Save</button>
+            <TextField type="text" variant='outlined' placeholder={category_name} onChange={handleChangeCategoryName} sx={{ width:300, marginLeft:20 }} />
+            <Button variant="contained" color="primary" type="submit" style={{ marginTop:15, marginLeft:340 }}>
+             Save
+            </Button>
           </form>
         </Typography>
       </Box>
