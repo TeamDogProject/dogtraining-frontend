@@ -41,7 +41,6 @@ const deleteUser = async () => {
                 'token': localStorage.getItem('token')
             }
         })
-        console.log(data)
         return data
     } catch (error) {
         return(error)
@@ -57,7 +56,6 @@ const deleteUser = async () => {
                     'token': localStorage.getItem('token')
                 }
             })
-            console.log(data)
             return data
         } catch (error) {
             return(error)
