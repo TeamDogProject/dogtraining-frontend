@@ -14,7 +14,7 @@ function Footer() {
 
   const elements2 = [
     {
-      header: 'Siguenos',
+      header: 'Síguenos',
       links: [
         { name: 'Facebook', url: 'https://www.facebook.com' },
         { name: 'Instagram', url: 'https://www.instagram.com' },

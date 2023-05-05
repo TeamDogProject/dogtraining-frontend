@@ -305,7 +305,22 @@ function MediaCard() {
             <Typography variant="body2" color="text.secondary">
               ¿Qué es la salud comportamental?<br></br><br></br>
               Es un análisis completo y exhaustivo que abarca cuatro dimensiones; (emocional, cognitiva, social y física) medido por el profesional (cuando el curso se imparta online, la medición se hará a través un cuestionario), donde quedará reflejado con claridad qué dimensiones y bases son necesarias trabajar y mejorar.<br></br><br></br>
-              Este programa está diseñado para mejorar conductas o tener un perro mas feliz independientemente de la problemática que exista. Este paquete se realiza en 6 semanas (sesiones) de 1 hora aproximadamente. El precio del paquete son 195 euros en formato individualizado. Existe la posibilidad de hacer sesiones presenciales u online de hasta 4 personas. Se medirá la salud comportamental al inicio y al final para analizar las mejoras de cada perro.
+              Este programa está diseñado para mejorar conductas o tener un perro mas feliz independientemente de la problemática que exista. Este paquete se realiza en 6 semanas (sesiones) de 1 hora aproximadamente. <br></br><br></br>
+              Algunos de los contenidos son:<br></br><br></br>
+
+              - Introducción a la salud comportamental de perros: conceptos básicos, factores que influyen en el comportamiento canino y principales problemas de comportamiento.<br></br><br></br>
+
+              - Cómo leer el lenguaje corporal de los perros: comprender las señales que indican miedo, agresión, estrés, incomodidad y otros estados emocionales en los perros.<br></br><br></br>
+
+              - Terapia conductual: enfoques de terapia conductual para tratar problemas de comportamiento complejos en perros, como la fobia, la compulsión y el trastorno obsesivo-compulsivo.<br></br><br></br>
+
+              - Nutrición y bienestar: importancia de una alimentación equilibrada y de una vida activa y saludable para el bienestar físico y mental de los perros.<br></br><br></br>
+
+              - Interacción entre perros y humanos: pautas para establecer una relación positiva y saludable con los perros, como la comunicación efectiva, el respeto mutuo y la seguridad.<br></br><br></br>
+
+              - Bienestar emocional y social de los perros: estrategias para promover el bienestar emocional y social de los perros, como el enriquecimiento ambiental, la socialización y la actividad física.<br></br><br></br>
+
+              - Prevención y manejo de situaciones de emergencia: consejos prácticos para prevenir y manejar situaciones de emergencia en perros, como lesiones, enfermedades y accidentes.El precio del paquete son 195 euros en formato individualizado. Existe la posibilidad de hacer sesiones presenciales u online de hasta 4 personas. Se medirá la salud comportamental al inicio y al final para analizar las mejoras de cada perro.<br></br><br></br>
             </Typography>
           </CardContent>
           <CardActions>

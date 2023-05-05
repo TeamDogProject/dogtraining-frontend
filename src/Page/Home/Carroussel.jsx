@@ -70,7 +70,7 @@ function Item(props) {
     return (
         <>
             <Paper
-                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500 }}>
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: '2px' }}>
                 <h2>{props.item.name}</h2>
 
                 <p>{props.item.description}</p>
