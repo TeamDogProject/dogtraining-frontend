@@ -72,7 +72,7 @@ const ListUsers = () => {
     
     return (
     <>
-    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword}  />
+    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -110,7 +110,7 @@ const ListUsers = () => {
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                          <Button onClick={() => handleOpen(user.id,user.name, user.surname, user.username, user.email, user.identityCard, user.password,user.phone,user.confirmationPassword, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                            <Button onClick={() => handleOpen(user.id,user.name, user.surname, user.username, user.email, user.identityCard, user.password,user.phone,user.confirmationPassword, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
                             <button  onClick={() => deleteUser(user.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
