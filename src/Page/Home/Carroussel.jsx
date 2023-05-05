@@ -1,16 +1,16 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
+import { Paper, Button, Box } from '@mui/material'
 import { Link } from 'react-router-dom';
 
 
-function CarouselRatio()
-{
+function CarouselRatio() {
+
     var items = [
         {
             src: "https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg",
             name: "Sin Ansiedad",
-            description: "Enseña a tu perro a gestionar su ansiedad"
+            description: "Enseña a tu perro a gestionar su ansiedad",
         },
         {
             src: "https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg",
@@ -33,12 +33,12 @@ function CarouselRatio()
             description: "Adiestramiento básico del perro",
         },
         {
-            src:"https://cdn.stocksnap.io/img-thumbs/280h/3JEC5JEU7O.jpg",
+            src: "https://cdn.stocksnap.io/img-thumbs/280h/3JEC5JEU7O.jpg",
             name: "Obediencia Avanzada",
             description: "Adiestramiento avanzado del perro",
         },
         {
-            src:"https://image.shutterstock.com/image-photo/american-staffordshire-terrier-puppies-sitting-260nw-1048123303.jpg",
+            src: "https://image.shutterstock.com/image-photo/american-staffordshire-terrier-puppies-sitting-260nw-1048123303.jpg",
             name: "Club Cachorro",
             description: "Diviértete con tu cachorro mientras socializa",
         },
@@ -55,36 +55,45 @@ function CarouselRatio()
     ]
 
     return (
-        <Carousel>
+        <Carousel
+            sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto' }}
+        >
             {
-                items.map( (item, i) => <Item key={i} item={item} /> )
-                
+                items.map((item, i) => <Item key={i} item={item} />)
+
             }
         </Carousel>
     )
 }
 
-function Item(props)
-{
+function Item(props) {
     return (
-        <Paper>
-            <h2>{props.item.name}</h2>
-            
-            <p>{props.item.description}</p>
+        <>
+            <Paper
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500 }}>
+                <h2>{props.item.name}</h2>
 
-            <img src={props.item.src}></img>
-            <Link to={'/Courses'}>
-                <Button 
-                className="CheckButton"
-                >
-                Saber Más
-                </Button>
-            </Link>
-        </Paper>
+                <p>{props.item.description}</p>
+
+                <img src={props.item.src}></img>
+
+            </Paper>
+
+            <Box
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, alignItems: 'center' }}>
+                <Link to={'/Courses'}>
+                    <Button
+                        className="CheckButton"
+                    >
+                        Saber Más
+                    </Button>
+                </Link>
+            </Box>
+        </>
     )
 
-    }
- export {
-  CarouselRatio,
-  Item
- }
+}
+export {
+    CarouselRatio,
+    Item
+}
