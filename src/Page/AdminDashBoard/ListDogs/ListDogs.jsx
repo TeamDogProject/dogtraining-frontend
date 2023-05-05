@@ -5,12 +5,43 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateDogForm from './CreateDogForm/CreateDogForm';
+import Button from '@mui/material/Button';
 import EditDogForm from './EditDogForm/EditDogForm';
 
 const ListDogs = () => {
   
   const [dogs, setDogs] = useState([]);
+
+  const[showModal, setShowModal] = useState(false)
+
+  const [dogId, setDogId ] = useState('');
+  const [dogPhoto, setDogPhoto ] = useState('');
+  const [dogName, setDogName] = useState('');
+  const [dogBreed, setDogBreed] = useState('');
+  const [dogAge, setDogAge] = useState('');
+  const [dogSex, setDogSex] = useState('');
+  const [dogChip, setDogChip] = useState('');
+  const [dogProblem, setDogProblem] = useState('');
+  const [dogValoration, setDogValoration] = useState('');
+
   
+
+  const handleOpen = (dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration) => {
+    setShowModal(true)
+    setDogId(dogId)
+    setDogPhoto(dogPhoto)
+    setDogName(dogName)
+    setDogBreed(dogBreed)
+    setDogAge(dogAge)
+    setDogSex(dogSex)
+    setDogChip(dogChip)
+    setDogProblem(dogProblem)
+    setDogValoration(dogValoration)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
 
   const getDogs = async () => {
     const result = await listAllDogs();
@@ -38,6 +69,8 @@ const ListDogs = () => {
   function displayDogs() {
     
     return (
+      <>
+      <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -120,8 +153,8 @@ const ListDogs = () => {
                     </TableCell>
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <EditDogForm dog = {{ id: dog.id, photo: dog.photo, name: dog.name, breed: dog.breed, age:dog.age, sex: dog.sex, chip: dog.chip, problem:dog.problem, valoration: dog.valoration }}/>
-                            <button  onClick={() => deleteDog(dog.id)} style={{ marginLeft:110, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold', position:'relative' }}>Delete</button>
+                          <Button onClick={() => handleOpen(dog.id,dog.photo, dog.name, dog.breed, dog.age, dog.sex, dog.chip,dog.problem,dog.valoration)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                          <button  onClick={() => deleteDog(dog.id)} style={{ marginLeft:110, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold', position:'relative' }}>Delete</button>
                           </div>
                     </TableCell>
                   </TableRow>
@@ -131,6 +164,7 @@ const ListDogs = () => {
           </TableContainer>
         </Grid>
       </Grid>
+      </>
     );
   }
 

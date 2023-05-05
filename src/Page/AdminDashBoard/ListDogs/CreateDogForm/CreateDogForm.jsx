@@ -14,11 +14,7 @@ import {MenuItem} from '@mui/material';
 
 function CreateDogForm() {
 
-  const [dogs, setDogs] = useState([]);
   const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const [ photo, setPhoto ] = useState('');
   const [ name, setName ]= useState('');
@@ -28,6 +24,12 @@ function CreateDogForm() {
   const [ chip, setChip ] = useState('');
   const [ problem, setProblem ] = useState('');
   const [ valoration, setValoration ] = useState('');
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const [dogs, setDogs ] = useState([]);
+
 
   const handleChangePhoto = (e) => {
     setPhoto(e.target.value)

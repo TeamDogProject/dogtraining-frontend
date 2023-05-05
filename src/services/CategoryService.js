@@ -44,7 +44,6 @@ const saveCategory = async (id, name) => {
       }, {
         headers: {
           'token': localStorage.getItem('token'),
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
         }
       });
       console.log(data)

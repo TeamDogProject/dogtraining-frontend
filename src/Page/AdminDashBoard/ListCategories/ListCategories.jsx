@@ -121,7 +121,6 @@ const ListCategories =  () => {
                           <TableCell style={{ color: 'white', fontSize: 17 }}>
                             <div>
                             <Button onClick={() => handleOpen(category.id,category.category_name)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
-                              {/* <EditCategoryForm category={{name: category.category_name, id: category.id }}/> */}
                               <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                             </div>
                           </TableCell>

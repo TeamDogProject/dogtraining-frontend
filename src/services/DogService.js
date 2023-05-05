@@ -35,8 +35,34 @@ const listAllDogs = async () => {
   return data;
 };
 
+//Update a dog 
+
+const saveDog = async (id, photo, name, breed, age, sex, chip, problem, valoration) => {
+    try {
+       const {data} = await api.put(`/dogs/${id}`, {
+        photo: photo, 
+        name: name,
+        breed: breed,
+        age: age,
+        sex: sex,
+        chip: chip,
+        problem: problem, 
+        valoration: valoration
+      }, {
+        headers: {
+          'token': localStorage.getItem('token'),
+        }
+      });
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
+};
+
 export {
     createDog, 
     editDog,
-    listAllDogs
+    listAllDogs, 
+    saveDog
 }
