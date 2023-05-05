@@ -81,9 +81,7 @@ function SignUpUser() {
             maxWidth: '800px',
             margin: '0 auto',
             backgroundColor: 'white',
-           
             border: '2px #088395 solid',
-            
           }}
         >
     

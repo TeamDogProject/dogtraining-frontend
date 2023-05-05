@@ -20,6 +20,10 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+const onSignUp = () => {
+    navigate('/signUp')
+}
+
   const handleChangeEmail = (e) => {
     setEmail(e.target.value)
   }
@@ -31,8 +35,9 @@ function Login() {
   const onLogin = async () => {
     const form = { email, password };
     const result = await login(form);
+   
   
-    if (result) {
+    if (localStorage.getItem('token')) {
       console.log('Inicio de sesión exitoso');
       setIsLoggedIn(true)
       
@@ -43,7 +48,7 @@ function Login() {
         navigate('/adminDashBoard');
       } else {
         console.log('Perfil de usuario detectado');
-        navigate('/home');
+        navigate('/userDashBoard');
       }
     } else {
       console.log('Inicio de sesión fallido');
@@ -102,6 +107,7 @@ function Login() {
               color="secondary"
               variant="contained"
               sx={{ backgroundColor: '#088395' }}
+              onClick={onSignUp}
             >
               Register
             </Button>
