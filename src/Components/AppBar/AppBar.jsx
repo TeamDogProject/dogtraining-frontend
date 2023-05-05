@@ -74,7 +74,7 @@ function ResponsiveAppBar() {
 
     if (localStorage.getItem('token') && resprofile.role === 'admin') {
       console.log('Perfil de administrador detectado');
-      navigate('/AdminProfile');
+      location.reload();
     } else {
       console.log('Perfil de usuario detectado');
       navigate('/UserProfile');

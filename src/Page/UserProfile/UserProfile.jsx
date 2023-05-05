@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/config'
 import { getProfile } from '../../services/userService'
 import { deleteUser } from '../../services/userService'
+import { useContext } from 'react'
 import {
   Card,
   CardActions,
@@ -16,10 +17,17 @@ import './UserProfile.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Popover from '@mui/material/Popover'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
+import { useNavigate } from 'react-router-dom'
+import { LogingContext } from '../../context/loginContext'
+
 
 function UserProfilePage() {
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
+  const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
+
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchUserProfile()
@@ -31,28 +39,24 @@ function UserProfilePage() {
     console.log(result)
   }
 
-
-
-  useEffect(() => {
-    handleDeleteUser()
-  }, [])
-
-
-  const handleDeleteUser = async () => {
+ 
+  const handleDeleteUser2 = async () => {
     try {
-      const { data } = await api.delete('/users/profile', {
-        headers: {
-          'token': localStorage.getItem('token')
-        }
-      })
-      setUserToDelete(data)
-      console.log(data)
+      // Llamar al servicio deleteUser
+      await deleteUser();
+  
+      // Si la eliminación del usuario es exitosa, eliminar el token del localStorage
+      await localStorage.removeItem('token');
+  
+      // Actualizar el estado de la variable userToDelete si es necesario
+      setIsLoggedIn(false);
+  
+      console.log('Usuario eliminado exitosamente');
+      navigate('/home')
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
-
-
 
 
   return (
@@ -180,7 +184,7 @@ function UserProfilePage() {
                             marginLeft: 2,
                             '&:hover': { backgroundColor: 'red' },
                           }}
-                          onClick={handleDeleteUser}
+                          onClick={handleDeleteUser2}
                         >
                           <DeleteIcon sx={{ marginLeft: 2 }}></DeleteIcon> "yes,
                           I want to delete it"
