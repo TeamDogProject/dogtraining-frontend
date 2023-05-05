@@ -16,15 +16,15 @@ function CreateUserForm() {
 
   const [open, setOpen] = React.useState(false);
 
-  const[user_name, setName]= useState(userName)
-  const[user_surname, setUserSurname]= useState(userSurname)
-  const[user_username, setUserName]= useState(userSurname)
-  const[user_email, setUserEmail]= useState(userEmail)
-  const[user_identityCard, setUserIdentityCard]= useState(userIdentityCard)
-  const[user_password, setUserPassword]= useState(userPassword)
-  const[user_phone, setUserPhone]= useState(userPhone)
-  const[user_confirmationPassword, setUserConfirmationPassword]= useState(userConfirmationPassword)
-  const[user_role, setRole] = useState(userRole)
+  const[user_name, setName]= useState('')
+  const[user_surname, setUserSurname]= useState('')
+  const[user_username, setUserName]= useState('')
+  const[user_email, setUserEmail]= useState('')
+  const[user_identityCard, setUserIdentityCard]= useState('')
+  const[user_password, setUserPassword]= useState('')
+  const[user_phone, setUserPhone]= useState('')
+  const[user_confirmationPassword, setUserConfirmationPassword]= useState('')
+  const[user_role, setRole] = useState('')
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -131,13 +131,13 @@ const handleChangeConfirmationPassword = (e) => {
                                 <TextField type="text" variant='outlined' value={user_username} onChange={handleChangeUserName} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Email</FormLabel>
                                 <TextField type="text" variant='outlined' placeholder={user_email} onChange={handleChangeEmail} sx={{ width:300, marginLeft:35 }} />
-                                <FormLabel sx={{ width:300, marginLeft:35 }}>Identity Card</FormLabel>
+                                <FormLabel sx={{ width:300, marginLeft:35 }}>IdentityCard</FormLabel>
                                 <TextField type="text" variant='outlined' value={user_identityCard} onChange={handleChangeIdentityCard} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Password</FormLabel>
                                 <TextField type="text" variant='outlined' value={user_password} onChange={handleChangePassword} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Phone</FormLabel>
                                 <TextField type="text" variant='outlined' value={user_phone} onChange={handleChangePhone} sx={{ width:300, marginLeft:35 }} />
-                                <FormLabel sx={{ width:300, marginLeft:35 }}>Confirmation Password</FormLabel>
+                                <FormLabel sx={{ width:300, marginLeft:35 }}>ConfirmationPassword</FormLabel>
                                 <TextField type="text" variant='outlined' value={user_confirmationPassword} onChange={handleChangeConfirmationPassword} sx={{ width:300, marginLeft:35 }} />
                                 <InputLabel id="role" sx={{ width:300, marginLeft:35 }}>Role</InputLabel>
                                 <Select

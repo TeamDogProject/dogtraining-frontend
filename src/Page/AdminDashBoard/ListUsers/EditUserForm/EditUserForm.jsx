@@ -11,52 +11,52 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { saveUser } from '../../../../services/userService'
 
-function EditUserForm({show, close, userId, userName, userSurname ,userUsername,userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole}) {
-    console.log(userName, userUsername,userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
+function EditUserForm({show, close, userId, name, surname, username, email, identityCard, password, phone, confirmationPassword, role}) {
+    console.log(userId, name, surname, username, email, identityCard, password, phone, confirmationPassword, role)
     
-    const[user_name, setUserName]= useState(userName)
-    const[user_surname, setUserSurname]= useState(userSurname)
-    const[user_email, setUserEmail]= useState(userEmail)
-    const[user_identityCard, setUserIdentityCard]= useState(userIdentityCard)
-    const[user_password, setUserPassword]= useState(userPassword)
-    const[user_phone, setUserPhone]= useState(userPhone)
-    const[user_confirmationPassword, setUserConfirmationPassword]= useState(userConfirmationPassword)
-    const[user_role, setRole] = useState(userRole)
+    const[user_name, setName]= useState(name)
+    const[user_surname, setSurname]= useState(surname)
+    const[user_username, setUserName]=useState(username)
+    const[user_email, setUserEmail]= useState(email)
+    const[user_identityCard, setUserIdentityCard]= useState(identityCard)
+    const[user_password, setUserPassword]= useState(password)
+    const[user_phone, setUserPhone]= useState(phone)
+    const[user_confirmationPassword, setUserConfirmationPassword]= useState(confirmationPassword)
+    const[user_role, setUserRole]= useState(role)
+  
   
     const handleClose = () => close();
 
 
     const handleChangeName = (e) => {
-        setUserName(e.target.value)
+        setName(e.target.value)
     }
 
     const handleChangeSurname = (e) => {
-      setUserSurname(e.target.value)
+      setSurname(e.target.value)
     }
-
     const handleChangeUsername = (e) => {
-      setUserEmail(e.target.value)
+      setUserName(e.target.value)
     }
-    
 
     const handleChangeEmail = (e) => {
-      setUserIdentityCard(e.target.value)
+      setUserEmail(e.target.value)
     }
 
     const handleChangeIdentityCard = (e) => {
-      setUserPassword(e.target.value)
+      setUserIdentityCard(e.target.value)
     }
 
     const handleChangePassword = (e) => {
-      setUserPhone(e.target.value)
+      setUserPassword(e.target.value)
     }
 
     const handleChangePhone = (e) => {
-      setUserConfirmationPassword(e.target.value)
+      setUserPhone(e.target.value)
     }
 
     const handleChangeRole = (e) => {
-        setRole(e.target.value)
+      setUserRole(e.target.value)
     }
 
     const handleChangeConfirmationPassword = (e) => {
@@ -70,6 +70,7 @@ function EditUserForm({show, close, userId, userName, userSurname ,userUsername,
         await saveUser(
           userId,
           user_name,
+          user_username,
           user_surname,
           user_email,
           user_identityCard,
@@ -88,9 +89,11 @@ function EditUserForm({show, close, userId, userName, userSurname ,userUsername,
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 600,
+        width: 800,
+        height:600,
         bgcolor: 'background.paper',
         border: '2px solid #000',
+        overflow:'scroll',
         boxShadow: 24,
         p: 4,
       };
@@ -104,35 +107,35 @@ function EditUserForm({show, close, userId, userName, userSurname ,userUsername,
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
+            <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:45 }}>
               Edit User Form
             </Typography>
             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
               <form onSubmit={handleSaveUser}>
-                <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={userName} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
-                <FormLabel sx={{ width:300, marginLeft:20 }}>Surname</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={userSurname} onChange={handleChangeSurname} sx={{ width:300, marginLeft:20 }} />
-                <FormLabel sx={{ width:300, marginLeft:20 }}>Username</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={userUsername} onChange={handleChangeUsername} sx={{ width:300, marginLeft:20 }} />
-                <FormLabel sx={{ width:300, marginLeft:20 }}>Email</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={userEmail} onChange={handleChangeEmail} sx={{ width:300, marginLeft:20 }} />
-                <FormLabel sx={{ width:300, marginLeft:20 }}>Identity Card</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={userIdentityCard} onChange={handleChangeIdentityCard} sx={{ width:300, marginLeft:20 }} />
-                <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Password</InputLabel>
-                <TextField type="text" variant='outlined' placeholder={userPassword} onChange={handleChangePassword} sx={{ width:300, marginLeft:20 }} />
-                <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Phone</InputLabel>
-                <TextField type="text" variant='outlined' placeholder={userPhone} onChange={handleChangePhone} sx={{ width:300, marginLeft:20 }} />
-                <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Confirmation Password</InputLabel>
-                <TextField type="text" variant='outlined' placeholder={userConfirmationPassword} onChange={handleChangeConfirmationPassword} sx={{ width:300, marginLeft:20 }} />
-                <InputLabel id="role" sx={{ width:300, marginLeft:20 }}>Role</InputLabel>
+                <FormLabel sx={{ width:300, marginLeft:35 }}>Name</FormLabel>
+                <TextField type="text" variant='outlined' placeholder={name} onChange={handleChangeName} sx={{ width:300, marginLeft:35 }} />
+                <FormLabel sx={{ width:300, marginLeft:35 }}>Surname</FormLabel>
+                <TextField type="text" variant='outlined' placeholder={surname} onChange={handleChangeSurname} sx={{ width:300, marginLeft:35 }} />
+                <FormLabel sx={{ width:300, marginLeft:35 }}>Username</FormLabel>
+                <TextField type="text" variant='outlined' placeholder={username} onChange={handleChangeUsername} sx={{ width:300, marginLeft:35 }} />
+                <FormLabel sx={{ width:300, marginLeft:35 }}>Email</FormLabel>
+                <TextField type="text" variant='outlined' placeholder={email} onChange={handleChangeEmail} sx={{ width:300, marginLeft:35 }} />
+                <FormLabel sx={{ width:300, marginLeft:35 }}>IdentityCard</FormLabel>
+                <TextField type="text" variant='outlined' placeholder={identityCard} onChange={handleChangeIdentityCard} sx={{ width:300, marginLeft:35 }} />
+                <InputLabel id="place" sx={{ width:300, marginLeft:35 }}>Password</InputLabel>
+                <TextField type="text" variant='outlined' placeholder={password} onChange={handleChangePassword} sx={{ width:300, marginLeft:35 }} />
+                <InputLabel id="place" sx={{ width:300, marginLeft:35 }}>Phone</InputLabel>
+                <TextField type="text" variant='outlined' placeholder={phone} onChange={handleChangePhone} sx={{ width:300, marginLeft:35 }} />
+                <InputLabel id="place" sx={{ width:300, marginLeft:35 }}>Confirmation Password</InputLabel>
+                <TextField type="text" variant='outlined' placeholder={confirmationPassword} onChange={handleChangeConfirmationPassword} sx={{ width:300, marginLeft:35 }} />
+                <InputLabel id="role" sx={{ width:300, marginLeft:35 }}>Role</InputLabel>
                 <Select
                     labelId="role"
                     id="role"
-                    placeholder={userRole}
+                    placeholder={role}
                     label="Role"
                     onChange={handleChangeRole}
-                    sx={{ width:300, marginLeft:20 }}
+                    sx={{ width:300, marginLeft:35 }}
                 >
                     <MenuItem value={'user'}>User</MenuItem>
                     <MenuItem value={'admin'}>Admin</MenuItem>
