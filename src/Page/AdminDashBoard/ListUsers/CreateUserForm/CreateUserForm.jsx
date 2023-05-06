@@ -110,7 +110,7 @@ const handleChangeConfirmationPassword = (e) => {
 
   return (
     <div>
-        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:135, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New Dog</Button>
+        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:135, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New User</Button>
                         <Modal
                           open={open}
                           onClose={handleClose}

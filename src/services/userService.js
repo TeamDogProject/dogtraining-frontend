@@ -40,11 +40,12 @@ const listAllUsers = async () => {
 };
 
 //Update a user
-const saveUser = async (id, name, surname, email, identity_card, password, phone, confirmation_password, role) => {
+const saveUser = async (id, name ,surname,username, email, identity_card, password, phone, confirmation_password, role) => {
     try {
        const {data} = await api.put(`/users/${id}`, {
         name: name, 
         surname: surname,
+        username:username,
         email: email,
         identity_card: identity_card,
         password: password,

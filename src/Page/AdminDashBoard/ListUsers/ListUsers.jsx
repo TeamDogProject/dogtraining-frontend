@@ -14,34 +14,32 @@ const ListUsers = () => {
 
   const [showModal, setShowModal] = useState(false)
 
-  const [ userId, setUserId ] = useState('');
-  const [ userName, setUserName ] = useState('');
-  const [ userSurname, setSurname ] = useState('');
-  const [ userEmail, setEmail ] = useState('');
-  const [ userIdentityCard, setIdentityCard ] = useState('');
-  const [ userPassword, setPassword ] = useState('');
-  const [userPhone, setPhone] = useState('');
-  const [userConfirmationPassword, setConfirmationPassword] = useState('');
-  const [ userRole, setRole ] = useState('')
+    const [userId, setId]= useState('')
+    const [userName, setName]= useState('')
+    const [userSurname, setSurname ] = useState('')
+    const [userUserName, setUserName ] = useState('')
+    const[userEmail, setEmail ] = useState('')
+    const[userIdentityCard, setIdentityCard] = useState('')
+    const[userPassword, setPassword] = useState('')
+    const[userPhone, setPhone] = useState('')
+    const[userConfirmationPassword, setConfirmationPassword]= useState('')
+    const[userRole, setRole]= useState('')
+
+    const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
+      setShowModal(true)
+      setId(userId)
+      setName(userName)
+      setSurname(userSurname)
+      setEmail(userEmail)
+      setIdentityCard(userIdentityCard)
+      setPassword(userPassword)
+      setPhone(userPhone)
+      setConfirmationPassword(userConfirmationPassword)
+      setRole(userRole)
+      console.log(userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
+    }
   
-
-  const handleOpen = (userId, userName, userSurname, userUsername, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
-    
-    setShowModal(true)
-    setUserId(userId)
-    setName(userName)
-    setSurname(userSurname)
-    setUserName(userUsername)
-    setEmail(userEmail)
-    setIdentityCard(userIdentityCard)
-    setPassword(userPassword)
-    setPhone(userPhone)
-    setConfirmationPassword(userConfirmationPassword)
-    setRole(userRole)
-    
-    console.log(userId, userName, userSurname, userUsername, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
-  }
-
+  
   const handleClose = () => {
     setShowModal(false)
   }
@@ -73,7 +71,7 @@ const ListUsers = () => {
     
     return (
     <>
-    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole} />
+    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userSurname={userSurname} userUserName={userUserName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole}/>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -111,7 +109,7 @@ const ListUsers = () => {
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <Button onClick={() => handleOpen(user.id,user.name, user.surname,user.username, user.email, user.identityCard, user.password,user.phone,user.confirmationPassword, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                            <Button onClick={() => handleOpen(user.id,user.name, user.surname,user.username, user.email, user.identity_card, user.password,user.phone,user.confirmation_password, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
                             <button  onClick={() => deleteUser(user.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
