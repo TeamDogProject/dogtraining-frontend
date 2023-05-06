@@ -16,20 +16,19 @@ function CreateDogForm() {
 
   const [open, setOpen] = React.useState(false);
 
-  const [ photo, setPhoto ] = useState('');
-  const [ name, setName ]= useState('');
-  const [ breed, setBreed ]= useState('');
-  const [ age, setAge ] = useState('');
-  const [ sex, setSex ] = useState('');
-  const [ chip, setChip ] = useState('');
-  const [ problem, setProblem ] = useState('');
-  const [ valoration, setValoration ] = useState('');
+  const [ dog_photo, setPhoto ] = useState('');
+  const [ dog_name, setName ]= useState('');
+  const [ dog_breed, setBreed ]= useState('');
+  const [ dog_age, setAge ] = useState('');
+  const [ dog_sex, setSex ] = useState('');
+  const [ dog_chip, setChip ] = useState('');
+  const [ dog_problem, setProblem ] = useState('');
+  const [ dog_valoration, setValoration ] = useState('');
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [dogs, setDogs ] = useState([]);
-
 
   const handleChangePhoto = (e) => {
     setPhoto(e.target.value)
@@ -89,14 +88,14 @@ function CreateDogForm() {
     const handleSubtmit = async (e) => {
         e.preventDefault();
         const createNewDog = {
-        photo: photo,
-        name: name, 
-        breed: breed,
-        age: age,
-        sex: sex,
-        chip: chip,
-        problem: problem,  
-        valoration: valoration
+        photo: dog_photo,
+        name: dog_name, 
+        breed: dog_breed,
+        age: dog_age,
+        sex: dog_sex,
+        chip: dog_chip,
+        problem: dog_problem,  
+        valoration: dog_valoration
         };
         await createDog(createNewDog);
         setDogs(getDogs())
@@ -118,31 +117,31 @@ function CreateDogForm() {
                             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
                               <form onSubmit={handleSubtmit}>
                               <FormLabel sx={{ width:300, marginLeft:35 }}>Photo</FormLabel>
-                                <TextField type="text" variant='outlined' value={photo} onChange={handleChangePhoto} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_photo} onChange={handleChangePhoto} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Name</FormLabel>
-                                <TextField type="text" variant='outlined' value={name} onChange={handleChangeName} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_name} onChange={handleChangeName} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Breed</FormLabel>
-                                <TextField type="text" variant='outlined' value={breed} onChange={handleChangeBreed} sx={{ width:300, marginLeft:35 }} />
-                                <FormLabel sx={{ width:300, marginLeft:35 }}>Duration</FormLabel>
-                                <TextField type="text" variant='outlined' value={age} onChange={handleChangeAge} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_breed} onChange={handleChangeBreed} sx={{ width:300, marginLeft:35 }} />
+                                <FormLabel sx={{ width:300, marginLeft:35 }}>Age</FormLabel>
+                                <TextField type="text" variant='outlined' value={dog_age} onChange={handleChangeAge} sx={{ width:300, marginLeft:35 }} />
                                 <InputLabel id="sex" sx={{ width:300, marginLeft:35 }}>Sex</InputLabel>
                                 <Select
                                     labelId="sex"
                                     id="sex"
-                                    value={sex}
+                                    value={dog_sex}
                                     label="Place"
                                     onChange={handleChangeSex}
                                     sx={{ width:300, marginLeft:35  }}
                                 >
-                                    <MenuItem value={'online'}>Online</MenuItem>
-                                    <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
+                                    <MenuItem placeholder={'male'}>Male</MenuItem>
+                                    <MenuItem placeholder={'female'}>Female</MenuItem>
                                 </Select>
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Chip</FormLabel>
-                                <TextField type="text" variant='outlined' value={chip} onChange={handleChangeChip} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_chip} onChange={handleChangeChip} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Problem</FormLabel>
-                                <TextField type="text" variant='outlined' value={problem} onChange={handleChangeProblem} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_problem} onChange={handleChangeProblem} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Valoration</FormLabel>
-                                <TextField type="text" variant='outlined' value={valoration} onChange={handleChangeValoration} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' value={dog_valoration} onChange={handleChangeValoration} sx={{ width:300, marginLeft:35 }} />
                                 <button type="submit" style={{ marginTop:15, marginLeft:460, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
                               </form>
                             </Typography>

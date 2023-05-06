@@ -132,7 +132,7 @@ function EditUserForm({show, close, userId, userName, userSurname, userUserName,
                 <Select
                   labelId="role"
                   id="role"
-                  placeholder={userRole}
+                  value={userRole}
                   label="role"
                   onChange={handleChangeRole}
                   sx={{ width: 300, marginLeft: 35 }}

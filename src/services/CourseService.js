@@ -34,8 +34,32 @@ const listAllCourses = async () => {
   return data;
 };
 
+// Update a package
+
+const saveCourse = async (id, name, description, duration, price, place, categoryId) => {
+    try {
+       const {data} = await api.put(`/users/${id}`, {
+        name: name, 
+        description: description,
+        duration:duration,
+        price:price,
+        place:place,
+        categoryId:categoryId
+      }, {
+        headers: {
+          'token': localStorage.getItem('token'),
+        }
+      });
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
+};
+
 export {
     createCourse, 
     editCourse, 
-    listAllCourses
+    listAllCourses,
+    saveCourse
 }

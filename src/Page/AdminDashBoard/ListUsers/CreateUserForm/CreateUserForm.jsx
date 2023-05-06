@@ -143,7 +143,7 @@ const handleChangeConfirmationPassword = (e) => {
                                 <Select
                                     labelId="role"
                                     id="role"
-                                    placeholder={user_role}
+                                    value={user_role}
                                     label="Role"
                                     onChange={handleChangeRole}
                                     sx={{ width:300, marginLeft:35  }}

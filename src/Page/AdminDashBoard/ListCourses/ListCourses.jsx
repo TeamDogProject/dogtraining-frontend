@@ -6,27 +6,41 @@ import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateCourseForm from './CreateCourseForm/CreateCourseForm';
 import EditCourseForm from './EditCourseForm/EditCourseForm';
+import Button from '@mui/material/Button';
 
 
 const ListCourses = () => { 
   
   const [courses, setCourses] = useState([]);
 
+  const[showModal, setShowModal] = useState(false)
+
+  const [courseId, setCourseId ] = useState('');
+  const [courseName,setCourseName  ] = useState('');
+  const [courseDescription, setCourseDescription ] = useState('');
+  const [courseDuration, setCourseDuration ] = useState('');
+  const [coursePrice, setCoursePrice ] = useState('');
+  const [coursePlace, setCoursePlace ] = useState('');
+
+  const handleOpen = (courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace) => {
+    setShowModal(true)
+    setCourseId(courseId)
+    setCourseName(courseName)
+    setCourseDescription(courseDescription)
+    setCourseDuration(courseDuration)
+    setCoursePrice(coursePrice)
+    setCoursePlace(coursePlace)
+
+    console.log(courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
   const getCourses = async () => {
     const result = await listAllCourses();
     setCourses(result);
-  };
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
   };
 
   useEffect(() => {
@@ -47,9 +61,10 @@ const ListCourses = () => {
     }
   };
 
-
   function displayCourses() {
     return (
+      <>
+      <EditCourseForm close={handleClose} show={showModal} courseId={courseId} courseName={courseName} courseDuration={courseDuration} coursePrice={coursePrice} coursePlace={coursePlace} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -143,7 +158,7 @@ const ListCourses = () => {
                     
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <EditCourseForm course={{name: course.name, id: course.id, description: course.description, duration: course.duration, price:course.price, place:course.place }}/>
+                          <Button onClick={() => handleOpen(course.id, course.name,course.description,course.duration,course.price,course.place)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
                             <button  onClick={() => deleteCourse(course.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
@@ -154,6 +169,7 @@ const ListCourses = () => {
           </TableContainer>
         </Grid>
       </Grid>
+    </>
     );
   }
 

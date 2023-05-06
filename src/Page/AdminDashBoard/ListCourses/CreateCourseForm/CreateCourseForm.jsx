@@ -20,30 +20,30 @@ function CreateCourseForm() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [name, setName ] = useState('');
-  const [description, setDescripion ] = useState('');
-  const [duration, setDuration ] = useState('');
-  const [price, setPrice ] = useState('');
-  const [place, setPlace ] = useState('');
+  const [course_name, setCourseName ] = useState('');
+  const [course_description, setCourseDescription ] = useState('');
+  const [course_duration, setCourseDuration ] = useState('');
+  const [course_price, setCoursePrice ] = useState('');
+  const [course_place, setCoursePlace ] = useState('');
 
-  const handleChangeName = () => {
-    setName(e.target.value)
+  const handleChangeCourseName = () => {
+    setCourseName(e.target.value)
   }
 
-  const handleChangeDescription = () => {
-    setDescripion(e.target.value)
+  const handleChangeCourseDescription = () => {
+    setCourseDescription(e.target.value)
   }
 
-  const handleChangeDuration = () => {
-    setDuration(e.target.value)
+  const handleChangeCourseDuration = () => {
+    setCourseDuration(e.target.value)
   }
 
-  const handleChangePrice = () => {
-    setPrice(e.target.value)
+  const handleChangeCoursePrice = () => {
+    setCoursePrice(e.target.value)
   }
 
   const handleChangePlace = () => {
-    setPlace(e.target.value)
+    setCoursePlace(e.target.value)
   }
 
   const getCourses = async () => {
@@ -70,11 +70,11 @@ function CreateCourseForm() {
 const handleSubtmit = async (e) => {
   e.preventDefault();
   const createNewCourse = {
-    name: name, 
-    description: description,
-    duration: duration, 
-    price: price, 
-    place: place
+    name: course_name, 
+    description: course_description,
+    duration: course_duration, 
+    price: course_price, 
+    place: course_place
   };
   await createCourse(createNewCourse);
   setCourses(getCourses())
@@ -96,18 +96,18 @@ const handleSubtmit = async (e) => {
                             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
                               <form onSubmit={handleSubtmit}>
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                                <TextField type="text" variant='outlined' value={name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>
-                                <TextField type="text" variant='outlined' value={description} onChange={handleChangeDescription} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_description} onChange={handleChangeDescription} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Duration</FormLabel>
-                                <TextField type="text" variant='outlined' value={duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
-                                <TextField type="text" variant='outlined' value={price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
                                 <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                                 <Select
                                     labelId="place"
-                                    id="demo-simple-select"
-                                    value={place}
+                                    id="place"
+                                    value={course_place}
                                     label="Place"
                                     onChange={handleChangePlace}
                                     sx={{  width:300, marginLeft:20  }}

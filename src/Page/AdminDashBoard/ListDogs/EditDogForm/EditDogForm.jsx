@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { saveDog } from '../../../../services/DogService'
 
 function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration }) {
-  console.log(dogPhoto, dogId, dogName)
+  console.log(dogPhoto, dogId, dogName, dogSex)
   const [dog_photo, setPhoto] = useState(dogPhoto)
   const [dog_name, setName] = useState(dogName)
   const [dog_breed, setBreed] = useState(dogBreed)
@@ -23,6 +23,10 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
   const [dog_valoration, setValoration] = useState(dogValoration)
 
   const handleClose = () => close();
+
+  const handleChangeSex = (event) => {
+    setSex(event.target.value);
+  };
 
   const handleChangePhoto = (e) => {
     setPhoto(e.target.value)
@@ -38,10 +42,6 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
 
   const handleChangeAge = (e) => {
     setAge(e.target.value)
-  }
-
-  const handleChangeSex = (e) => {
-    setSex(e.target.value)
   }
 
   const handleChangeChip = (e) => {
@@ -72,7 +72,7 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
         dog_valoration
       )
     } catch (error) {
-
+      console.log(error)
     }
   }
 
@@ -117,7 +117,7 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
               <Select
                 labelId="sex"
                 id="sex"
-                placeholder={dogSex}
+                placeholder={selectedSex}
                 label="Sex"
                 onChange={handleChangeSex}
                 sx={{ width: 300, marginLeft: 35 }}

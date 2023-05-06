@@ -3,46 +3,41 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
-import {createCourse} from '../../../../services/CourseService'
 import { Box } from '@mui/material';
-import {Typography} from '@mui/material';
+import { Typography } from '@mui/material';
 import { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { saveCourse } from '../../../../services/CourseService'
 
-function EditCourseForm({course}) {
-
-    const [open, setOpen] = React.useState(false);
-    const [courses, setCourses] = useState([]);
+function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace}) {
+    console.log(courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace)
     
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [course_name, setCourseName] = useState('');
+    const [course_description, setCourseDescription] = useState('');
+    const [course_duration, setCourseDuration] = useState('');
+    const [course_price, setCoursePrice] = useState('');
+    const [course_place, setCoursePlace] = useState('');
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState('');
-    const [price, setPrice] = useState('');
-    const [place, setPlace] = useState('');
-
-    const handleChangeName = (e) => {
-        setName(e.target.value)
+    const handleChangeCourseName = (e) => {
+      setCourseName(e.target.value)
     }
 
-    const handlChangeDescription = (e) => {
-        setDescription(e.target.value)
+    const handlChangeCourseDescription = (e) => {
+      setCourseDescription(e.target.value)
     }
 
-    const handleChangeDuration = (e) => {
-        setDuration(e.target.value)
+    const handleChangeCourseDuration = (e) => {
+      setCourseDuration(e.target.value)
     }
 
-    const handleChangePrice = (e) => {
-        setPrice(e.target.value)
+    const handleChangeCoursePrice = (e) => {
+      setCoursePrice(e.target.value)
     }
 
-    const handleChangePlace = (e) => {
-        setPlace(e.target.value)
+    const handleChangeCoursePlace = (e) => {
+      setCoursePlace(e.target.value)
     }
 
     const style = {
@@ -57,18 +52,22 @@ function EditCourseForm({course}) {
         p: 4,
       };
 
-      const handleSubmit = async (e) => {
+      const handleSaveDog = async (e) => {
+        console.log(dogId)
         e.preventDefault();
-        const createNewCourse = {
-          name: name, 
-          description: description,
-          duration: duration,
-          price: price,
-          place: place
-        };
-        await createCourse(createNewCourse);
-        setCourses(getCourses())
+        try {
+          await SA(
+            courseId,
+            course_name,
+            course_description,
+            course_duration,
+            course_price,
+            course_place
+          )
+        } catch (error) {
+          console.log(error)
         }
+      }
 
     return(
     <div>
@@ -86,20 +85,20 @@ function EditCourseForm({course}) {
             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
               <form onSubmit={handleSubmit}>
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                <TextField type="text" variant='outlined' value={course.name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={course_name} onChange={handleChangeCourseName} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>
-                <TextField type="text" variant='outlined' value={course.description} onChange={handlChangeDescription} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={course_description} onChange={handlChangeCourseDescription} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Duration</FormLabel>
-                <TextField type="text" variant='outlined' value={course.duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={course_duration} onChange={handleChangeCourseDuration} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
-                <TextField type="text" variant='outlined' value={course.price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={course_price} onChange={handleChangeCoursePrice} sx={{ width:300, marginLeft:20 }} />
                 <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                 <Select
                     labelId="place"
                     id="place"
-                    value={course.place}
+                    placeholder={course_place}
                     label="Place`"
-                    onChange={handleChangePlace}
+                    onChange={handleChangeCoursePlace}
                     sx={{ width:300, marginLeft:20 }}
                 >
                     <MenuItem value={'online'}>Online</MenuItem>

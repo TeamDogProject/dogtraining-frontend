@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateCategoryForm  from './CreateCategoryForm/CreateCategoryForm';
 import EditCategoryForm  from './EditCategoryForm/EditCategoryForm';
-import { editCategory, listAllCategories } from '../../../services/CategoryService';
+import { listAllCategories } from '../../../services/CategoryService';
 import { Button } from '@mui/material';
 
 const style = {
