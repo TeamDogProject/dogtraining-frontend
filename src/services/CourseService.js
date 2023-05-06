@@ -38,7 +38,7 @@ const listAllCourses = async () => {
 
 const saveCourse = async (id, name, description, duration, price, place, categoryId) => {
     try {
-       const {data} = await api.put(`/users/${id}`, {
+       const {data} = await api.put(`/packages/${id}`, {
         name: name, 
         description: description,
         duration:duration,

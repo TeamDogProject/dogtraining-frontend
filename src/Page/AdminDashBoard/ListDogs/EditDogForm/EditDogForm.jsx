@@ -117,7 +117,7 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
               <Select
                 labelId="sex"
                 id="sex"
-                placeholder={selectedSex}
+                placeholder={dogSex}
                 label="Sex"
                 onChange={handleChangeSex}
                 sx={{ width: 300, marginLeft: 35 }}

@@ -57,7 +57,7 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
           <Typography id="modal-modal-description" sx={{ width: 300, marginTop: 4 }}>
             <form onSubmit={handleSaveCategory}>
               <FormLabel sx={{ width: 300, marginLeft: 20 }}>Name</FormLabel>
-              <TextField type="text" variant='outlined' placeholder={category_name} onChange={handleChangeCategoryName} sx={{ width: 300, marginLeft: 20 }} />
+              <TextField type="text" variant='outlined' placeholder={categoryName} onChange={handleChangeCategoryName} sx={{ width: 300, marginLeft: 20 }} />
               <Button variant="contained"  type="submit" style={{ marginTop: 15, marginLeft: 340, backgroundColor:'purple',color:'white' }}>
                 Save
               </Button>

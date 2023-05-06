@@ -26,23 +26,23 @@ function CreateCourseForm() {
   const [course_price, setCoursePrice ] = useState('');
   const [course_place, setCoursePlace ] = useState('');
 
-  const handleChangeCourseName = () => {
+  const handleChangeCourseName = (e) => {
     setCourseName(e.target.value)
   }
 
-  const handleChangeCourseDescription = () => {
+  const handleChangeCourseDescription = (e) => {
     setCourseDescription(e.target.value)
   }
 
-  const handleChangeCourseDuration = () => {
+  const handleChangeCourseDuration = (e) => {
     setCourseDuration(e.target.value)
   }
 
-  const handleChangeCoursePrice = () => {
+  const handleChangeCoursePrice = (e) => {
     setCoursePrice(e.target.value)
   }
 
-  const handleChangePlace = () => {
+  const handleChangeCoursePlace = (e) => {
     setCoursePlace(e.target.value)
   }
 
@@ -96,20 +96,20 @@ const handleSubtmit = async (e) => {
                             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
                               <form onSubmit={handleSubtmit}>
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                                <TextField type="text" variant='outlined' value={course_name} onChange={handleChangeName} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_name} onChange={handleChangeCourseName} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>
-                                <TextField type="text" variant='outlined' value={course_description} onChange={handleChangeDescription} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_description} onChange={handleChangeCourseDescription} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Duration</FormLabel>
-                                <TextField type="text" variant='outlined' value={course_duration} onChange={handleChangeDuration} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_duration} onChange={handleChangeCourseDuration} sx={{ width:300, marginLeft:20 }} />
                                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
-                                <TextField type="text" variant='outlined' value={course_price} onChange={handleChangePrice} sx={{ width:300, marginLeft:20 }} />
+                                <TextField type="text" variant='outlined' value={course_price} onChange={handleChangeCoursePrice} sx={{ width:300, marginLeft:20 }} />
                                 <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                                 <Select
                                     labelId="place"
                                     id="place"
                                     value={course_place}
                                     label="Place"
-                                    onChange={handleChangePlace}
+                                    onChange={handleChangeCoursePlace}
                                     sx={{  width:300, marginLeft:20  }}
                                 >
                                     <MenuItem value={'online'}>Online</MenuItem>

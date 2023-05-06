@@ -9,10 +9,11 @@ import { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { saveCourse } from '../../../../services/CourseService'
+import {saveCourse} from '../../../../services/CourseService'
 
 function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace}) {
-    console.log(courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace)
+    
+  console.log(courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace)
     
     const [course_name, setCourseName] = useState('');
     const [course_description, setCourseDescription] = useState('');
@@ -23,6 +24,8 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
     const handleChangeCourseName = (e) => {
       setCourseName(e.target.value)
     }
+
+    const handleClose = () => close();
 
     const handlChangeCourseDescription = (e) => {
       setCourseDescription(e.target.value)
@@ -52,11 +55,11 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
         p: 4,
       };
 
-      const handleSaveDog = async (e) => {
-        console.log(dogId)
+      const handleSaveCourse = async (e) => {
+        console.log(courseId)
         e.preventDefault();
         try {
-          await SA(
+          await saveCourse(
             courseId,
             course_name,
             course_description,
@@ -71,9 +74,8 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
 
     return(
     <div>
-        <Button onClick={handleOpen} style={{ marginRight: 5,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
         <Modal
-          open={open}
+          open={show}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -83,26 +85,26 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
               Edit Course Form
             </Typography>
             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSaveCourse}>
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Name</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={course_name} onChange={handleChangeCourseName} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={courseName} onChange={handleChangeCourseName} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Description</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={course_description} onChange={handlChangeCourseDescription} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={courseDescription} onChange={handlChangeCourseDescription} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Duration</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={course_duration} onChange={handleChangeCourseDuration} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={courseDuration} onChange={handleChangeCourseDuration} sx={{ width:300, marginLeft:20 }} />
                 <FormLabel sx={{ width:300, marginLeft:20 }}>Price</FormLabel>
-                <TextField type="text" variant='outlined' placeholder={course_price} onChange={handleChangeCoursePrice} sx={{ width:300, marginLeft:20 }} />
+                <TextField type="text" variant='outlined' placeholder={coursePrice} onChange={handleChangeCoursePrice} sx={{ width:300, marginLeft:20 }} />
                 <InputLabel id="place" sx={{ width:300, marginLeft:20 }}>Place</InputLabel>
                 <Select
                     labelId="place"
                     id="place"
                     placeholder={course_place}
-                    label="Place`"
+                    label="place"
                     onChange={handleChangeCoursePlace}
                     sx={{ width:300, marginLeft:20 }}
                 >
-                    <MenuItem value={'online'}>Online</MenuItem>
-                    <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
+                    <MenuItem value={"online"}>Online</MenuItem>
+                    <MenuItem value={"face-to-face"}>Face-to-Face</MenuItem>
                 </Select>
                 <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Save</button>
               </form>
