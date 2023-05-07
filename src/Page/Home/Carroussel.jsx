@@ -8,7 +8,7 @@ function CarouselRatio() {
 
     var items = [
         {
-            src: "https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg",
+            src: "https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg",
             name: "Sin Ansiedad",
             description: "Enseña a tu perro a gestionar su ansiedad",
         },
@@ -38,7 +38,7 @@ function CarouselRatio() {
             description: "Adiestramiento avanzado del perro",
         },
         {
-            src: "https://image.shutterstock.com/image-photo/american-staffordshire-terrier-puppies-sitting-260nw-1048123303.jpg",
+            src: "https://images.prismic.io/wisdom/2fabb777-59dc-4963-a38f-8bd8132c7e10_shutterstock_1048123303_cropped.jpg?auto=compress%2Cformat&rect=241%2C0%2C1440%2C1080&w=1020&h=615",
             name: "Club Cachorro",
             description: "Diviértete con tu cachorro mientras socializa",
         },
@@ -48,7 +48,7 @@ function CarouselRatio() {
             description: "Disfruta y compite con otros perros",
         },
         {
-            src: "https://image.shutterstock.com/image-photo/puppy-260nw-549575962.jpg",
+            src: "https://www.prensalibre.com/wp-content/uploads/2020/03/Fotos-Arca-de-No%C3%A9-MARZO2020_0002_Layer-21.jpg?resize=1024,671",
             name: "Salud Comportamental",
             description: "Enseña comportamientos saludables a tu perro",
         },

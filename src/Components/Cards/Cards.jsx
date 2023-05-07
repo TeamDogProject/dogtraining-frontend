@@ -6,8 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-//import Grid from '@mui/material';
-
 
 function MediaCard() {
   return (
@@ -16,14 +14,14 @@ function MediaCard() {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
-        height: 500, overflow: 'scroll'
+        height: "100%", overflow: 'scroll'
       }} >
 
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
-            image="https://image.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-260nw-1799966587.jpg"
+            sx={{ height: 250 }}
+            image="https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg"
             title="Sin Ansiedad"
 
           />
@@ -59,7 +57,7 @@ function MediaCard() {
         <Card sx={{ maxWidth: 500 }}>
 
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg"
             title="Reactividad"
           />
@@ -84,7 +82,7 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/VTLECU25XL.jpg"
             title="Gestión del miedo"
           />
@@ -111,7 +109,7 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/UKITL3S9TC.jpg"
             title="Frustración"
           />
@@ -149,7 +147,7 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/UT7IO1NLVQ.jpg"
             title="Obediencia Básica"
           />
@@ -185,7 +183,7 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/3JEC5JEU7O.jpg"
             title="Obediencia Avanzada"
           />
@@ -221,8 +219,8 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
-            image="https://image.shutterstock.com/image-photo/american-staffordshire-terrier-puppies-sitting-260nw-1048123303.jpg"
+            sx={{ height: 250 }}
+            image="https://images.prismic.io/wisdom/2fabb777-59dc-4963-a38f-8bd8132c7e10_shutterstock_1048123303_cropped.jpg?auto=compress%2Cformat&rect=241%2C0%2C1440%2C1080&w=1020&h=615"
             title="Club Cachorro"
           />
           <CardContent sx={{ maxHeight: 500, overflow: 'scroll', textAlign: 'justify' }}>
@@ -258,7 +256,7 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 250 }}
             image="https://cdn.stocksnap.io/img-thumbs/280h/animals-dogs_HBPNY9BJPY.jpg"
             title="Olimpiadas Caninas"
           />
@@ -294,8 +292,8 @@ function MediaCard() {
 
         <Card sx={{ maxWidth: 500 }}>
           <CardMedia
-            sx={{ height: 140 }}
-            image="https://image.shutterstock.com/image-photo/puppy-260nw-549575962.jpg"
+            sx={{ height: 250 }}
+            image="https://www.prensalibre.com/wp-content/uploads/2020/03/Fotos-Arca-de-No%C3%A9-MARZO2020_0002_Layer-21.jpg?resize=1024,671"
             title="Salud Comportamental"
           />
           <CardContent sx={{ maxHeight: 500, overflow: 'scroll', textAlign: 'justify' }}>

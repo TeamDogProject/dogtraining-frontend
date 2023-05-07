@@ -7,7 +7,7 @@ function Courses() {
     <div style={{ padding: '60' }}>
     <>
         <Typography variant="h3" gutterBottom textAlign='center'>
-          Nuestros cursos
+          Explora nuestros cursos
         </Typography>
   
         <MediaCard />
