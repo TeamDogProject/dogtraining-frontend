@@ -70,10 +70,10 @@ function Item(props) {
     return (
         <>
             <Paper
-                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: '2px' }}>
-                <h2>{props.item.name}</h2>
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 550, height: 550, border: '5px' }}>
+                <h1>{props.item.name}</h1>
 
-                <p>{props.item.description}</p>
+                <p><h2>{props.item.description}</h2></p>
 
                 <img src={props.item.src}></img>
 
