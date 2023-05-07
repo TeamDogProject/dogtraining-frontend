@@ -1,0 +1,20 @@
+
+
+.containerSignUp {
+
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+    height: 100vh;
+    min-height: 100%;
+    margin: 0 auto;
+    width:auto;
+}
+
+.uploadPhoto {
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  /*  height:400px;
+    min-height: 100%;*/
+}

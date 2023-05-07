@@ -134,6 +134,7 @@ function UserProfilePage() {
                   textAlignLast: 'center',
                   margin: '0 auto',
                   marginBottom: 4,
+                  overflowY: 'scroll' ,
                 }}
               >
                 <CardHeader
@@ -176,7 +177,7 @@ function UserProfilePage() {
         </CardContent>
 
         <CardActions>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <>
                 <Button

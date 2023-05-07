@@ -13,6 +13,7 @@ import {
   Grid,
 } from '@mui/material'
 import React, { useState } from 'react'
+import './SignUpDog.css'
 
 function SignUpDog() {
   const [Dogname, seDogtName] = useState('')
@@ -49,75 +50,90 @@ function SignUpDog() {
   return (
     <>
       <div className="containerSignUp">
-        <Grid xs={8} md={12}>
-          <Card
+        
+          <Card xs={12} sm={6} md={12}
             sx={{
               display: 'flex',
-              flexDirection: 'row',
+              flexDirection: 'column',
               alignContent: 'center',
-              width: '800px',
+              overflowY: 'scroll',
               backgroundColor: 'white',
               padding: 1,
               border: '2px #088395 solid',
-              display: 'flex',
               justifyContent: 'center',
+              
             }}
           >
-            <CardContent sx={{ marginLeft: 5 }}>
+         
+           
+            <CardContent sx={{ display: 'flex', flexDirection:'column', overflowY: 'scroll', }} xs={12} sm={6} md={9}>
               <CardHeader title="Dog Registration Form"></CardHeader>
+              <Grid item xs={12} sm={6} md={9} >
               <TextField
-                sx={{ width: 500 }}
+                sx={{ display: 'flex'}}
                 label="Dog Name"
                 variant="outlined"
                 margin="dense"
                 onChange={handleChangeDogName}
               />
+              </Grid>
 
+              <Grid item xs={12} sm={6} md={9}>
               <TextField
-                sx={{ marginLeft: 0, width: 500 }}
+                sx={{ marginLeft: 0, display: 'flex' }}
                 label="Breed of dog"
                 variant="outlined"
                 margin="dense"
                 onChange={handleChangeDogBreed}
               />
+              </Grid>
 
+              <Grid item xs={12} sm={6} md={9} >
               <TextField
-                sx={{ marginLeft: 0, width: 242 }}
+                sx={{ marginLeft: 0, display: 'flex', flexDirection:'column'  }}
                 label="Age"
                 variant="outlined"
                 margin="dense"
                 onChange={handleChangeDogAge}
               />
+              </Grid>
 
+              <Grid item xs={12} sm={6} md={9}>
               <TextField
-                sx={{ marginLeft: 2, width: 246 }}
+                sx={{display: 'flex', flexDirection:'column' }}
                 label="Chip Number"
                 variant="outlined"
                 margin="dense"
                 onChange={handleChangeDogChip}
               />
+              </Grid>
 
-              <TextField
-                sx={{ width: 500 }}
+              <Grid item xs={12} sm={6} md={9}>
+              <TextField md={9}
+                sx={{ display: 'flex', flexDirection:'column'}}
                 label="Describe your dog's behavior problems"
                 variant="outlined"
                 margin="dense"
                 onChange={handleChangeDogProblem}
               />
+              </Grid>
 
-              <Card
+             
+              <Card  item xs={12} sm={6} md={9}
                 color="primary"
                 variant="outlined"
                 sx={{
                   marginRight: 1,
                   padding: '0 5',
                   fontFamily: 'roboto',
-                  display: 'flex',
+                  display: 'flex', 
+                  flexDirection:'column', 
                   justifyContent: 'flex-start',
-                  width: 500,
+                
                 }}
               >
-                <Typography
+              <Grid item xs={12} sm={6} md={9}>
+                <Typography item xs={12} sm={6} md={9}
                   color="text.secondary"
                   sx={{
                     paddingBottomg: 1,
@@ -125,26 +141,31 @@ function SignUpDog() {
                     right: 20,
                     paddingTop: 1,
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: 'colum',
                     justifyContent: 'start',
                   }}
                 >
-                  <label htmlFor="upload-photo">
+               
+                  <label htmlFor="upload-photo" xs={12} sm={6} md={9} className='uploadPhoto' >
                     Select a photo of your dog
                     <input id="upload-photo" type="file" accept="image/*" />
                   </label>
                 </Typography>
+                </Grid>
               </Card>
             </CardContent>
 
             <CardActions
               sx={{ display: ' flex', justifyContent: 'flex-center' }}
             >
-              <Button
+            <Grid xs={12} sm={6}>
+              <Button 
                 size="small"
                 color="secondary"
                 variant="contained"
                 sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
                   backgroundColor: '#088395',
                   borderTop: 2,
                   marginLeft: 2,
@@ -153,9 +174,10 @@ function SignUpDog() {
               >
                 Register Dog
               </Button>
+              </Grid>
             </CardActions>
           </Card>
-        </Grid>
+       
       </div>
     </>
   )
