@@ -8,15 +8,29 @@ import {
   CardHeader,
   Typography,
   Card,
+  Divider,
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
 import { deleteDog } from '../../services/userService'
+import { getMyPackages } from '../../services/userService'
 
 function UserDashboard() {
   const [newDog, setNewdog] = useState(false)
   const [myDogs, setMyDogs] = useState(null)
   const [onDog, setOnDog] = useState([])
   const [onDeleteDog,setOnDeleteDog ] = useState(false)
+  const [onGetPackages, setOnGetPackages] = useState(false)
+
+
+  const handleGetPackages = async () => {
+
+  setNewdog(false)
+  setMyDogs(false)
+  
+  const {data} = await getMyPackages()
+  setOnGetPackages(data)
+  console.log(data)
+  }
 
 const handleDeleteDog = (id) => {
   try {
@@ -97,6 +111,17 @@ const handleDeleteDog = (id) => {
             >
               Get my dogs{' '}
             </Button>
+
+            <Button  sx={{
+              width: 150,
+              display: 'flex',
+              backgroundColor: '#088395',
+              color: 'white',
+              border: 1,
+              borderColor: '#0A4D68',
+              margin: '0 auto',
+            }}
+            onClick={handleGetPackages} > GetPackages</Button>
           </Box>
         </Grid>
 
@@ -109,6 +134,61 @@ const handleDeleteDog = (id) => {
                 sm={6} sx={{ maxWidth: '500px', margin: '0 auto' }}>
                   {newDog && <SignUpDog />}
                 </Box>
+
+              {onGetPackages && ( 
+                <Paper
+                item
+                xs={12}
+                sm={6}
+                sx={{
+                  backgroundColor: '#088395',
+                  maxWidth: '500px',
+                  color: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  textAlignLast: 'center',
+                  margin: '0 auto',
+                  marginBottom: 4,
+                }}
+              >
+              <CardHeader
+                    title="My Packages"
+                    sx={{ width: '100%', maxWidth: '500px' }}
+                  />
+              {onGetPackages.map((pack) => (
+                <Card>
+                      <Typography
+                        variant="body1"
+                        key={pack.id}
+                        sx={{ display: 'flex', marginLeft: 2 }}
+                      >
+                        <b> Package Name: </b>
+                        {pack.name}
+                      </Typography>
+
+                      <Typography sx={{ display: 'flex', marginLeft: 2 }}>
+                      <b>Package Descriotion:</b> {pack.description} 
+                    </Typography>
+
+                    <Typography sx={{ display: 'flex', marginLeft: 2 }}>
+                    <b>Duration:</b> {pack.duration}min. 
+                  </Typography>
+                  <Typography sx={{ display: 'flex', marginLeft: 2 }}>
+                    <b>Price:</b> {pack.price}€
+                  </Typography>
+                  <Typography sx={{ display: 'flex', marginLeft: 2 }}>
+                    <b>Place:</b> {pack.place} 
+                  </Typography>
+                <Divider  sx={{ border: 3, borderColor: '#0A4D68', margin: '0 auto', }}></Divider>
+                </Card>
+              ))}
+
+
+              </Paper>
+
+              )}
+
 
               {myDogs && (
                 <Paper
@@ -169,9 +249,6 @@ const handleDeleteDog = (id) => {
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Creation Date:</b> {dog.createdAt}{' '}            
                       </Typography>
-
-
-                     
 
                       <Button sx={{color: 'white', border: 1,
                       borderColor: 'red', backgroundColor: 'red', marginTop: 2, marginBottom: 2}} 

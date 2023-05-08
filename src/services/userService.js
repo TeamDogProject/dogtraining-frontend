@@ -76,6 +76,18 @@ const deleteUser = async () => {
         }
     }
 
+    const getMyPackages = async() =>{
+        try {
+            const data = await api.get('/packages', {
+                headers:{
+                    'token': localStorage.getItem('token')
+                }
+            })
+            return data
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const changePassword = async (password) => {
         try {
@@ -99,5 +111,6 @@ export {
     deleteUser,
     changePassword,
     deleteDog,
-    createdog
+    createdog,
+    getMyPackages,
 }
