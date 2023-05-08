@@ -10,11 +10,26 @@ import {
   Card,
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
+import { deleteDog } from '../../services/userService'
 
 function UserDashboard() {
   const [newDog, setNewdog] = useState(false)
   const [myDogs, setMyDogs] = useState(null)
   const [onDog, setOnDog] = useState([])
+  const [onDeleteDog,setOnDeleteDog ] = useState(false)
+
+const handleDeleteDog = (id) => {
+  try {
+    setOnDeleteDog(true)
+    deleteDog(id)
+    location.reload();
+
+    if(onDeleteDog === true)
+    console.log('Dog deleted')
+  } catch (error) {
+    console.error(error)
+  }
+}
 
   const createDogForm = (e) => {
     setNewdog(true)
@@ -28,6 +43,8 @@ function UserDashboard() {
 
       const data = await getUserDogs()
       setOnDog(data)
+      if (data.length < 1)
+      alert("no dog found")
 
       console.log(data)
       return data
@@ -133,13 +150,13 @@ function UserDashboard() {
                         <b>Chip Number: </b> {dog.chip}{' '}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Breed: {dog.breed} </b>
+                        <b>Breed:</b> {dog.breed} 
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Dog Sex: {dog.sex} </b>
+                        <b>Dog Sex:</b> {dog.sex} 
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Dog Age: {dog.age} </b>
+                        <b>Dog Age:</b> {dog.age} 
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Behavior Problem: </b>
@@ -150,8 +167,15 @@ function UserDashboard() {
                         {dog.valoration}{' '}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Creation Date:</b> {dog.createdAt}{' '}
+                        <b>Creation Date:</b> {dog.createdAt}{' '}            
                       </Typography>
+
+
+                     
+
+                      <Button sx={{color: 'white', border: 1,
+                      borderColor: 'red', backgroundColor: 'red', marginTop: 2, marginBottom: 2}} 
+                      onClick={() => handleDeleteDog(dog.id)}>Delete Dog</Button>
                     </Card>
                   ))}
                 </Paper>

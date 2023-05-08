@@ -33,6 +33,34 @@ const getUserDogs = async () => {
 }
 }
 
+ const deleteDog = async (id) => {
+    try {
+        const { data } = await api.delete(`/dogs/${id}`, {
+            headers: {
+                'token': localStorage.getItem('token')
+              }
+            });
+    } catch (error) {
+        console.log(error);
+    }
+ }
+
+
+const createdog = async (form) => {
+    try { 
+        const data  = await api.post('/dogs', form, {
+        headers:{
+            'token': localStorage.getItem('token')
+        }
+    })
+    console.log(data)
+return data
+    } catch (error) {
+        
+    }
+}
+
+
 
 const deleteUser = async () => {
     try {
@@ -70,4 +98,6 @@ export {
     getUserDogs,
     deleteUser,
     changePassword,
+    deleteDog,
+    createdog
 }
