@@ -13,14 +13,10 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
 
   const [category_name, setCategoryName] = useState(categoryName);
 
-  const reload = () => window.location.reload()
-
   const handleClose = () => {
     close();
 
   }
-
-
 
   const handleChangeCategoryName = (e) => {
     setCategoryName(e.target.value)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {listAllDogs} from '../../../services/DogService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
@@ -9,6 +9,9 @@ import Button from '@mui/material/Button';
 import EditDogForm from './EditDogForm/EditDogForm';
 
 const ListDogs = () => {
+
+  const [, updateState] = useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
   
   const [dogs, setDogs] = useState([]);
 
@@ -25,7 +28,6 @@ const ListDogs = () => {
   const [dogValoration, setDogValoration] = useState('');
 
   
-
   const handleOpen = (dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration) => {
     setShowModal(true)
     setDogId(dogId)
@@ -41,6 +43,7 @@ const ListDogs = () => {
   }
 
   const handleClose = () => {
+    forceUpdate()
     setShowModal(false)
   }
 
@@ -51,7 +54,7 @@ const ListDogs = () => {
 
   useEffect(() => {
     getDogs();
-  }, []);
+  });
 
   const deleteDog = async (id) => {
     try {

@@ -37,18 +37,10 @@ const listAllDogs = async () => {
 
 //Update a dog 
 
-const saveDog = async (id, photo, name, breed, age, sex, chip, problem, valoration) => {
+const saveDog = async (id, obj) => {
+    console.log(obj)
     try {
-       const {data} = await api.put(`/dogs/${id}`, {
-        photo: photo, 
-        name: name,
-        breed: breed,
-        age: age,
-        sex: sex,
-        chip: chip,
-        problem: problem, 
-        valoration: valoration
-      }, {
+       const {data} = await api.put(`/dogs/${id}`, obj, {
         headers: {
           'token': localStorage.getItem('token'),
         }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { listAllUsers } from '../../../services/userService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
@@ -10,7 +10,8 @@ import EditUserForm from './EditUserForm/EditUserForm';
 
 const ListUsers = () => {
 
-  const [users, setUsers] = useState([]);
+  const [, updateState] = useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
 
   const [showModal, setShowModal] = useState(false)
 
@@ -51,7 +52,7 @@ const ListUsers = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  });
 
   const deleteUser = async (id) => {
     try {

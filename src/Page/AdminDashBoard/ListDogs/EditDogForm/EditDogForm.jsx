@@ -60,16 +60,34 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
     console.log(dogId)
     e.preventDefault();
     try {
+      const obj={}
+      if(dog_name){
+        obj.name=dog_name;
+      }
+      if(dog_photo){
+        obj.photo = dog_photo;
+      }
+      if (dog_breed) {
+        obj.breed = dog_photo
+      }
+      if(dog_age){
+        obj.age = dog_age
+      }
+      if (dog_sex) {
+        obj.sex = dog_sex
+      }
+      if (dog_chip) {
+        obj.chip = dog_chip
+      }
+      if (dog_problem) {
+        obj.problem = dog_problem
+      }
+      if (dog_valoration) {
+        obj.valoration = dog_valoration
+      }
       await saveDog(
         dogId,
-        dog_photo,
-        dog_name,
-        dog_breed,
-        dog_age,
-        dog_sex,
-        dog_chip,
-        dog_problem,
-        dog_valoration
+        obj
       )
     } catch (error) {
       console.log(error)

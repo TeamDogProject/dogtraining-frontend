@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { listAllCourses } from '../../../services/CourseService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
@@ -10,9 +10,11 @@ import Button from '@mui/material/Button';
 
 
 const ListCourses = () => { 
+
+  const [, updateState] = useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
   
   const [courses, setCourses] = useState([]);
-
   const[showModal, setShowModal] = useState(false)
 
   const [courseId, setCourseId ] = useState('');
@@ -45,7 +47,7 @@ const ListCourses = () => {
 
   useEffect(() => {
     getCourses();
-  }, []);
+  });
 
   const deleteCourse = async (id) => {
     try {
