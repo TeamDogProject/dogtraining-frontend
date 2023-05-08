@@ -64,7 +64,7 @@ const ListCourses = () => {
   function displayCourses() {
     return (
       <>
-      <EditCourseForm close={handleClose} show={showModal} courseId={courseId} courseName={courseName} courseDuration={courseDuration} coursePrice={coursePrice} coursePlace={coursePlace} />
+      <EditCourseForm close={handleClose} show={showModal} courseId={courseId} courseName={courseName} courseDescription={courseDescription} courseDuration={courseDuration} coursePrice={coursePrice} coursePlace={coursePlace} />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
