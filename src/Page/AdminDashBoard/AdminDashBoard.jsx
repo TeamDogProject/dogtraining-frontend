@@ -18,7 +18,7 @@ import Box from '@mui/material/Box';
 
 function AdminDashBoard() {
 
-  const [section, setSection] = useState('dog')
+  const [section, setSection] = useState('')
 
   const showContent = () => {
     if (section === 'dog') {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
@@ -22,6 +22,9 @@ const style = {
 
 const ListCategories =  () => {
 
+    const [, updateState] = useState()
+    const forceUpdate = useCallback(() => updateState({}), [])
+
     const [ categories, setCategories ] = useState([]);
 
     const [categoryId, setCategoryId] = useState('');
@@ -35,6 +38,7 @@ const ListCategories =  () => {
     }
 
     const handleClose = () => {
+      forceUpdate()
       setShowModal(false)
     }
 
@@ -45,7 +49,7 @@ const ListCategories =  () => {
 
     useEffect(()=> {
       getCategories();
-  }, []);
+  });
 
 
   
