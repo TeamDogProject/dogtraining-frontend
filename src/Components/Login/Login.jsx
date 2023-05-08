@@ -1,20 +1,24 @@
-import { blue } from '@mui/material/colors'
+
 import {Button, Card, CardActions, CardContent, CardHeader,Divider,IconButton,TextField} from '@mui/material'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import { Email, VisibilityOff,Lock, Visibility } from '@mui/icons-material'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/authService'
 import { getProfile } from '../../services/userService'
-import AdminDashBoard from '../../Page/AdminDashBoard/AdminDashBoard'
-
+import { LogingContext } from '../../context/loginContext'
 
 function Login() {
 
   const navigate = useNavigate()
-  
+  const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+const onSignUp = () => {
+    navigate('/signUp')
+}
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -24,18 +28,30 @@ function Login() {
     setPassword(e.target.value)
   }
 
-  const onLogin = async() => {
-    const form = {email, password}
-    const result = await login(form)
-    const resprofile = await getProfile()
-    console.log(resprofile)
-    if(resprofile.role === 'admin')
-    {
-      navigate('/adminDashBoard')
-    }else {
-      navigate('/home')
+  const onLogin = async () => {
+    const form = { email, password };
+    const result = await login(form);
+   
+  
+    if (localStorage.getItem('token')) {
+      console.log('Inicio de sesión exitoso');
+      setIsLoggedIn(true)
+      
+      const resprofile = await getProfile();
+  
+      if (resprofile.role === 'admin') {
+        console.log('Perfil de administrador detectado');
+        navigate('/adminDashBoard');
+      } else {
+        console.log('Perfil de usuario detectado');
+        navigate('/userDashBoard');
+      }
+    } else {
+      console.log('Inicio de sesión fallido');
     }
-  }
+  };
+  
+
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
@@ -45,7 +61,14 @@ function Login() {
   return (
     <>
       <div className="containerLogin">
-        <Card sx={{ width: '700px', backgroundColor: blue[100] }} raised={true}>
+        <Card
+          sx={{
+            width: '700px',
+            backgroundColor: 'white',
+            border: '2px #088395 solid',
+          }}
+          raised={true}
+        >
           <CardHeader title="Login"> </CardHeader>
           <CardContent>
             <TextField
@@ -75,10 +98,21 @@ function Login() {
             <Divider />
           </CardContent>
           <CardActions sx={{ display: ' flex', justifyContent: 'flex-end' }}>
-            <Button size="small" color="secondary" variant="contained">
+            <Button
+              size="small"
+              color="secondary"
+              variant="contained"
+              sx={{ backgroundColor: '#088395' }}
+              onClick={onSignUp}
+            >
               Register
             </Button>
-            <Button size="small" color="primary" variant="contained" onClick={onLogin}>
+            <Button
+              size="small"
+              color="primary"
+              variant="contained"
+              sx={{ backgroundColor: '#0A4D68' }}
+              onClick={onLogin}>
               Login
             </Button>
           </CardActions>

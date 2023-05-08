@@ -13,7 +13,12 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
 
   const [category_name, setCategoryName] = useState(categoryName);
 
-  const handleClose = () => close();
+  const handleClose = () => {
+    close();
+    reload();
+  }
+
+  const reload = () => window.location.reload();
 
   const handleChangeCategoryName = (e) => {
     setCategoryName(e.target.value)
@@ -49,6 +54,7 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        onExit={reload}
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width: 300, marginLeft: 25 }}>

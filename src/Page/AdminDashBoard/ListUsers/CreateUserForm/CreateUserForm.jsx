@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { createDog } from '../../../../services/DogService';
 import {FormLabel} from '@mui/material';
 import { useState } from 'react';
-import { listAllUsers } from '../../../../services/userService';
+import {listAllUsers} from '../../../../services/userService'
 import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';

@@ -1,29 +1,58 @@
 import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Menu,
+  MenuItem,
+  Avatar,
+  Button,
+  Tooltip,
+  Link,
+} from '@mui/material'
+import { getProfile } from '../../services/userService'
+import { login } from '../../services/authService'
 import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
-import { Link } from 'react-router-dom'
+import PetsIcon from '@mui/icons-material/Pets';
 
-const pages = ['Home', 'About', 'Login']
+import { useNavigate } from 'react-router-dom'
+import { LogingContext } from '../../context/loginContext'
+import { useContext } from 'react'
+const pages = ['Home', 'About', 'contact', 'courses'] /* 'Login', 'Signup */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings2 = ['Login', 'Signup']
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
+  {
+    /*   const [isLoggedIn, setIsLoggedIn] = React.useState(false); */
+  }
+
+  const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
+
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('token')
+    setIsLoggedIn(token !== null)
+  }, [])
+
+  const handleLoginBottom = () => {
+    navigate('/login')
+  }
+
+  const handleSignUp = () =>{
+    navigate('/signup')
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
   }
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -32,15 +61,52 @@ function ResponsiveAppBar() {
     setAnchorElNav(null)
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/home')
+    if (isLoggedIn) location.reload()
+  }
+
+
+  const handleGetProfile = async () => {
+
+    const resprofile = await getProfile();
+
+    if (localStorage.getItem('token') && resprofile.role === 'admin') {
+      console.log('Perfil de administrador detectado');
+      location.reload();
+    } else {
+      console.log('Perfil de usuario detectado');
+      navigate('/UserProfile');
+    }
+    
+  }
+
+
+
+  const handleDashboard = async () => {
+   
+    const resprofile = await getProfile();
+
+    if (resprofile.role === 'admin') {
+      console.log('Perfil de administrador detectado');
+      navigate('/adminDashBoard');
+    } else {
+      console.log('Perfil de usuario detectado');
+      navigate('/UserDashboard');
+    }
+    
+  }
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
 
   return (
-    <AppBar position="static" style={{ backgroundColor:'#0A4D68' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#0A4D68' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -90,12 +156,25 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link
+                    color={'#088395'}
+                    overline
+                    href={`/${page}`}
+                    underline="none"
+                  >
+                    <Typography
+                      textAlign="center"
+                      sx={{ fontFamily: 'roboto' }}
+                    >
+                      {page}
+                    </Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+          <PetsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -112,28 +191,49 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DogTraining
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to={`/${page}`}>
+              <Link underline="none" href={`/${page}`}>
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page}
                 </Button>
               </Link>
             ))}
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+          
+    
+          
+
+            {isLoggedIn && (
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+            )}
+
+            {!isLoggedIn && (
+              <div>
+                <Button key={settings2[0]} onClick={handleLoginBottom} sx={{ p: 0 }}>
+                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[0]}</Typography>
+                </Button>
+                <Button key={settings2[1]} onClick={handleSignUp} sx={{ p: 0 }}>
+                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[1]}</Typography>
+                </Button>
+              </div>
+            )}
+            
+
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -147,14 +247,26 @@ function ResponsiveAppBar() {
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              open={Boolean(anchorElUser) && isLoggedIn}
+              onClose={handleCloseUserMenu} //esta función cierra el menu
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              
+             
+              <MenuItem key={settings[0]} onClick={handleGetProfile} //MenuAvatar Profile  
+              >
+                <Typography textAlign="center">{settings[0]}</Typography>
+              </MenuItem>
+
+              <MenuItem key={settings[2]} onClick={handleDashboard} //MenuAvatar DashBoard
+              >
+                <Typography textAlign="center">{settings[2]}</Typography>
+              </MenuItem>
+
+              <MenuItem key={settings[3]} onClick={handleLogout} //MenuAvatar Logout
+              >
+
+                <Typography textAlign="center">{settings[3]}</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
@@ -162,4 +274,5 @@ function ResponsiveAppBar() {
     </AppBar>
   )
 }
+
 export default ResponsiveAppBar

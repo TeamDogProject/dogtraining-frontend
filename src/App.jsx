@@ -3,26 +3,26 @@ import { RouterProvider } from 'react-router-dom'
 import router from './router'
 import './assets/fonts/roboto'
 import { UserContext } from './context/user'
+import { LogingContext } from './context/loginContext'
 import { useState } from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
-
-// Creating a client
-
-const queryClient = new QueryClient()
 
 function App() {
-
   const [user, setUser] = useState({})
+  const [isLoggedIn, setIsLoggedIn] = useState({})
+  
   const obj = { user, setUser }
+  const obj2 = { isLoggedIn, setIsLoggedIn }
 
   return (
     // Providing to hole the app the client
-    <div className="App" style={{ margin:0, padding:0 }}>
-      <QueryClientProvider client={queryClient}>
+    <div className="App" style={{ margin: 0, padding: 0 }}>
+
+      <LogingContext.Provider value={obj2}>
         <UserContext.Provider value={obj}>
           <RouterProvider router={router} />
         </UserContext.Provider>
-      </QueryClientProvider>
+      </LogingContext.Provider>
+      
     </div>
   )
 }
