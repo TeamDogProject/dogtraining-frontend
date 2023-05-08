@@ -56,7 +56,7 @@ function CarouselRatio() {
 
     return (
         <Carousel
-            sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto' }}
+            sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', fontFamily: 'roboto', width: 500, marginTop: 5.5}}
         >
             {
                 items.map((item, i) => <Item key={i} item={item} />)
@@ -70,7 +70,7 @@ function Item(props) {
     return (
         <>
             <Paper
-                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 550, height: 550, border: '5px' }}>
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: 0, marginLeft: 5, marginRight: 5}}>
                 <h1>{props.item.name}</h1>
 
                 <p><h2>{props.item.description}</h2></p>
@@ -84,6 +84,7 @@ function Item(props) {
                 <Link to={'/Courses'}>
                     <Button
                         className="CheckButton"
+                        sx={{ marginTop: 3}}
                     >
                         Saber Más
                     </Button>

@@ -59,7 +59,6 @@ function SignUpDog() {
               backgroundColor: 'white',
               padding: 1,
               border: '2px #088395 solid',
-              display: 'flex',
               justifyContent: 'center',
             }}
           >

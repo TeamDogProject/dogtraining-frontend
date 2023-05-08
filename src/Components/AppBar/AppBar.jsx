@@ -19,7 +19,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 import { useContext } from 'react'
-const pages = ['Home', 'About', 'contact', 'courses'] /* 'Login', 'Signup */
+const pages = ['About', 'contact', 'courses'] /* 'Login', 'Signup */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 const settings2 = ['Login', 'Signup']
 
@@ -61,7 +61,7 @@ function ResponsiveAppBar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token')
-    navigate('/home')
+    navigate('/')
     if (isLoggedIn) location.reload()
   }
 
@@ -129,7 +129,7 @@ function ResponsiveAppBar() {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Link
                     color={'#088395'}
-                    overline
+                    overline= "true"
                     href={`/${page}`}
                     underline="none"
                   >
