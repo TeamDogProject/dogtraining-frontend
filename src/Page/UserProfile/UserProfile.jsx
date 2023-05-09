@@ -134,7 +134,7 @@ function UserProfilePage() {
                   textAlignLast: 'center',
                   margin: '0 auto',
                   marginBottom: 4,
-                  overflowY: 'scroll' ,
+                
                 }}
               >
                 <CardHeader
