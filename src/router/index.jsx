@@ -11,14 +11,11 @@ import ListVideos from "../Page/AdminDashBoard/ListVideos/ListVideos";
 import ListUsers from "../Page/AdminDashBoard/ListUsers/ListUsers";
 import ListCategories from "../Page/AdminDashBoard/ListCategories/ListCategories";
 import Courses from "../Page/Courses/Courses";
-<<<<<<< HEAD
 import Root from "../Layouts/root";
-=======
 import UserDashBoard from "../Page/UserDashboard/UserDashboard";
 import AdminProfile from "../Page/AdminProfile/AdminProfile";
 import UserProfile from "../Page/UserProfile/UserProfile";
 
->>>>>>> 7fba476ef208a6a95a5047fd4564f700427868c1
 
 const router = createBrowserRouter([
   {

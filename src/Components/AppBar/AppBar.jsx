@@ -21,7 +21,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 import { useContext } from 'react'
-const pages = ['About', 'contact', 'courses'] /* 'Login', 'Signup */
+const pages = [{name:'Home', path:''}, {name:'About', path:'About'}, {name:'Contact', path:'Contact'}, {name: 'Courses', path: 'Courses'}] /* 'Login', 'Signup */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 const settings2 = ['Login', 'Signup']
 
@@ -159,14 +159,14 @@ function ResponsiveAppBar() {
                   <Link
                     color={'#088395'}
                     overline= "true"
-                    href={`/${page}`}
+                    href={`/${page.path}`}
                     underline="none"
                   >
                     <Typography
                       textAlign="center"
                       sx={{ fontFamily: 'roboto' }}
                     >
-                      {page}
+                      {page.name}
                     </Typography>
                   </Link>
                 </MenuItem>
@@ -195,13 +195,13 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link underline="none" href={`/${page}`}>
+            {pages.map((page,idx) => (
+              <Link underline="none" href={`/${page.path}`}>
                 <Button
-                  key={page}
+                  key={idx}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  {page}
+                  {page.name}
                 </Button>
               </Link>
             ))}
