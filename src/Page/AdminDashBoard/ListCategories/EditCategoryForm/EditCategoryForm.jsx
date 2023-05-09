@@ -15,7 +15,6 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
 
   const handleClose = () => {
     close();
-
   }
 
   const handleChangeCategoryName = (e) => {

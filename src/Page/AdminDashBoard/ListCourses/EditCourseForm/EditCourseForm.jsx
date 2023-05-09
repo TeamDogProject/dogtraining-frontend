@@ -9,14 +9,11 @@ import { useState, useCallback, useEffect } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import {saveCourse} from '../../../../services/CourseService'
+import { saveCourse } from '../../../../services/CourseService'
 
 
 function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace}) {
     
-  console.log(courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace)
-  
-
     const [course_name, setCourseName] = useState('');
     const [course_description, setCourseDescription] = useState('');
     const [course_duration, setCourseDuration] = useState('');
@@ -81,6 +78,8 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
             courseId,
             obj
           )
+
+          close()
         } catch (error) {
           console.log(error)
         }
@@ -96,7 +95,7 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width:300, marginLeft:25 }}>
-              Edit Course Form
+              Edit Package Form
             </Typography>
             <Typography id="modal-modal-description" sx={{ width:300, marginTop:4}}>
               <form onSubmit={handleSaveCourse}>

@@ -22,7 +22,9 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
   const [dog_problem, setProblem] = useState(dogProblem)
   const [dog_valoration, setValoration] = useState(dogValoration)
 
-  const handleClose = () => close();
+ const handleClose = () => {
+   close()
+ }
 
   const handleChangeSex = (event) => {
     setSex(event.target.value);

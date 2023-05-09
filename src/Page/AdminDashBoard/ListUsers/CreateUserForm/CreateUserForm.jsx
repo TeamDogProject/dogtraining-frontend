@@ -128,22 +128,22 @@ const handleChangeConfirmationPassword = (e) => {
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Surname</FormLabel>
                                 <TextField type="text" variant='outlined' placeholder={user_surname} onChange={handleChangeSurname} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Username</FormLabel>
-                                <TextField type="text" variant='outlined' value={user_username} onChange={handleChangeUserName} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' placeholder={user_username} onChange={handleChangeUserName} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Email</FormLabel>
                                 <TextField type="text" variant='outlined' placeholder={user_email} onChange={handleChangeEmail} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>IdentityCard</FormLabel>
-                                <TextField type="text" variant='outlined' value={user_identityCard} onChange={handleChangeIdentityCard} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' placeholder={user_identityCard} onChange={handleChangeIdentityCard} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Password</FormLabel>
-                                <TextField type="text" variant='outlined' value={user_password} onChange={handleChangePassword} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' placeholder={user_password} onChange={handleChangePassword} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>Phone</FormLabel>
-                                <TextField type="text" variant='outlined' value={user_phone} onChange={handleChangePhone} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' placeholder={user_phone} onChange={handleChangePhone} sx={{ width:300, marginLeft:35 }} />
                                 <FormLabel sx={{ width:300, marginLeft:35 }}>ConfirmationPassword</FormLabel>
-                                <TextField type="text" variant='outlined' value={user_confirmationPassword} onChange={handleChangeConfirmationPassword} sx={{ width:300, marginLeft:35 }} />
+                                <TextField type="text" variant='outlined' placeholder={user_confirmationPassword} onChange={handleChangeConfirmationPassword} sx={{ width:300, marginLeft:35 }} />
                                 <InputLabel id="role" sx={{ width:300, marginLeft:35 }}>Role</InputLabel>
                                 <Select
                                     labelId="role"
                                     id="role"
-                                    value={user_role}
+                                    placeholder={user_role}
                                     label="Role"
                                     onChange={handleChangeRole}
                                     sx={{ width:300, marginLeft:35  }}
