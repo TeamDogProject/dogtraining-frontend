@@ -150,7 +150,7 @@ function SignUpDog() {  //Registo del Perro
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={9}>
+            <Grid item xs={12} sm={6} md={9} >
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">sex</InputLabel>
               <Select
@@ -216,10 +216,10 @@ function SignUpDog() {  //Registo del Perro
                     xs={12}
                     sm={6}
                     md={9}
-                    className="uploadPhoto"
+                    className="uploadPhoto" 
                   >
                     Select a photo of your dog
-                    <input
+                    <input 
                       onChange={handlePhoto}
                       id="upload-photo"
                       type="file"

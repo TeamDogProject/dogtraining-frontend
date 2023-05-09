@@ -22,7 +22,7 @@ function UserDashboard() {
   const [onDeleteDog, setOnDeleteDog] = useState(false)
   const [onGetPackages, setOnGetPackages] = useState(false)
   const [onVideos, setOnVideos] = useState(false)
-  console.log(onVideos)
+
 
   const handlerCategories = async () => {
     setNewdog(false)
@@ -89,9 +89,9 @@ function UserDashboard() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-
+              height: { xs: 'auto', md: '100vh' },
               margin: '0 auto',
-              backgroundColor: 'white',
+              backgroundColor: '#0A4D68',
               padding: '1%',
               border: '2px #088395 solid',
             }}
