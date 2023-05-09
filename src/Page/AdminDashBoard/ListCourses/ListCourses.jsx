@@ -11,10 +11,11 @@ import Button from '@mui/material/Button';
 
 const ListCourses = () => { 
 
-  const [, updateState] = useState()
+  const [refresh, updateState] = useState()
   const forceUpdate = useCallback(() => updateState({}), [])
   
   const [courses, setCourses] = useState([]);
+
   const[showModal, setShowModal] = useState(false)
 
   const [courseId, setCourseId ] = useState('');
@@ -37,6 +38,7 @@ const ListCourses = () => {
   }
 
   const handleClose = () => {
+    forceUpdate();
     setShowModal(false)
   }
 
@@ -47,7 +49,7 @@ const ListCourses = () => {
 
   useEffect(() => {
     getCourses();
-  });
+  }, [refresh]);
 
   const deleteCourse = async (id) => {
     try {

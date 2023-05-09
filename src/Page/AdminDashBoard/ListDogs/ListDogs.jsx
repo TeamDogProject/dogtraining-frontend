@@ -10,7 +10,7 @@ import EditDogForm from './EditDogForm/EditDogForm';
 
 const ListDogs = () => {
 
-  const [, updateState] = useState()
+  const [refresh, updateState] = useState()
   const forceUpdate = useCallback(() => updateState({}), [])
   
   const [dogs, setDogs] = useState([]);
@@ -54,7 +54,7 @@ const ListDogs = () => {
 
   useEffect(() => {
     getDogs();
-  });
+  }, [refresh]);
 
   const deleteDog = async (id) => {
     try {

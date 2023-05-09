@@ -36,16 +36,9 @@ const listAllCourses = async () => {
 
 // Update a package
 
-const saveCourse = async (id, name, description, duration, price, place, categoryId) => {
+const saveCourse = async (id, obj) => {
     try {
-       const {data} = await api.put(`/packages/${id}`, {
-        name: name, 
-        description: description,
-        duration:duration,
-        price:price,
-        place:place,
-        categoryId:categoryId
-      }, {
+       const {data} = await api.put(`/packages/${id}`,obj, {
         headers: {
           'token': localStorage.getItem('token'),
         }

@@ -10,21 +10,23 @@ import EditUserForm from './EditUserForm/EditUserForm';
 
 const ListUsers = () => {
 
-  const [, updateState] = useState()
+  const [refresh, updateState] = useState()
   const forceUpdate = useCallback(() => updateState({}), [])
 
   const [showModal, setShowModal] = useState(false)
+
+  const [ users, setUsers] = useState([])
 
     const [userId, setId]= useState('')
     const [userName, setName]= useState('')
     const [userSurname, setSurname ] = useState('')
     const [userUserName, setUserName ] = useState('')
-    const[userEmail, setEmail ] = useState('')
-    const[userIdentityCard, setIdentityCard] = useState('')
-    const[userPassword, setPassword] = useState('')
-    const[userPhone, setPhone] = useState('')
-    const[userConfirmationPassword, setConfirmationPassword]= useState('')
-    const[userRole, setRole]= useState('')
+    const [userEmail, setEmail ] = useState('')
+    const [userIdentityCard, setIdentityCard] = useState('')
+    const [userPassword, setPassword] = useState('')
+    const [userPhone, setPhone] = useState('')
+    const [userConfirmationPassword, setConfirmationPassword]= useState('')
+    const [userRole, setRole]= useState('')
 
     const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
       setShowModal(true)
@@ -39,9 +41,9 @@ const ListUsers = () => {
       setRole(userRole)
       console.log(userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
     }
-  
-  
+
   const handleClose = () => {
+    forceUpdate(); 
     setShowModal(false)
   }
 
@@ -52,7 +54,7 @@ const ListUsers = () => {
 
   useEffect(() => {
     getUsers();
-  });
+  }, [refresh]);
 
   const deleteUser = async (id) => {
     try {
@@ -101,7 +103,7 @@ const ListUsers = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user) => (
+              {users?.length>0 && users.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>

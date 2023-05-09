@@ -5,16 +5,18 @@ import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
 import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import {saveCourse} from '../../../../services/CourseService'
 
+
 function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace}) {
     
   console.log(courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace)
-    
+  
+
     const [course_name, setCourseName] = useState('');
     const [course_description, setCourseDescription] = useState('');
     const [course_duration, setCourseDuration] = useState('');
@@ -59,13 +61,25 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
         console.log(courseId)
         e.preventDefault();
         try {
+          const obj={}
+          if(course_name){
+            obj.name = course_name
+          }
+          if(course_description){
+            obj.description = course_description
+          }
+          if(course_duration){
+            obj.duration = course_duration
+          }
+          if(course_price){
+            obj.price = course_price
+          }
+          if(course_place){
+            obj.place = course_place
+          }
           await saveCourse(
             courseId,
-            course_name,
-            course_description,
-            course_duration,
-            course_price,
-            course_place
+            obj
           )
         } catch (error) {
           console.log(error)

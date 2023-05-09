@@ -25,7 +25,9 @@ function EditUserForm({show, close, userId, userName, userSurname, userUserName,
     const [user_Role, setRole]= useState(userRole)
   
   
-    const handleClose = () => close();
+     const handleClose = () => {
+       close()
+     }
 
     const handleChangeName= (e) =>{
       setName(e.target.value)
@@ -64,23 +66,46 @@ function EditUserForm({show, close, userId, userName, userSurname, userUserName,
     }
    
     const handleSaveUser = async (e) => {
-      console.log(userId)
       e.preventDefault();
       try {
+        const obj={}
+        if (user_Name){
+          obj.name= user_Name;
+        }
+        if(user_Surname){
+          obj.surname= user_Surname;
+        }
+        if (user_UserName) {
+          obj.username = user_UserName;
+        }
+        if (user_Email) {
+          obj.email = user_Email;
+        }
+        if(user_IdentityCard)
+        {
+          obj.identityCard= user_IdentityCard;
+        }
+        if(user_Password){
+          obj.password = user_Password;
+        }
+        if(user_Phone){
+          obj.phone = user_Phone;
+        }
+        if(user_ConfirmationPassword)
+        {
+          obj.confirmationPassword = user_ConfirmationPassword;
+        }
+        if(user_Role)
+        {
+          obj.role = user_Role
+        }
         await saveUser(
           userId,
-          user_Name,
-          user_Surname,
-          user_UserName,
-          user_Email,
-          user_IdentityCard,
-          user_Password,
-          user_Phone,
-          user_ConfirmationPassword,
-          user_Role
+          obj
         )
+        handleClose();
       } catch (error) {
-  
+        console.log(error)
       }
     }
 

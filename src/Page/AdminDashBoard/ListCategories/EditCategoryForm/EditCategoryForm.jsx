@@ -52,7 +52,6 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        onExit={reload}
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ width: 300, marginLeft: 25 }}>
