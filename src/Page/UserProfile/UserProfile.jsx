@@ -126,7 +126,7 @@ function UserProfilePage() {
                 sm={6}
                 sx={{
                   backgroundColor: '#088395',
-                  maxWidth: '500px',
+                  maxWidth: '800px',
                   color: 'white',
                   display: 'flex',
                   flexDirection: 'column',
@@ -139,7 +139,7 @@ function UserProfilePage() {
               >
                 <CardHeader
                   title="User Profile"
-                  sx={{ width: '100%', maxWidth: '500px' }}
+                  sx={{ width: '100%', maxWidth: '00px' }}
                 />
               </Paper>
 
