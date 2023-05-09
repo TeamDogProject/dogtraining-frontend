@@ -13,6 +13,8 @@ import {
   Tooltip,
   Link,
 } from '@mui/material'
+import { getProfile } from '../../services/userService'
+import { login } from '../../services/authService'
 import MenuIcon from '@mui/icons-material/Menu'
 import PetsIcon from '@mui/icons-material/Pets';
 
@@ -44,7 +46,7 @@ function ResponsiveAppBar() {
   }
 
   const handleSignUp = () =>{
-    navegate('/signup')
+    navigate('/signup')
   }
 
   const handleOpenNavMenu = (event) => {
@@ -65,8 +67,35 @@ function ResponsiveAppBar() {
     if (isLoggedIn) location.reload()
   }
 
-  const handleDashboard = () => {
-    navigate('/dasboard')
+
+  const handleGetProfile = async () => {
+
+    const resprofile = await getProfile();
+
+    if (localStorage.getItem('token') && resprofile.role === 'admin') {
+      console.log('Perfil de administrador detectado');
+      location.reload();
+    } else {
+      console.log('Perfil de usuario detectado');
+      navigate('/UserProfile');
+    }
+    
+  }
+
+
+
+  const handleDashboard = async () => {
+   
+    const resprofile = await getProfile();
+
+    if (resprofile.role === 'admin') {
+      console.log('Perfil de administrador detectado');
+      navigate('/adminDashBoard');
+    } else {
+      console.log('Perfil de usuario detectado');
+      navigate('/UserDashboard');
+    }
+    
   }
 
   const handleCloseUserMenu = () => {
@@ -222,20 +251,20 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu} //esta función cierra el menu
             >
               
-
-              <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+             
+              <MenuItem key={settings[0]} onClick={handleGetProfile} //MenuAvatar Profile  
+              >
                 <Typography textAlign="center">{settings[0]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{settings[1]}</Typography>
-              </MenuItem>
-
-              <MenuItem key={settings[2]} onClick={handleDashboard}>
+              <MenuItem key={settings[2]} onClick={handleDashboard} //MenuAvatar DashBoard
+              >
                 <Typography textAlign="center">{settings[2]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[3]} onClick={handleLogout}>
+              <MenuItem key={settings[3]} onClick={handleLogout} //MenuAvatar Logout
+              >
+
                 <Typography textAlign="center">{settings[3]}</Typography>
               </MenuItem>
             </Menu>

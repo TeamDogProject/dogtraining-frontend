@@ -9,7 +9,7 @@ import {
   Button,
   Grid,
 } from '@mui/material'
-import { blue, grey } from '@mui/material/colors'
+
 import React, { useState } from 'react'
 import { VisibilityOff, Lock, Visibility } from '@mui/icons-material'
 import './SignUpPage.css'
@@ -81,9 +81,7 @@ function SignUpUser() {
             maxWidth: '800px',
             margin: '0 auto',
             backgroundColor: 'white',
-           
             border: '2px #088395 solid',
-            
           }}
         >
     
