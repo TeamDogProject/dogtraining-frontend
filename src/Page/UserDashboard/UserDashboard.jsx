@@ -105,7 +105,6 @@ function UserDashboard() {
                 border: 1,
                 borderColor: '#0A4D68',
                 margin: '0 auto',
-                console,
               }}
               onClick={createDogForm}
             >
@@ -270,9 +269,12 @@ function UserDashboard() {
                           key={video.id}
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
-                          <b>Url: </b>
-                          {video.url}
                         </Typography>
+
+                          <b>Url: </b>
+                          <iframe id="player" type="text/html"  width="560" height="315" src={video.url} allowfullscreen></iframe>
+                         
+                       
                       </Card>
                     ))
                   )}
@@ -313,10 +315,10 @@ function UserDashboard() {
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Dog Age: </b>
-                        {dog.age}{' '}
+                        {dog.age}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Chip Number: </b> {dog.chip}{' '}
+                        <b>Chip Number: </b> {dog.chip}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Breed:</b> {dog.breed}
@@ -329,14 +331,14 @@ function UserDashboard() {
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Behavior Problem: </b>
-                        {dog.problem}{' '}
+                        {dog.problem}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Trainer Assessment: </b>
-                        {dog.valoration}{' '}
+                        {dog.valoration}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Creation Date:</b> {dog.createdAt}{' '}
+                        <b>Creation Date:</b> {dog.createdAt}
                       </Typography>
 
                       <Button
