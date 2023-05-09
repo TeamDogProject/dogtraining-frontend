@@ -8,14 +8,14 @@ function CarouselRatio() {
 
     var items = [
         {
-            src: "https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg",
+            src: "../../src/assets/Images/Sin Ansiedad.jpg",
             name: "Sin Ansiedad",
             description: "Enseña a tu perro a gestionar su ansiedad",
         },
         {
             src: "https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg",
             name: "Reactividad",
-            description: "Controla las reacciones de tu perro",
+            description: "Aprende a controlar las reacciones de tu perro",
         },
         {
             src: "https://cdn.stocksnap.io/img-thumbs/280h/VTLECU25XL.jpg",
@@ -38,7 +38,7 @@ function CarouselRatio() {
             description: "Adiestramiento avanzado del perro",
         },
         {
-            src: "https://images.prismic.io/wisdom/2fabb777-59dc-4963-a38f-8bd8132c7e10_shutterstock_1048123303_cropped.jpg?auto=compress%2Cformat&rect=241%2C0%2C1440%2C1080&w=1020&h=615",
+            src: "../../src/assets/Images/Cachorros.jpg",
             name: "Club Cachorro",
             description: "Diviértete con tu cachorro mientras socializa",
         },
@@ -70,10 +70,10 @@ function Item(props) {
     return (
         <>
             <Paper
-                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: 0, marginLeft: 5, marginRight: 5}}>
+                sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: 0, marginLeft: 5, marginRight: 5, boxShadow: 0}}>
                 <h1>{props.item.name}</h1>
 
-                <p><h2>{props.item.description}</h2></p>
+                <p><h3>{props.item.description}</h3></p>
 
                 <img src={props.item.src}></img>
 
