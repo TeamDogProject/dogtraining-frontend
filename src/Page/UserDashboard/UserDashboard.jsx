@@ -9,6 +9,7 @@ import {
   Typography,
   Card,
   Divider,
+  Link
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
 import { deleteDog } from '../../services/userService'
@@ -263,18 +264,14 @@ function UserDashboard() {
                           <b> Title: </b>
                           {video.title}
                         </Typography>
-
                         <Typography
                           variant="body1"
                           key={video.id}
                           sx={{ display: 'flex', marginLeft: 5 }}
-                        >
-                        </Typography>
-
-                          <b>Url: </b>
-                          <iframe id="player" type="text/html"  width="560" height="315" src={video.url} allowfullscreen></iframe>
+                        ></Typography>
+                        <b>Url: </b>
                          
-                       
+                        <Link to={video.url}>{video.url} </Link>
                       </Card>
                     ))
                   )}

@@ -154,11 +154,11 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page,idx) => (
+                <MenuItem key={idx} onClick={handleCloseNavMenu}>
                   <Link
                     color={'#088395'}
-                    overline= "true"
+                    overline="true"
                     href={`/${page.path}`}
                     underline="none"
                   >
@@ -195,26 +195,18 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page,idx) => (
-              <Link underline="none" href={`/${page.path}`}>
-                <Button
-                  key={idx}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
+            {pages.map((page, idx) => (
+              <Link key={idx} underline="none" href={`/${page.path}`}>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
                   {page.name}
                 </Button>
               </Link>
             ))}
-            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          
-    
-          
-
             {isLoggedIn && (
-              <Tooltip title="Open settings">
+              <Tooltip  title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
@@ -223,16 +215,42 @@ function ResponsiveAppBar() {
 
             {!isLoggedIn && (
               <div>
-                <Button key={settings2[0]} onClick={handleLoginBottom} sx={{ p: 0 }}>
-                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[0]}</Typography>
+                <Button
+                  
+                  onClick={handleLoginBottom}
+                  sx={{ p: 0 }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontSize: '0.875rem',
+                      color: 'white',
+                      borderRadius: 4,
+                      fontWeight: 500,
+                      lineHeight: 1.75,
+                    }}
+                    textAlign="center"
+                  >
+                    {settings2[0]}
+                  </Typography>
                 </Button>
-                <Button key={settings2[1]} onClick={handleSignUp} sx={{ p: 0 }}>
-                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[1]}</Typography>
+                <Button  onClick={handleSignUp} sx={{ p: 0 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontSize: '0.875rem',
+                      color: 'white',
+                      borderRadius: 4,
+                      fontWeight: 500,
+                      lineHeight: 1.75,
+                    }}
+                    textAlign="center"
+                  >
+                    {settings2[1]}
+                  </Typography>
                 </Button>
               </div>
             )}
-            
-
 
             <Menu
               sx={{ mt: '45px' }}
@@ -250,21 +268,24 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser) && isLoggedIn}
               onClose={handleCloseUserMenu} //esta función cierra el menu
             >
-              
-             
-              <MenuItem key={settings[0]} onClick={handleGetProfile} //MenuAvatar Profile  
+              <MenuItem
+                
+                onClick={handleGetProfile} //MenuAvatar Profile
               >
                 <Typography textAlign="center">{settings[0]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[2]} onClick={handleDashboard} //MenuAvatar DashBoard
+              <MenuItem
+               
+                onClick={handleDashboard} //MenuAvatar DashBoard
               >
                 <Typography textAlign="center">{settings[2]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[3]} onClick={handleLogout} //MenuAvatar Logout
+              <MenuItem
+               
+                onClick={handleLogout} //MenuAvatar Logout
               >
-
                 <Typography textAlign="center">{settings[3]}</Typography>
               </MenuItem>
             </Menu>
