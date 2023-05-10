@@ -16,6 +16,19 @@ const getProfile = async() => {
     }
 }
 
+const getVideos = async ()=>{
+    try {
+
+        const {data}  = await api.get('/videos/me', {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        })
+        return data
+    } catch (error) {
+        return error.message
+    }
+}
 
 const getUserDogs = async () => {
 
@@ -106,11 +119,12 @@ const deleteUser = async () => {
 
 
 export {
-    getProfile,
-    getUserDogs,
-    deleteUser,
-    changePassword,
-    deleteDog,
-    createdog,
-    getMyPackages,
+  getProfile,
+  getUserDogs,
+  deleteUser,
+  changePassword,
+  deleteDog,
+  createdog,
+  getMyPackages,
+  getVideos,
 }
