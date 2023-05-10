@@ -49,7 +49,7 @@ const ListCategories =  () => {
 
     useEffect(()=> {
       getCategories();
-  });
+  }, []);
 
 
   
@@ -75,7 +75,7 @@ const ListCategories =  () => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Box>
-                <Typography variant="h6" color="white" marginLeft={2}>
+                <Typography /* variant="h6" */ color="white" marginLeft={2}>
                   List Categories
                 </Typography>
               </Box>
@@ -85,7 +85,7 @@ const ListCategories =  () => {
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
+                        <Typography  style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
                         <div>
                           <CreateCategoryForm/>
                         </div>
@@ -93,17 +93,17 @@ const ListCategories =  () => {
                       </TableRow>
                       <TableRow>
                         <TableCell>
-                          <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                          <Typography style={{ color: 'white', fontSize: 17 }}>
                             ID
                           </Typography>
                         </TableCell>
                         <TableCell>
-                          <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                          <Typography style={{ color: 'white', fontSize: 17 }}>
                             NAME
                           </Typography>
                         </TableCell>
                         <TableCell>
-                          <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                          <Typography style={{ color: 'white', fontSize: 17 }}>
                             Actions
                           </Typography>
                         </TableCell>
@@ -113,12 +113,12 @@ const ListCategories =  () => {
                       {categories?.length>0 && categories.map((category) => (
                         <TableRow key={category.id}>
                           <TableCell>
-                            <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                            <Typography /* variant="h6" */ style={{ color: 'white', fontSize: 17 }}>
                               {category.id}
                             </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
+                            <Typography /* variant="h6" */ style={{ color: 'white', fontSize: 17 }}>
                               {category.category_name}
                             </Typography>
                           </TableCell>

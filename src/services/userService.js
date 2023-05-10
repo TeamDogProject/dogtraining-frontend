@@ -57,6 +57,23 @@ const getUserDogs = async () => {
     }
  }
 
+ // Create user 
+
+ const createUser = async (obj) => {
+    console.log('loading...')
+    try { 
+        const data  = await api.post('/users',obj,{
+        headers:{
+            'token': localStorage.getItem('token')
+        }
+    })
+    console.log(data)
+return data
+    } catch (error) {
+        
+    }
+}
+
 
 const createdog = async (form) => {
     try { 
@@ -88,32 +105,32 @@ const deleteUser = async () => {
         }
     }
 
-    const getMyPackages = async() =>{
-        try {
-            const data = await api.get('/packages', {
-                headers:{
-                    'token': localStorage.getItem('token')
-                }
-            })
-            return data
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    const changePassword = async (password) => {
-        try {
-            const {data} = await api.put('/auth/profile/changePassword',{password:password}, { //se pasa como segundo parámetro los cambios que se quieren hacer
-                headers:{
-                    'token': localStorage.getItem('token')
-                }
-            })
-            return data
-        } catch (error) {
-            return(error)
-    
+const getMyPackages = async() =>{
+    try {
+        const data = await api.get('/packages', {
+            headers:{
+                'token': localStorage.getItem('token')
             }
+        })
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const changePassword = async (password) => {
+    try {
+        const {data} = await api.put('/auth/profile/changePassword',{password:password}, { //se pasa como segundo parámetro los cambios que se quieren hacer
+            headers:{
+                'token': localStorage.getItem('token')
+            }
+        })
+        return data
+    } catch (error) {
+        return(error)
+
         }
+}
 
 //Update a user
 
@@ -131,6 +148,19 @@ const saveUser = async (id, obj) => {
     }
 };
 
+const getVideos = async () => {
+  try {
+    const { data } = await api.get('/videos/me', {
+      headers: {
+        token: localStorage.getItem('token'),
+      },
+    })
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
+
 
 export {
     getProfile,
@@ -141,5 +171,7 @@ export {
     deleteDog,
     createdog,
     getMyPackages,
-    saveUser
+    saveUser, 
+    getVideos, 
+    createUser
 }

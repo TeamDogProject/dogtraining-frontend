@@ -34,7 +34,7 @@ const Home = () => {
                 sx={{ fontFamily: 'roboto', color: 'inherit', marginLeft: 5, marginRight: 5 }}
               >
                 <div>
-                  <h1>DogTraining {user.name}</h1>
+                  <h1>DogTraining</h1>
                   <p>
                     ¡Bienvenidos a la mejor escuela de adiestramiento de perros
                     de Canarias!<br></br>

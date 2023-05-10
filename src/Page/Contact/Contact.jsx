@@ -177,14 +177,13 @@ function Contact() {
                 width="600"
                 height="450"
                 style={{ border: 0 }}
-                allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
 
             <div className="dataProtection">
-              <h3> Información básica sobre la protección de datos </h3>
+              <Typography sx={{fontSize:'24',color:'inherit', fontWeight:'bold', textAlign:'center'}}> Información básica sobre la protección de datos </Typography>
               <p>
                 <strong>Responsable del tratamiento</strong> Dog Training
               </p>

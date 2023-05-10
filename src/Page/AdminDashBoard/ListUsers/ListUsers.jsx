@@ -78,7 +78,8 @@ const ListUsers = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
-            <Typography variant="h6" color='white' marginLeft={2}>List Users
+            <Typography variant="h6" color='white' marginLeft={2}>
+              List Users
             </Typography>
           </Box>
         </Grid>
@@ -89,27 +90,27 @@ const ListUsers = () => {
               <TableHead>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
                     <div>
-                      <CreateUserForm />
+                      <CreateUserForm close={handleClose}/>
                     </div>
                     </Typography>
               </TableHead>
               <TableRow >
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ID</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>NAME</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white',  fontSize:17 }}>EMAIL</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>PHONE</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ROLE</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ACTIONS</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ID</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>NAME</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white',  fontSize:17 }}>EMAIL</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>PHONE</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ROLE</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ACTIONS</Typography></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {users?.length>0 && users.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.email}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.phone}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.email}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.phone}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
                             <Button onClick={() => handleOpen(user.id,user.name, user.surname,user.username, user.email, user.identity_card, user.password,user.phone,user.confirmation_password, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>

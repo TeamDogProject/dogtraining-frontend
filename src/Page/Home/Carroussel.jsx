@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button, Box } from '@mui/material'
+import { Paper, Button, Box, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 
 
@@ -73,7 +73,7 @@ function Item(props) {
                 sx={{ display: 'flex', flexDirection: 'column', margin: ' 0 auto', maxWidth: 500, height: 500, border: 0, marginLeft: 5, marginRight: 5, boxShadow: 0}}>
                 <h1>{props.item.name}</h1>
 
-                <p><h3>{props.item.description}</h3></p>
+                <Typography variant='h6'>{props.item.description}</Typography>
 
                 <img src={props.item.src}></img>
 

@@ -14,7 +14,7 @@ import {MenuItem} from '@mui/material';
 
 function CreateCourseForm() {
 
-  const [open, setOpen] = useState(false);
+  const [ open, setOpen ] = useState(false);
   const [ courses, setCourses ] = useState([]);
   
   const handleOpen = () => setOpen(true);

@@ -57,7 +57,7 @@ function AdminDashBoard() {
  
 
   return (
-    <div>
+    <React.Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12} style={{ marginTop:9 }}>
           <Box sx={{ bgcolor: '#0A4D68', height: 40,width:'100%'}}>
@@ -117,7 +117,7 @@ function AdminDashBoard() {
 
       </Grid>
     </Grid>   
-  </div>
+  </React.Fragment>
   );
 }
 

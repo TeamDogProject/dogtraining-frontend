@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import {Box} from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { createDog } from '../../../../services/DogService';
+import { createUser } from '../../../../services/userService';
 import {FormLabel} from '@mui/material';
 import { useState } from 'react';
 import {listAllUsers} from '../../../../services/userService'
@@ -12,9 +12,10 @@ import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
 
-function CreateUserForm() {
+function CreateUserForm({close}) {
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [users, setUsers] = useState([])
 
   const[user_name, setName]= useState('')
   const[user_surname, setUserSurname]= useState('')
@@ -27,9 +28,10 @@ function CreateUserForm() {
   const[user_role, setRole] = useState('')
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [users, setUsers ] = useState([]);
+  const handleClose = () => {
+    setOpen(false),
+    close()
+  }
 
 
   const handleChangeName = (e) => {
@@ -104,8 +106,9 @@ const handleChangeConfirmationPassword = (e) => {
         confirmation_password: user_confirmationPassword,
         role: user_role
         };
-        await createDog(createNewUser);
+        await createUser(createNewUser);
         setUsers(getUsers())
+        close()
   }
 
   return (
@@ -148,8 +151,8 @@ const handleChangeConfirmationPassword = (e) => {
                                     onChange={handleChangeRole}
                                     sx={{ width:300, marginLeft:35  }}
                                 >
-                                    <MenuItem value={'male'}>Male</MenuItem>
-                                    <MenuItem value={'female'}>Female</MenuItem>
+                                    <MenuItem value={'admin'}>Admin</MenuItem>
+                                    <MenuItem value={'user'}>User</MenuItem>
                                 </Select>
                                 <button type="submit" style={{ marginTop:15, marginLeft:460, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Send</button>
                               </form>
