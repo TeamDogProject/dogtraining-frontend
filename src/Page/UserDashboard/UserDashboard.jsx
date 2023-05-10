@@ -25,6 +25,9 @@ function UserDashboard() {
   const [onVideos, setOnVideos] = useState(false)
 
 
+
+  
+
   const handlerCategories = async () => {
     setNewdog(false)
     setMyDogs(false)
@@ -52,8 +55,10 @@ function UserDashboard() {
      
 
       if (onDeleteDog === true) 
-      location.reload()
+       location.reload() 
+    
       console.log('Dog deleted')
+      
     } catch (error) {
       console.error(error)
     }
@@ -64,8 +69,11 @@ function UserDashboard() {
     setMyDogs(false)
     setOnGetPackages(false)
     setOnVideos(false)
-    
-  }
+   
+     
+  } 
+  
+
 
   const getMyDogs = async () => {
     try {

@@ -209,7 +209,7 @@ useEffect(() => {
                       variant="outlined"
                       margin="normal"
                       fullWidth
-                      value={password}
+                      value={password} 
                       onChange={handlePasswordChange}
                     />
                     <TextField

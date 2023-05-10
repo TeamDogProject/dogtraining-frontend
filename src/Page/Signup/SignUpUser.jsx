@@ -11,8 +11,9 @@ import {
 } from '@mui/material'
 
 import React, { useState } from 'react'
-import { VisibilityOff, Lock, Visibility } from '@mui/icons-material'
+import { VisibilityOff, Lock, Visibility, Password } from '@mui/icons-material'
 import './SignUpPage.css'
+import SignUpService from '../../services/SignUpService'
 
 function SignUpUser() {
   const [name, setName] = useState('')
@@ -20,31 +21,29 @@ function SignUpUser() {
   const [userName, setUserName] = useState('')
   const [userDNI, setUserDNI] = useState('')
   const [userEmail, setUserEmail] = useState('')
+  const [userConfirmEmail, setUserConfirmEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
   const [userConfirmPassword, setconfirmPassword] = useState('')
-  const [userPassword, setPassword] = useState('')
-  const [passwordValidate, setPasswordValidate] = useState(false)
+  const [userPassword, setUserPassword] = useState('')
   const [similarPassword, setNotSimilarPassword] = useState(false)
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
-const handleChangeForm = (e)=> {
+const handleChangeForm = async ()=> {
+  const form = { name, surname,userName,userDNI,userEmail,userPhone,userPassword} 
+  const result = await SignUpService(form)
   
 }
 
+const passwordLength = ()=>{
+  return userPassword.length > 8
+}
+
   const handlePassword = (e) => {
-    setPassword(e.target.value)
-    if (
-      userPassword.length > 8 &&
-      userPassword.includes('^(?=w*d)(?=w*[A-Z])(?=w*[a-z])S{8,16}')
-    ) {
-      setPasswordValidate(true)
-    } else {
-      setPasswordValidate(false)
-    }
+    setUserPassword(e.target.value)
   }
 
-  const handleChangePassword = (e) => {
+  const handleConfirmPassword = (e) => {
     setconfirmPassword(e.target.value)
   }
 
@@ -59,7 +58,9 @@ const handleChangeForm = (e)=> {
   const handleChangeSurname = (e) => {
     setSurName(e.target.value)
   }
-
+ const handleChangeConfirmUserEmail = (e) => { 
+  setUserConfirmEmail(e.target.value)
+ }
   const handleChangeUserName = (e) => {
     setUserName(e.target.value)
   }
@@ -88,9 +89,7 @@ const handleChangeForm = (e)=> {
             border: '2px #088395 solid',
           }}
         >
-    
           <CardHeader title="User Register Form"></CardHeader>
-          
 
           <CardContent sx={{ width: '100%' }}>
             <Grid container spacing={2}>
@@ -144,7 +143,7 @@ const handleChangeForm = (e)=> {
                   label="Confirm Email"
                   variant="outlined"
                   margin="dense"
-                  onChange={handleChangeUserEmail}
+                  onChange={handleChangeConfirmUserEmail}
                 />
               </Grid>
 
@@ -153,7 +152,7 @@ const handleChangeForm = (e)=> {
                   label="Password"
                   onChange={handlePassword}
                   variant="outlined"
-                  color={passwordValidate ? 'success' : 'warning'}
+                  color={passwordLength() ? 'success' : 'warning'}
                   margin="dense"
                   type={isPassVisible ? 'text' : 'password'}
                   InputProps={{
@@ -170,7 +169,7 @@ const handleChangeForm = (e)=> {
               <Grid item xs={12} sm={6}>
                 <TextField
                   label=" Confirm Password"
-                  onChange={handleChangePassword}
+                  onChange={handleConfirmPassword}
                   variant="outlined"
                   margin="dense"
                   type={isPassVisible ? 'text' : 'password'}
@@ -202,7 +201,6 @@ const handleChangeForm = (e)=> {
               color="secondary"
               variant="contained"
               onClick={handleChangeForm}
-              
               sx={{
                 backgroundColor: '#088395',
                 borderTop: 2,
