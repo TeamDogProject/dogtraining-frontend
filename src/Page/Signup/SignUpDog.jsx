@@ -133,6 +133,7 @@ function SignUpDog() {
                     <input id="upload-photo" type="file" accept="image/*" />
                   </label>
                 </Typography>
+                handleChangeForm
               </Card>
             </CardContent>
 
