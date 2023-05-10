@@ -108,7 +108,7 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           <PetsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
-            variant="h6"
+            variant="h1"
             noWrap
             component="a"
             href="/"
@@ -117,6 +117,7 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
+              fontSize:24,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -154,8 +155,8 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, idx) => (
+                <MenuItem key={idx} onClick={handleCloseNavMenu}>
                   <Link
                     color={'#088395'}
                     overline= "true"
@@ -209,14 +210,11 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          
-    
-          
 
             {isLoggedIn && (
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src="#" />
                 </IconButton>
               </Tooltip>
             )}
@@ -232,8 +230,6 @@ function ResponsiveAppBar() {
               </div>
             )}
             
-
-
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

@@ -3,7 +3,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import ListDogs from './ListDogs/ListDogs';
+import ListDogs from './ListDogs/ListDogs'
 import ListBooks from './ListBooks/ListBooks';
 import ListVideos from './ListVideos/ListVideos';
 import ListCourses from './ListCourses/ListCourses';
@@ -18,7 +18,7 @@ import Box from '@mui/material/Box';
 
 function AdminDashBoard() {
 
-  const [section, setSection] = useState('dog')
+  const [section, setSection] = useState('')
 
   const showContent = () => {
     if (section === 'dog') {

@@ -8,10 +8,6 @@ import { login } from '../../services/authService'
 import { getProfile } from '../../services/userService'
 import { LogingContext } from '../../context/loginContext'
 
-
-
-
-
 function Login() {
 
   const navigate = useNavigate()
@@ -38,16 +34,16 @@ const onSignUp = () => {
    
   
     if (localStorage.getItem('token')) {
-      console.log('Inicio de sesión exitoso');
+    
       setIsLoggedIn(true)
       
       const resprofile = await getProfile();
   
       if (resprofile.role === 'admin') {
-        console.log('Perfil de administrador detectado');
+       
         navigate('/adminDashBoard');
       } else {
-        console.log('Perfil de usuario detectado');
+   
         navigate('/userDashBoard');
       }
     } else {

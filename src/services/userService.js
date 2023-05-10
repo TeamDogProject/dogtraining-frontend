@@ -1,5 +1,6 @@
+import api from "./config"
 
-import api from './config'
+// GetProfile from user when do Login
 
 const getProfile = async() => {
     try {
@@ -9,13 +10,25 @@ const getProfile = async() => {
                 'token': localStorage.getItem('token')
             }
         })
-        console.log(data)
         return data
     } catch (error) {
         return error.message
     }
 }
 
+//List All Users
+const listAllUsers = async () => {
+  try {
+    const { data } = await api.get(`/users`, {
+      headers: {
+        token: localStorage.getItem('token'),
+      },
+    })
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
 
 const getUserDogs = async () => {
 
@@ -26,7 +39,6 @@ const getUserDogs = async () => {
             'token': localStorage.getItem('token')
         }
     })
-    console.log(data)
   return data
 } catch (error){
     return error.message
@@ -103,14 +115,31 @@ const deleteUser = async () => {
             }
         }
 
+//Update a user
+
+const saveUser = async (id, obj) => {
+    try {
+       const {data} = await api.put(`/users/${id}`, obj, {
+        headers: {
+          'token': localStorage.getItem('token'),
+        }
+      });
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
+};
 
 
 export {
     getProfile,
+    listAllUsers,
     getUserDogs,
     deleteUser,
     changePassword,
     deleteDog,
     createdog,
     getMyPackages,
+    saveUser
 }

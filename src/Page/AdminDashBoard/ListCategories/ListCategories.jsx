@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import listAllCategories from '../../../services/listAllCategories';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { Box } from '@mui/material';
 import api from '../../../services/config';
-import AddNew from './AddNewCategory/AddNewCategory';
+import CreateCategoryForm  from './CreateCategoryForm/CreateCategoryForm';
+import EditCategoryForm  from './EditCategoryForm/EditCategoryForm';
+import { listAllCategories } from '../../../services/CategoryService';
+import { Button } from '@mui/material';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -19,28 +21,38 @@ const style = {
   };
 
 const ListCategories =  () => {
-    const [ categories, setCategories ] = useState([]);
-    const [categoryName, setCategoryName] = useState("");
 
-    const handleAddNewCategory = (newCategory) => {
-      setCategoryName([...categories, newCategory])
+    const [, updateState] = useState()
+    const forceUpdate = useCallback(() => updateState({}), [])
+
+    const [ categories, setCategories ] = useState([]);
+
+    const [categoryId, setCategoryId] = useState('');
+    const [categoryName, setCategoryName] = useState('');
+    const [showModal, setShowModal] = useState(false)
+
+    const handleOpen = (categoryId, categoryName) => {
+      setShowModal(true)
+      setCategoryId(categoryId)
+      setCategoryName(categoryName)
+    }
+
+    const handleClose = () => {
+      forceUpdate()
+      setShowModal(false)
     }
 
     const getCategories = async () => {
-        const result = await listAllCategories();
-        setCategories(result)
-    };
+      const result = await listAllCategories();
+      setCategories(result)
+  };
 
     useEffect(()=> {
-        getCategories();
-    })
+      getCategories();
+  });
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      onAddCategory(categoryName);
-      setCategoryName('');
-    };
 
+  
     const deleteCategory = async (id) => {
         try {
           const { data } = await api.delete(`/categories/${id}`, {
@@ -56,15 +68,15 @@ const ListCategories =  () => {
       };
     
       function displayCategories() {
-        const [open, setOpen] = React.useState(false);
-        const handleOpen = () => setOpen(true);
-        const handleClose = () => setOpen(false);
+
         return (
+          <>
+          <EditCategoryForm close={handleClose} show={showModal} categoryId={categoryId} categoryName={categoryName} />
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Box>
                 <Typography variant="h6" color="white" marginLeft={2}>
-                  List Dogs
+                  List Categories
                 </Typography>
               </Box>
             </Grid>
@@ -74,9 +86,9 @@ const ListCategories =  () => {
                     <TableHead>
                       <TableRow>
                         <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
-                          <div>
-                            <AddNew onAddCategory={handleAddNewCategory}/>
-                          </div>
+                        <div>
+                          <CreateCategoryForm/>
+                        </div>
                         </Typography>
                       </TableRow>
                       <TableRow>
@@ -98,7 +110,7 @@ const ListCategories =  () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {categories.map((category) => (
+                      {categories?.length>0 && categories.map((category) => (
                         <TableRow key={category.id}>
                           <TableCell>
                             <Typography variant="h6" style={{ color: 'white', fontSize: 17 }}>
@@ -112,8 +124,8 @@ const ListCategories =  () => {
                           </TableCell>
                           <TableCell style={{ color: 'white', fontSize: 17 }}>
                             <div>
-                              <button style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            <Button onClick={() => handleOpen(category.id,category.category_name)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                             </div>
                           </TableCell>
                         </TableRow>
@@ -121,8 +133,9 @@ const ListCategories =  () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
+            </Grid>
           </Grid>
-          </Grid>
+          </>
         );
       }
 

@@ -24,13 +24,13 @@ function Footer() {
   ]
 
   function generateFooterElements() {
-    const footerElements = elements.map((column) => {
+    const footerElements = elements.map((column, idx) => {
       return (
-        <Grid item xs={12} md={4}>
-          <Box borderBottom={1} >
+        <Grid item xs={12} md={4} key={idx}>
+          <Box borderBottom={1}>
             <Typography
               sx={{
-                fontfamily: 'monospace',
+                fontFamily: 'monospace',
                 fontSize: 12,
                 color: 'white',
                 fontWeight: 'bold',
@@ -46,7 +46,7 @@ function Footer() {
                 <Link to={`/${link.url}`}>
                   <Button
                     sx={{
-                      fontfamily: 'monospace',
+                      fontFamily: 'monospace',
                       fontSize: 9,
                       color: 'white',
                     }}
@@ -66,13 +66,13 @@ function Footer() {
   }
 
    function generateFooterElementsSocial() {
-     const footerElementsSocial = elements2.map((column) => {
+     const footerElementsSocial = elements2.map((column, idx) => {
        return (
-         <Grid item xs={12} md={4}>
-           <Box borderBottom={1} >
+         <Grid item xs={12} md={4} key={idx}>
+           <Box borderBottom={1}>
              <Typography
                sx={{
-                 fontfamily: 'monospace',
+                 fontFamily: 'monospace',
                  fontSize: 12,
                  color: 'white',
                  fontWeight: 'bold',
@@ -87,14 +87,13 @@ function Footer() {
                <Box key={idx}>
                  <Typography
                    sx={{
-                     fontfamily: 'monospace',
+                     fontFamily: 'monospace',
                      fontSize: 12,
                      color: 'white',
                      padding: 1,
                    }}
                  >
                    <a className="socialLink" href={`${link.url}`}>
-                     
                      {link.name}
                    </a>
                  </Typography>

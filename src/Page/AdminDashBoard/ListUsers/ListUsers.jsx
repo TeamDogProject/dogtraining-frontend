@@ -1,50 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import listAllUsers from '../../../services/listAllUsers';
+import React, { useCallback, useEffect, useState } from 'react';
+import { listAllUsers } from '../../../services/userService';
 import { Grid, Typography } from '@mui/material';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
+import api from '../../../services/config';
+import CreateUserForm from './CreateUserForm/CreateUserForm';
 import Button from '@mui/material/Button';
-import {Modal} from '@mui/material';
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import EditUserForm from './EditUserForm/EditUserForm';
 
 const ListUsers = () => {
 
-  const [users, setUsers] = useState([]);
+  const [refresh, updateState] = useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
+
+  const [showModal, setShowModal] = useState(false)
+
+  const [ users, setUsers] = useState([])
+
+    const [userId, setId]= useState('')
+    const [userName, setName]= useState('')
+    const [userSurname, setSurname ] = useState('')
+    const [userUserName, setUserName ] = useState('')
+    const [userEmail, setEmail ] = useState('')
+    const [userIdentityCard, setIdentityCard] = useState('')
+    const [userPassword, setPassword] = useState('')
+    const [userPhone, setPhone] = useState('')
+    const [userConfirmationPassword, setConfirmationPassword]= useState('')
+    const [userRole, setRole]= useState('')
+
+    const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
+      setShowModal(true)
+      setId(userId)
+      setName(userName)
+      setSurname(userSurname)
+      setEmail(userEmail)
+      setIdentityCard(userIdentityCard)
+      setPassword(userPassword)
+      setPhone(userPhone)
+      setConfirmationPassword(userConfirmationPassword)
+      setRole(userRole)
+      console.log(userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
+    }
+
+  const handleClose = () => {
+    forceUpdate(); 
+    setShowModal(false)
+  }
 
   const getUsers = async () => {
     const result = await listAllUsers();
     setUsers(result);
   };
-  
+
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [refresh]);
 
-  const handleDeleteButton = () => {
-    console.log('Haciendo click en el boton delete')
-  } 
-
-  const handleEditButton = () => {
-    console.log('Haciendo click en el boton edit')
-  }
+  const deleteUser = async (id) => {
+    try {
+      const { data } = await api.delete(`/users/${id}`, {
+        headers: {
+          'token': localStorage.getItem('token')
+        }
+      });
+      setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function displayUsers() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    
     return (
+    <>
+    <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userSurname={userSurname} userUserName={userUserName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole}/>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -59,23 +89,8 @@ const ListUsers = () => {
               <TableHead>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
                     <div>
-                        <Button onClick={handleOpen} style={{ marginLeft:5, backgroundColor:'green', border:'none',width:100, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>New User</Button>
-                        <Modal
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                        >
-                          <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                              Text in a modal
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                            </Typography>
-                          </Box>
-                        </Modal>
-                      </div>
+                      <CreateUserForm />
+                    </div>
                     </Typography>
               </TableHead>
               <TableRow >
@@ -88,7 +103,7 @@ const ListUsers = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user) => (
+              {users?.length>0 && users.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>
@@ -97,8 +112,8 @@ const ListUsers = () => {
                   <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                            <button onClick={handleEditButton} style={{ marginLeft:5, backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold' }}>Edit</button>
-                            <button onClick={handleDeleteButton} style={{ marginLeft:5, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
+                            <Button onClick={() => handleOpen(user.id,user.name, user.surname,user.username, user.email, user.identity_card, user.password,user.phone,user.confirmation_password, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
+                            <button  onClick={() => deleteUser(user.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
                           </div>
                     </TableCell>
                 </TableRow>
@@ -108,6 +123,7 @@ const ListUsers = () => {
         </TableContainer>
         </Grid>
       </Grid>
+    </>
     );
   }
   

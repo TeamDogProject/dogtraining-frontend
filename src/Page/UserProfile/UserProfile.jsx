@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 
 function UserProfilePage() {
+
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
   const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
@@ -36,11 +37,11 @@ function UserProfilePage() {
   const [confirmationPassword, setConfirmationPassword] = useState('') // Estado del campo confirmation_password
   const [validateConfirmation, setValidateConfirmation] = useState(null) // si hay match me cambia este estado, para cambiar color imput en función del estado
 
-  const navigate = useNavigate()
+const navigate = useNavigate()
 
-  useEffect(() => {
-    fetchUserProfile()
-  }, [])
+useEffect(() => {
+  fetchUserProfile()
+}, [])
 
   const fetchUserProfile = async () => {
     const result = await getProfile()
