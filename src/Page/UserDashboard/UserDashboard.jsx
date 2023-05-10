@@ -271,7 +271,7 @@ function UserDashboard() {
                         ></Typography>
                         <b>Url: </b>
                          
-                        <Link to={video.url}>{video.url} </Link>
+                        <Link href={video.url}>link to the video</Link> 
                       </Card>
                     ))
                   )}

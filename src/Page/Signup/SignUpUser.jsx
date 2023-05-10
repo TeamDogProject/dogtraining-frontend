@@ -197,6 +197,7 @@ function SignUpUser() {
               size="small"
               color="secondary"
               variant="contained"
+              
               sx={{
                 backgroundColor: '#088395',
                 borderTop: 2,

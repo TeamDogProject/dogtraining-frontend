@@ -101,7 +101,7 @@ function SignUpDog() {  //Registo del Perro
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              overflowY: 'scroll',
+              
             }}
             xs={12}
             sm={6}
