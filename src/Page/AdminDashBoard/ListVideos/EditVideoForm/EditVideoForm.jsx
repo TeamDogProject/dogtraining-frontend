@@ -12,7 +12,6 @@ import MenuItem from '@mui/material/MenuItem'
 import { saveVideo } from '../../../../services/VideoService'
 
 function EditVideoForm({show, close, videoId, videoUrl, videoTitle, videoDescription, videoTags}){
-    console.log(videoId, videoUrl, videoTitle, videoDescription, videoTags)
 
     const [video_url, setVideoUrl] = useState('')
     const [video_title, setVideoTitle] = useState('')
@@ -56,7 +55,7 @@ function EditVideoForm({show, close, videoId, videoUrl, videoTitle, videoDescrip
     }
 
     const handleSaveVideo = async (e) => {
-      console.log(videoId)
+    
       e.preventDefault()
       try {
         const obj = {}

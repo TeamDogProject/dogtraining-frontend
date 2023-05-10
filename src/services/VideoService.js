@@ -8,7 +8,6 @@ const listAllVideos = async () => {
         token: localStorage.getItem('token'),
       },
     })
-    console.log(data)
     return data
   } catch (error) {
     return error.message
@@ -34,7 +33,6 @@ const editVideo = async (id) => {
       token: localStorage.getItem('token'),
     },
   })
-  console.log(data)
   return data
 }
 
@@ -46,7 +44,6 @@ const saveVideo = async (id, obj) => {
         token: localStorage.getItem('token'),
       },
     })
-    console.log(data)
     return data
   } catch (err) {
     console.error(err)

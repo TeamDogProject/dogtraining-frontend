@@ -19,7 +19,6 @@ const editCategory = async (id) => {
             'token': localStorage.getItem('token')
         }
     })
-    console.log(data)
     return data;
 
 };
@@ -46,7 +45,6 @@ const saveCategory = async (id, name) => {
           'token': localStorage.getItem('token'),
         }
       });
-      console.log(data)
       return data;
     } catch (err) {
       console.error(err)

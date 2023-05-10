@@ -12,8 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { saveUser } from '../../../../services/userService'
 
 function EditUserForm({show, close, userId, userName, userSurname, userUserName, userEmail,userIdentityCard,userPassword,userPhone,userConfirmationPassword,userRole }) {
-    console.log(userId, userName, userSurname, userUserName, userEmail,userIdentityCard,userPassword,userPhone,userConfirmationPassword,userRole )
-    
+
     const [user_Name, setName]= useState(userName)
     const [user_Surname, setSurname ] = useState(userSurname)
     const [user_UserName, setUserName ] = useState(userUserName)
@@ -25,9 +24,9 @@ function EditUserForm({show, close, userId, userName, userSurname, userUserName,
     const [user_Role, setRole]= useState(userRole)
   
   
-     const handleClose = () => {
-       close()
-     }
+    const handleClose = () => {
+      close()
+    }
 
     const handleChangeName= (e) =>{
       setName(e.target.value)

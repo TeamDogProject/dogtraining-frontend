@@ -27,93 +27,81 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 
-
-
-
 function UserProfilePage() {
+
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
   const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
 
   //para el imput que cambia la contraseña
-  const [showForm, setShowForm] = useState(false);
-  const [password, setPassword] = useState(''); // Estado del campo Password
+  const [showForm, setShowForm] = useState(false)
+  const [password, setPassword] = useState('') // Estado del campo Password
   const [confirmationPassword, setConfirmationPassword] = useState('') // Estado del campo confirmation_password
   const [validateConfirmation, setValidateConfirmation] = useState(null) // si hay match me cambia este estado, para cambiar color imput en función del estado
 
-  const navigate = useNavigate()
+const navigate = useNavigate()
 
-  useEffect(() => {
-    fetchUserProfile()
-  }, [])
+useEffect(() => {
+  fetchUserProfile()
+}, [])
 
-  const fetchUserProfile = async () => {
-    const result = await getProfile()
-    setUserProfile(result)
-    console.log(result)
+const fetchUserProfile = async () => {
+  const result = await getProfile()
+  setUserProfile(result)
+}
+
+//cambia Contraseña
+const handleOpenForm = () => {
+  setShowForm(true)
+}
+
+const handleCloseForm = () => {
+  setShowForm(false)
+}
+
+const handlePasswordChange = (event) => {
+  setPassword(event.target.value)
+}
+
+  const handleConfirmationPasswordChange = (event) => {
+    setConfirmationPassword(event.target.value)
+    if (password === event.target.value) {
+      setValidateConfirmation(true)
+    } else {
+      setValidateConfirmation(false)
+    }
   }
-
-  //cambia Contraseña
-  const handleOpenForm = () => {
-    setShowForm(true);
-  };
-
-  const handleCloseForm = () => {
-    setShowForm(false);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
- 
-const handleConfirmationPasswordChange = (event) => {
-  setConfirmationPassword(event.target.value);
-  if (password === event.target.value) {
-    setValidateConfirmation(true);
-  } else {
-    setValidateConfirmation(false);
-  }
-};
-
 
   const handleUpdatePassword = async () => {
-  try {
+    try {
+      if (password !== confirmationPassword) {
+        throw new Error('Passwords do not match')
+      }
 
-    if (password !== confirmationPassword) {
-      throw new Error('Passwords do not match')
+      const data = await changePassword(password)
+      return data
+    } catch (error) {
+      console.error(error)
     }
-
-   
-    const data  = await changePassword(password)
-    console.log(data)
-    return data
-
-  } catch (error) {
-    console.error(error)
   }
-};
 
-
- 
   const handleDeleteUser2 = async () => {
     try {
       // Llamar al servicio deleteUser
-      await deleteUser();
-  
+      await deleteUser()
+
       // Si la eliminación del usuario es exitosa, eliminar el token del localStorage
-      await localStorage.removeItem('token');
-  
+      await localStorage.removeItem('token')
+
       // Actualizar el estado de la variable userToDelete si es necesario
-      setIsLoggedIn(false);
-  
-      console.log('Usuario eliminado exitosamente');
+      setIsLoggedIn(false)
+
+      console.log('Usuario eliminado exitosamente')
       navigate('/home')
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
-
 
   return (
     <div className="getProfile">
@@ -189,57 +177,56 @@ const handleConfirmationPasswordChange = (event) => {
         <CardActions>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-            
-            <>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: '#0A4D68', marginBottom: 2 }}
-              onClick={handleOpenForm}
-            >
-              <Typography
-                sx={{
-                  fontFamily: 'Roboto',
-                  fontSize: '0.875rem',
-                  color: 'white',
-                  borderRadius: 4,
-                  fontWeight: 500,
-                  lineHeight: 1.75,
-                }}
-                textAlign="center"
-              >
-                Change Password
-              </Typography>
-            </Button>
-            <Dialog open={showForm} onClose={handleCloseForm}>
-              <DialogTitle>Change Password</DialogTitle>
-              <DialogContent>
-                <TextField
-                  label="New Password"
-                  type="password"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-                <TextField
-                  label="Confirm New Password"
-                  type="password"
-                  variant="outlined"
-                  margin="normal"
-                  color={validateConfirmation ? 'success' : 'warning'}
-                  fullWidth
-                  value={confirmationPassword}
-                  onChange={handleConfirmationPasswordChange}
-                />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleCloseForm}>Cancel</Button>
-                <Button onClick={handleUpdatePassword}>Save</Button>
-              </DialogActions>
-            </Dialog>
-          </>
-       
+              <>
+                <Button
+                  variant="contained"
+                  sx={{ backgroundColor: '#0A4D68', marginBottom: 2 }}
+                  onClick={handleOpenForm}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontSize: '0.875rem',
+                      color: 'white',
+                      borderRadius: 4,
+                      fontWeight: 500,
+                      lineHeight: 1.75,
+                    }}
+                    textAlign="center"
+                  >
+                    Change Password
+                  </Typography>
+                </Button>
+                <Dialog open={showForm} onClose={handleCloseForm}>
+                  <DialogTitle>Change Password</DialogTitle>
+                  <DialogContent>
+                    <TextField
+                      label="New Password"
+                      type="password"
+                      variant="outlined"
+                      margin="normal"
+                      fullWidth
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
+                    <TextField
+                      label="Confirm New Password"
+                      type="password"
+                      variant="outlined"
+                      margin="normal"
+                      color={validateConfirmation ? 'success' : 'warning'}
+                      fullWidth
+                      value={confirmationPassword}
+                      onChange={handleConfirmationPasswordChange}
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleCloseForm}>Cancel</Button>
+                    <Button onClick={handleUpdatePassword}>Save</Button>
+                  </DialogActions>
+                </Dialog>
+              </>
+
               <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState) => (
                   <div>

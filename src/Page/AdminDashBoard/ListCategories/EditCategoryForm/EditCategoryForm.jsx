@@ -22,7 +22,6 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
   }
 
   const handleSaveCategory = async (e) => {
-    console.log(categoryId)
     e.preventDefault();
     try {
       await saveCategory(categoryId, category_name);

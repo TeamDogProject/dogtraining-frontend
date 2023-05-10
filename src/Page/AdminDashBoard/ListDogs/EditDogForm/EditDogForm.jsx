@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { saveDog } from '../../../../services/DogService'
 
 function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration }) {
-  console.log(dogPhoto, dogId, dogName, dogSex)
+
   const [dog_photo, setPhoto] = useState(dogPhoto)
   const [dog_name, setName] = useState(dogName)
   const [dog_breed, setBreed] = useState(dogBreed)

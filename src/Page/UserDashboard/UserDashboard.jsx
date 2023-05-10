@@ -2,9 +2,6 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { getUserDogs } from '../../services/userService';
 
-
-
-
 function UserDashBoard() {
   const [userDog, setUserDog] = useState([])
 
@@ -16,7 +13,6 @@ function UserDashBoard() {
   const handleUserDog = async () => {
     const result = await getUserDogs()
     setUserDog(result)
-    console.log(result)
   }
 
   return (

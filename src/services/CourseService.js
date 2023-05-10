@@ -19,7 +19,6 @@ const editCourse = async (id) => {
             'token': localStorage.getItem('token')
         }
     })
-    console.log(data)
     return data;
 };
 
@@ -44,7 +43,6 @@ const saveCourse = async (id, obj) => {
           'token': localStorage.getItem('token'),
         }
       });
-      console.log(data)
       return data;
     } catch (err) {
       console.error(err)

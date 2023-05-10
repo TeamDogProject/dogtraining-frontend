@@ -19,7 +19,6 @@ const editDog = async (id) => {
             'token': localStorage.getItem('token')
         }
     })
-    console.log(data)
     return data;
 
 };
@@ -38,14 +37,12 @@ const listAllDogs = async () => {
 //Update a dog 
 
 const saveDog = async (id, obj) => {
-    console.log(obj)
     try {
        const {data} = await api.put(`/dogs/${id}`, obj, {
         headers: {
           'token': localStorage.getItem('token'),
         }
       });
-      console.log(data)
       return data;
     } catch (err) {
       console.error(err)

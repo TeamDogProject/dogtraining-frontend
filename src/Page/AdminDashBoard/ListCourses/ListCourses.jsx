@@ -11,8 +11,8 @@ import Button from '@mui/material/Button';
 
 const ListCourses = () => { 
 
-   const [refresh, updateState] = useState()
-   const forceUpdate = useCallback(() => updateState({}), [])
+  const [refresh, updateState] = useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
   
   const [courses, setCourses] = useState([]);
 
