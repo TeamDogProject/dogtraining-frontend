@@ -90,7 +90,6 @@ function UserDashboard() {
               flexDirection: 'column',
               alignItems: 'center',
               height: { xs: 'auto', md: '100vh' },
-              height: '100vh',
               margin: '0 auto',
               backgroundColor: '#0A4D68',
               padding: '1%',
