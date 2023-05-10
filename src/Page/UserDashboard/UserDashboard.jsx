@@ -43,14 +43,17 @@ function UserDashboard() {
     setOnGetPackages(data)
   }
 
-  const handleDeleteDog = (id) => {
+  const handleDeleteDog = async(id) => {
     try {
       setOnDeleteDog(true)
       setOnGetPackages(false)
-      deleteDog(id)
-      location.reload()
+      const data = await deleteDog(id)
+     
+     
 
-      if (onDeleteDog === true) console.log('Dog deleted')
+      if (onDeleteDog === true) 
+      location.reload()
+      console.log('Dog deleted')
     } catch (error) {
       console.error(error)
     }
@@ -61,6 +64,7 @@ function UserDashboard() {
     setMyDogs(false)
     setOnGetPackages(false)
     setOnVideos(false)
+    
   }
 
   const getMyDogs = async () => {
@@ -269,7 +273,7 @@ function UserDashboard() {
                         ></Typography>
                         <b>Url: </b>
                          
-                        <Link to={video.url}>{video.url} </Link>
+                        <Link href={video.url}>link to the video</Link> 
                       </Card>
                     ))
                   )}

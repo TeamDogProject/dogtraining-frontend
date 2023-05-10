@@ -28,6 +28,10 @@ function SignUpUser() {
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
+const handleChangeForm = (e)=> {
+  
+}
+
   const handlePassword = (e) => {
     setPassword(e.target.value)
     if (
@@ -197,6 +201,8 @@ function SignUpUser() {
               size="small"
               color="secondary"
               variant="contained"
+              onClick={handleChangeForm}
+              
               sx={{
                 backgroundColor: '#088395',
                 borderTop: 2,

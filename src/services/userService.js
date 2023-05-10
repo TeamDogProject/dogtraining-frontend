@@ -45,6 +45,7 @@ const getUserDogs = async () => {
 }
 }
 
+
  const deleteDog = async (id) => {
     try {
         const { data } = await api.delete(`/dogs/${id}`, {
