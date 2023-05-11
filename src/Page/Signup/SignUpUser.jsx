@@ -8,7 +8,7 @@ import {
   Button,
   Grid,
 } from '@mui/material'
-
+import { useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import { VisibilityOff, Lock, Visibility, Password } from '@mui/icons-material'
 import './SignUpPage.css'
@@ -25,7 +25,8 @@ function SignUpUser() {
   const [confirmation_password, setConfirmation_password] = useState('')
   const [password, setPassword] = useState('')
 
-
+  const navigate = useNavigate()
+  
   const [isPassVisible, setIsPassVisible] = useState(false)
 
 const handleChangeForm = async ()=> {
@@ -42,6 +43,7 @@ const handleChangeForm = async ()=> {
   try {
     if (validatePassword && validateEmail ) {
        const result = await SignUpService(form)
+        navigate('/UserDashboard')
     } 
   } catch (error) {
     console.log(error)
