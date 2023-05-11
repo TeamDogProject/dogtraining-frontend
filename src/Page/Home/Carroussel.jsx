@@ -7,51 +7,51 @@ import { Link } from 'react-router-dom';
 function CarouselRatio() {
 
     var items = [
-        {
-            src: "../../src/assets/Images/Sin Ansiedad.jpg",
-            name: "Sin Ansiedad",
-            description: "Enseña a tu perro a gestionar su ansiedad",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg",
-            name: "Reactividad",
-            description: "Aprende a controlar las reacciones de tu perro",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/VTLECU25XL.jpg",
-            name: "Gestión del miedo",
-            description: "Ayuda a tu perro a superar sus miedos",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/UKITL3S9TC.jpg",
-            name: "Frustración",
-            description: "Enseña a tu perro a gestionar su frustración",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/UT7IO1NLVQ.jpg",
-            name: "Obediencia Básica",
-            description: "Adiestramiento básico del perro",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/3JEC5JEU7O.jpg",
-            name: "Obediencia Avanzada",
-            description: "Adiestramiento avanzado del perro",
-        },
-        {
-            src: "../../src/assets/Images/Cachorros.jpg",
-            name: "Club Cachorro",
-            description: "Diviértete con tu cachorro mientras socializa",
-        },
-        {
-            src: "https://cdn.stocksnap.io/img-thumbs/280h/animals-dogs_HBPNY9BJPY.jpg",
-            name: "Olimpiadas Caninas",
-            description: "Disfruta y compite con otros perros",
-        },
-        {
-            src: "https://www.prensalibre.com/wp-content/uploads/2020/03/Fotos-Arca-de-No%C3%A9-MARZO2020_0002_Layer-21.jpg?resize=1024,671",
-            name: "Salud Comportamental",
-            description: "Enseña comportamientos saludables a tu perro",
-        },
+      {
+        src: 'https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg',
+        name: 'Sin Ansiedad',
+        description: 'Enseña a tu perro a gestionar su ansiedad',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/husky-animal_FP9GIIHY0F.jpg',
+        name: 'Reactividad',
+        description: 'Aprende a controlar las reacciones de tu perro',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/VTLECU25XL.jpg',
+        name: 'Gestión del miedo',
+        description: 'Ayuda a tu perro a superar sus miedos',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/UKITL3S9TC.jpg',
+        name: 'Frustración',
+        description: 'Enseña a tu perro a gestionar su frustración',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/UT7IO1NLVQ.jpg',
+        name: 'Obediencia Básica',
+        description: 'Adiestramiento básico del perro',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/3JEC5JEU7O.jpg',
+        name: 'Obediencia Avanzada',
+        description: 'Adiestramiento avanzado del perro',
+      },
+      {
+        src: 'https://images.prismic.io/wisdom/2fabb777-59dc-4963-a38f-8bd8132c7e10_shutterstock_1048123303_cropped.jpg?auto=compress%2Cformat&rect=241%2C0%2C1440%2C1080&w=1020&h=615',
+        name: 'Club Cachorro',
+        description: 'Diviértete con tu cachorro mientras socializa',
+      },
+      {
+        src: 'https://cdn.stocksnap.io/img-thumbs/280h/animals-dogs_HBPNY9BJPY.jpg',
+        name: 'Olimpiadas Caninas',
+        description: 'Disfruta y compite con otros perros',
+      },
+      {
+        src: 'https://www.prensalibre.com/wp-content/uploads/2020/03/Fotos-Arca-de-No%C3%A9-MARZO2020_0002_Layer-21.jpg?resize=1024,671',
+        name: 'Salud Comportamental',
+        description: 'Enseña comportamientos saludables a tu perro',
+      },
     ]
 
     return (
