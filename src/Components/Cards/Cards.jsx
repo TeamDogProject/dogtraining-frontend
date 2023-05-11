@@ -22,7 +22,7 @@ function MediaCard() {
         <Card sx={{ maxWidth: 500, marginBottom: 10, boxShadow: 0 }}>
           <CardMedia
             sx={{ height: 250 }}
-            image="https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg"
+            image="https://cdn.stocksnap.io/img-thumbs/960w/dog-animal_JM6KOTW1NW.jpg"
             title="Sin Ansiedad"
           />
           <CardContent

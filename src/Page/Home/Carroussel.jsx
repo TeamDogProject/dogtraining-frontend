@@ -8,7 +8,7 @@ function CarouselRatio() {
 
     var items = [
       {
-        src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fheadsupfortails.com%2Fblogs%2Fdogs%2Fhow-to-make-a-dog-happy&psig=AOvVaw1XOEd2fW7ySu4RnOhyjCYl&ust=1683896683111000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJjwm4-q7f4CFQAAAAAdAAAAABAF',
+        src: 'https://cdn.stocksnap.io/img-thumbs/960w/dog-animal_JM6KOTW1NW.jpg',
         name: 'Sin Ansiedad',
         description: 'Enseña a tu perro a gestionar su ansiedad',
       },
