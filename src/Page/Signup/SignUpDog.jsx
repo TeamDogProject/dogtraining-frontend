@@ -53,7 +53,7 @@ function SignUpDog() {
           <Card
             sx={{
               display: 'flex',
-              flexDirection: 'row',
+              flexDirection: 'column',
               alignContent: 'center',
               width: '800px',
               backgroundColor: 'white',
@@ -63,7 +63,10 @@ function SignUpDog() {
             }}
           >
             <CardContent sx={{ marginLeft: 5 }}>
-              <CardHeader title="Dog Registration Form"></CardHeader>
+              <CardHeader
+                sx={{ marginTop: '100px' }}
+                title="Dog Registration Form"
+              ></CardHeader>
               <TextField
                 sx={{ width: 500 }}
                 label="Dog Name"

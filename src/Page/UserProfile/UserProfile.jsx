@@ -99,7 +99,7 @@ useEffect(() => {
       setIsLoggedIn(false)
 
       console.log('Usuario eliminado exitosamente')
-      navigate('/home')
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
