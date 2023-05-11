@@ -1,15 +1,16 @@
 import api from "./config";
 
-const SignUpService = async (obj)=> {
+const SignUpService = async (form)=> {
     console.log('creating user...')
     try { 
-        const data = await api.post('/auth/signup', obj, {
+        const {data} = await api.post('/auth/signup', form, {
       
-    
+      
     })
+    localStorage.setItem('token', data.token)
     console.log(data)
     return data
-    localStorage.setItem('token', data.token)
+   
     } catch (error) {
         console.log(error)
     }

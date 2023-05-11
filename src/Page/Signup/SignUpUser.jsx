@@ -3,7 +3,6 @@ import {
   CardHeader,
   TextField,
   IconButton,
-  Divider,
   CardActions,
   CardContent,
   Button,
@@ -18,33 +17,58 @@ import SignUpService from '../../services/SignUpService'
 function SignUpUser() {
   const [name, setName] = useState('')
   const [surname, setSurName] = useState('')
-  const [userName, setUserName] = useState('')
-  const [userDNI, setUserDNI] = useState('')
-  const [userEmail, setUserEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [identity_card, setIdentity_card] = useState('')
+  const [email, setEmail] = useState('')
   const [userConfirmEmail, setUserConfirmEmail] = useState('')
-  const [userPhone, setUserPhone] = useState('')
-  const [userConfirmPassword, setconfirmPassword] = useState('')
-  const [userPassword, setUserPassword] = useState('')
-  const [similarPassword, setNotSimilarPassword] = useState(false)
+  const [phone, setPhone] = useState('')
+  const [confirmation_password, setConfirmation_password] = useState('')
+  const [password, setPassword] = useState('')
+
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
 const handleChangeForm = async ()=> {
-  const form = { name, surname,userName,userDNI,userEmail,userPhone,userPassword} 
-  const result = await SignUpService(form)
+  const form = {
+    name,
+    surname,
+    username,
+    identity_card,
+    email,
+    phone,
+    password,
+    confirmation_password,
+  } 
+  try {
+    if (validatePassword && validateEmail ) {
+       const result = await SignUpService(form)
+    } 
+  } catch (error) {
+    console.log(error)
+  } 
+  
   
 }
 
+const validatePassword =() =>{
+  return password === confirmation_password
+}
+
+const validateEmail= ()=> {
+  return email === userConfirmEmail
+}
+
+
 const passwordLength = ()=>{
-  return userPassword.length > 8
+  return password.length > 8
 }
 
   const handlePassword = (e) => {
-    setUserPassword(e.target.value)
+    setPassword(e.target.value)
   }
 
   const handleConfirmPassword = (e) => {
-    setconfirmPassword(e.target.value)
+    setConfirmation_password(e.target.value)
   }
 
   const handlePass = (e) => {
@@ -62,18 +86,18 @@ const passwordLength = ()=>{
   setUserConfirmEmail(e.target.value)
  }
   const handleChangeUserName = (e) => {
-    setUserName(e.target.value)
+    setUsername(e.target.value)
   }
   const handleChangeUserDNI = (e) => {
-    setUserDNI(e.target.value)
+    setIdentity_card(e.target.value)
   }
 
   const handleChangeUserEmail = (e) => {
-    setUserEmail(e.target.value)
+    setEmail(e.target.value)
   }
 
   const handleChangeUserPhone = (e) => {
-    setUserPhone(e.target.value)
+    setPhone(e.target.value)
   }
 
   return (
@@ -143,6 +167,7 @@ const passwordLength = ()=>{
                   label="Confirm Email"
                   variant="outlined"
                   margin="dense"
+                  color={validateEmail() ? 'success' : 'warning'}
                   onChange={handleChangeConfirmUserEmail}
                 />
               </Grid>
@@ -172,6 +197,7 @@ const passwordLength = ()=>{
                   onChange={handleConfirmPassword}
                   variant="outlined"
                   margin="dense"
+                  color={validatePassword() ? 'success' : 'warning'}
                   type={isPassVisible ? 'text' : 'password'}
                   InputProps={{
                     startAdornment: <Lock />,
