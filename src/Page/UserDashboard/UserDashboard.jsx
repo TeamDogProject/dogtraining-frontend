@@ -41,19 +41,16 @@ function UserDashboard() {
     setOnGetPackages(data)
   }
 
-  const handleDeleteDog = async(id) => {
+  const handleDeleteDog = async(id) => { //función elimina perros
     try {
       setOnDeleteDog(true)
       setOnGetPackages(false)
       const data = await deleteDog(id)
-     
-     
 
       if (onDeleteDog === true) 
        location.reload() 
     
-      console.log('Dog deleted')
-      
+      alert('Dog deleted')     
     } catch (error) {
       console.error(error)
     }
@@ -64,12 +61,10 @@ function UserDashboard() {
     setMyDogs(false)
     setOnGetPackages(false)
     setOnVideos(false)
-   
-     
   } 
 
 
-  const getMyDogs = async () => {
+  const getMyDogs = async () => { //función listado de perros usuario
     try {
       setMyDogs(true)
       setNewdog(false)
@@ -105,10 +100,10 @@ function UserDashboard() {
               sx={{
                 width: 150,
                 display: 'flex',
-                backgroundColor: '#088395',
-                color: 'white',
+                backgroundColor:'#088395',
+                color:'white',
                 border: 1,
-                borderColor: '#0A4D68',
+                borderColor:'#0A4D68',
                 margin: '0 auto',
               }}
               onClick={createDogForm}
