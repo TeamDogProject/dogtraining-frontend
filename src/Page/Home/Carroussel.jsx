@@ -8,7 +8,7 @@ function CarouselRatio() {
 
     var items = [
       {
-        src: 'https://los40es00.epimg.net/los40/imagenes/2021/05/26/actualidad/1622021442_567221_1622021709_gigante_normal.jpg',
+        src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fheadsupfortails.com%2Fblogs%2Fdogs%2Fhow-to-make-a-dog-happy&psig=AOvVaw1XOEd2fW7ySu4RnOhyjCYl&ust=1683896683111000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJjwm4-q7f4CFQAAAAAdAAAAABAF',
         name: 'Sin Ansiedad',
         description: 'Enseña a tu perro a gestionar su ansiedad',
       },
