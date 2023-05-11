@@ -26,7 +26,6 @@ import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 
 function UserProfilePage() {
-
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
   const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
@@ -37,14 +36,14 @@ function UserProfilePage() {
   const [confirmationPassword, setConfirmationPassword] = useState('') // Estado del campo confirmation_password
   const [validateConfirmation, setValidateConfirmation] = useState(null) // si hay match me cambia este estado, para cambiar color imput en función del estado
 
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
-useEffect(() => {
-  fetchUserProfile()
-}, [])
+  useEffect(() => {
+    fetchUserProfile()
+  }, [])
 
   const fetchUserProfile = async () => {
-    const result = await getProfile()
+    const result = await getProfile() //llamada al servicio 
     setUserProfile(result)
   }
 
@@ -77,14 +76,12 @@ useEffect(() => {
       }
 
       const data = await changePassword(password)
-      location.reload();
-      
+      location.reload()
+
       return data
-      
     } catch (error) {
       console.error(error)
     }
-   
   }
 
   const handleDeleteUser2 = async () => {
@@ -99,7 +96,7 @@ useEffect(() => {
       setIsLoggedIn(false)
 
       console.log('Usuario eliminado exitosamente')
-      navigate('/')
+      navigate('/home')
     } catch (error) {
       console.error(error)
     }
@@ -111,7 +108,6 @@ useEffect(() => {
         sx={{
           padding: 5,
           width: '100%',
-
           maxWidth: '800px',
           margin: '0 auto',
           backgroundColor: 'white',
@@ -122,9 +118,6 @@ useEffect(() => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Paper
-                item
-                xs={12}
-                sm={6}
                 sx={{
                   backgroundColor: '#088395',
                   maxWidth: '800px',
@@ -135,7 +128,6 @@ useEffect(() => {
                   textAlignLast: 'center',
                   margin: '0 auto',
                   marginBottom: 4,
-                
                 }}
               >
                 <CardHeader
@@ -145,9 +137,6 @@ useEffect(() => {
               </Paper>
 
               <Paper
-                item
-                xs={12}
-                sm={6}
                 sx={{ padding: 2, backgroundColor: '#088395', color: 'white' }}
               >
                 <Typography variant="body1">
@@ -209,7 +198,7 @@ useEffect(() => {
                       variant="outlined"
                       margin="normal"
                       fullWidth
-                      value={password} 
+                      value={password}
                       onChange={handlePasswordChange}
                     />
                     <TextField

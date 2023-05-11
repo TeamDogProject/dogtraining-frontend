@@ -8,7 +8,6 @@ import {
   CardHeader,
   Typography,
   Card,
-  Divider,
   Link
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
@@ -68,7 +67,6 @@ function UserDashboard() {
    
      
   } 
-  
 
 
   const getMyDogs = async () => {
@@ -170,38 +168,54 @@ function UserDashboard() {
               <Box
                 xs={12}
                 sm={6}
+                md={9}
                 sx={{
-                  maxWidth: '500px',
+                  maxWidth: '800px',
                   margin: '0 auto',
-                  height: { xs: 'auto', md: '100vh' },
+                  flexWrap: 'wrap',
+                  display: 'flex',
                 }}
               >
                 {newDog && <SignUpDog />}
               </Box>
 
               {onGetPackages && (
-                <Paper
+                <Paper //sección Packages
                   item
                   xs={12}
                   sm={6}
                   sx={{
-                    backgroundColor: '#088395',
-                    maxWidth: '500px',
+                    backgroundColor: 'white',
+                    Width: '100%',
+                    height: '100%',
                     color: 'white',
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexWrap: 'wrap',
                     justifyContent: 'center',
-                    textAlignLast: 'center',
+                    textAlign: 'center',
                     margin: '0 auto',
                     marginBottom: 4,
                   }}
                 >
                   <CardHeader
                     title="My Packages"
-                    sx={{ width: '100%', maxWidth: '500px' }}
+                    sx={{
+                      width: '100%',
+                      display: 'block',
+                      margin: '0 auto',
+                      color: '#088395',
+                    }}
                   />
                   {onGetPackages.map((pack) => (
-                    <Card>
+                    <Card
+                      sx={{
+                        marginLeft: 2,
+                        marginRight: 2,
+                        marginBottom: 4,
+                        border: '2px solid #088395',
+                        width: 300,
+                      }}
+                    >
                       <Typography
                         variant="body1"
                         key={pack.id}
@@ -224,38 +238,38 @@ function UserDashboard() {
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Place:</b> {pack.place}
                       </Typography>
-                      <Divider
-                        sx={{
-                          border: 3,
-                          borderColor: '#0A4D68',
-                          margin: '0 auto',
-                        }}
-                      ></Divider>
+                    
                     </Card>
                   ))}
                 </Paper>
               )}
 
               {onVideos && (
-                <Paper
+                <Paper //Sección Videos
                   item
                   xs={12}
                   sm={6}
                   sx={{
-                    backgroundColor: '#088395',
-                    maxWidth: '500px',
+                    backgroundColor: 'white',
+                    Width: '100%',
+                    height: '100%',
                     color: 'white',
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexWrap: 'wrap',
                     justifyContent: 'center',
-                    textAlignLast: 'center',
+                    textAlign: 'center',
                     margin: '0 auto',
                     marginBottom: 4,
                   }}
                 >
                   <CardHeader
-                    title="My dogs"
-                    sx={{ width: '100%', maxWidth: '500px' }}
+                    title="My videos"
+                    sx={{
+                      width: '100%',
+                      display: 'block',
+                      margin: '0 auto',
+                      color: '#088395',
+                    }}
                   />
 
                   {onVideos.map((category) => {
@@ -264,7 +278,15 @@ function UserDashboard() {
 
                   {onVideos.map((category) =>
                     category.videos.map((video) => (
-                      <Card>
+                      <Card
+                        sx={{
+                          marginLeft: 2,
+                          marginRight: 2,
+                          marginBottom: 4,
+
+                          border: '2px solid #088395',
+                        }}
+                      >
                         <Typography
                           variant="body1"
                           key={video.id}
@@ -293,11 +315,12 @@ function UserDashboard() {
                   xs={12}
                   sm={6}
                   sx={{
-                    backgroundColor: '#088395',
-                    maxWidth: '500px',
+                    backgroundColor: 'white',
+                    Width: '100%',
+                    height: '100%',
                     color: 'white',
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexWrap: 'wrap',
                     justifyContent: 'center',
                     textAlign: 'center',
                     margin: '0 auto',
@@ -305,12 +328,25 @@ function UserDashboard() {
                   }}
                 >
                   <CardHeader
-                    title="User Profile"
-                    sx={{ width: '100%', maxWidth: '500px' }}
+                    title="User Dogs"
+                    sx={{
+                      width: '100%',
+                      display: 'block',
+                      margin: '0 auto',
+                      color: '#088395',
+                    }}
                   />
 
                   {onDog.map((dog) => (
-                    <Card>
+                    <Card
+                      sx={{
+                        marginLeft: 2,
+                        marginRight: 2,
+                        marginBottom: 4,
+
+                        border: '2px solid #088395',
+                      }}
+                    >
                       <Typography
                         variant="body1"
                         key={dog.id}
