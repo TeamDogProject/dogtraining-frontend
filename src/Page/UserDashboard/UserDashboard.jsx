@@ -24,10 +24,6 @@ function UserDashboard() {
   const [onGetPackages, setOnGetPackages] = useState(false)
   const [onVideos, setOnVideos] = useState(false)
 
-
-
-  
-
   const handlerCategories = async () => {
     setNewdog(false)
     setMyDogs(false)
@@ -93,7 +89,7 @@ function UserDashboard() {
 
   return (
     <React.Fragment>
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
         <Grid item xs={12} md={3}>
           <Box
             sx={{
@@ -148,7 +144,7 @@ function UserDashboard() {
               }}
               onClick={handleGetPackages}
             >
-              GetPackages
+              Get Packages
             </Button>
 
             <Button
@@ -172,10 +168,13 @@ function UserDashboard() {
           <Box>
             <>
               <Box
-                item
                 xs={12}
                 sm={6}
-                sx={{ maxWidth: '500px', margin: '0 auto' }}
+                sx={{
+                  maxWidth: '500px',
+                  margin: '0 auto',
+                  height: { xs: 'auto', md: '100vh' },
+                }}
               >
                 {newDog && <SignUpDog />}
               </Box>
@@ -280,8 +279,8 @@ function UserDashboard() {
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
                         <b>Url: </b>
-                         
-                        <Link href={video.url}>link to the video</Link> 
+
+                        <Link href={video.url}>link to the video</Link>
                       </Card>
                     ))
                   )}
