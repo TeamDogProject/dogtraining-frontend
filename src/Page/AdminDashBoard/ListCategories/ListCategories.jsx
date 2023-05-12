@@ -22,7 +22,7 @@ const style = {
 
 const ListCategories =  () => {
 
-    const [, updateState] = useState()
+    const [refresh, updateState] = useState()
     const forceUpdate = useCallback(() => updateState({}), [])
 
     const [ categories, setCategories ] = useState([]);
@@ -49,7 +49,7 @@ const ListCategories =  () => {
 
     useEffect(()=> {
       getCategories();
-  }, []);
+  }, [refresh]);
 
 
   
