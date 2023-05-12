@@ -94,6 +94,9 @@ function UserDashboard() {
               backgroundColor: '#0A4D68',
               padding: '1%',
               border: '2px #088395 solid',
+              minHeight: { xs: 'auto', md: '1000px' },
+              paddingTop: '40px', 
+              paddingBottom: '40px'
             }}
           >
             <Button
@@ -137,7 +140,7 @@ function UserDashboard() {
               }}
               onClick={handleGetPackages}
             >
-              Get Packages
+              Courses Packages
             </Button>
 
             <Button
@@ -161,6 +164,7 @@ function UserDashboard() {
           <Box>
             <>
               <Box
+                item
                 xs={12}
                 sm={6}
                 md={9}
@@ -195,7 +199,7 @@ function UserDashboard() {
                   }}
                 >
                   <CardHeader
-                    title="My Packages"
+                    title="Courses Packages"
                     sx={{
                       width: '600px',
                       display: 'block',
@@ -203,8 +207,8 @@ function UserDashboard() {
                       color: '#088395',
                     }}
                   />
-                  {onGetPackages.map((pack) => (
-                    <Card
+                  {onGetPackages.map((pack, idx) => (
+                    <Card key={idx}
                       sx={{
                         marginLeft: 2,
                         marginRight: 2,
@@ -215,7 +219,7 @@ function UserDashboard() {
                     >
                       <Typography
                         variant="body1"
-                        key={pack.id}
+                        
                         sx={{ display: 'flex', marginLeft: 2 }}
                       >
                         <b> Package Name: </b>
@@ -279,8 +283,8 @@ function UserDashboard() {
                   })}
 
                   {onVideos.map((category) =>
-                    category.videos.map((video) => (
-                      <Card
+                    category.videos.map((video, idx) => (
+                      <Card key={idx}
                         sx={{
                           marginLeft: 2,
                           marginRight: 2,
@@ -296,7 +300,7 @@ function UserDashboard() {
                       >
                         <Typography
                           variant="body1"
-                          key={video.id}
+                          
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
                           <b> Title: </b>
@@ -304,7 +308,7 @@ function UserDashboard() {
                         </Typography>
                         <Typography
                           variant="body1"
-                          key={video.id}
+                       
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
                         <Typography
@@ -345,13 +349,13 @@ function UserDashboard() {
                     border: 0,
                     Width: '100%',
                     height: '100%',
-                    color: 'white',
+                    color: 'red',
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
                     textAlign: 'center',
                     margin: '0 auto',
-                    marginBottom: 4,
+                    marginBottom: 0,
                   }}
                 >
                   <CardHeader
@@ -362,6 +366,7 @@ function UserDashboard() {
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
+                    
                     }}
                   />
 
