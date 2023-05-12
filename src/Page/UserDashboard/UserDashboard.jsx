@@ -164,6 +164,7 @@ function UserDashboard() {
           <Box>
             <>
               <Box
+                item
                 xs={12}
                 sm={6}
                 md={9}
@@ -206,8 +207,8 @@ function UserDashboard() {
                       color: '#088395',
                     }}
                   />
-                  {onGetPackages.map((pack) => (
-                    <Card
+                  {onGetPackages.map((pack, idx) => (
+                    <Card key={idx}
                       sx={{
                         marginLeft: 2,
                         marginRight: 2,
@@ -218,7 +219,7 @@ function UserDashboard() {
                     >
                       <Typography
                         variant="body1"
-                        key={pack.id}
+                        
                         sx={{ display: 'flex', marginLeft: 2 }}
                       >
                         <b> Package Name: </b>
@@ -282,8 +283,8 @@ function UserDashboard() {
                   })}
 
                   {onVideos.map((category) =>
-                    category.videos.map((video) => (
-                      <Card
+                    category.videos.map((video, idx) => (
+                      <Card key={idx}
                         sx={{
                           marginLeft: 2,
                           marginRight: 2,
@@ -299,7 +300,7 @@ function UserDashboard() {
                       >
                         <Typography
                           variant="body1"
-                          key={video.id}
+                          
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
                           <b> Title: </b>
@@ -307,7 +308,7 @@ function UserDashboard() {
                         </Typography>
                         <Typography
                           variant="body1"
-                          key={video.id}
+                       
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
                         <Typography
