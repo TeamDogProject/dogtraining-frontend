@@ -81,7 +81,7 @@ function SignUpDog() {  //Registo del Perro
 
   return (
     <>
-      <div className="containerSignUp">
+      <Grid sx={{ marginBottom: '100px' }} container spacing={0}>
         <Card
           xs={12}
           sm={6}
@@ -94,7 +94,9 @@ function SignUpDog() {  //Registo del Perro
             padding: 1,
             border: '2px #088395 solid',
             justifyContent: 'center',
-            marginBottom: '40px'
+            height: '100%',
+            width: '600px',
+            margin: ' 0 auto',
           }}
         >
           <CardContent
@@ -119,7 +121,13 @@ function SignUpDog() {  //Registo del Perro
 
             <Grid item xs={12} sm={6} md={9}>
               <TextField
-                sx={{ marginLeft: 0, display: 'flex' }}
+                sx={{
+                  marginLeft: 0,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  textAlign: 'center',
+                }}
                 label="Breed of dog"
                 variant="outlined"
                 margin="dense"
@@ -185,13 +193,13 @@ function SignUpDog() {  //Registo del Perro
                 fontFamily: 'roboto',
                 display: 'flex',
                 flexDirection: 'column',
-                
                 marginTop: '10px',
                 paddingLeft: '10px',
                 maxWidth: '410px',
+                overflow: 'visible',
               }}
             >
-              <Grid item xs={12} sm={6} md={9}>
+              <Grid item xs={12} sm={6} md={9} sx={{ height: '100%' }}>
                 <Typography
                   item
                   xs={12}
@@ -205,7 +213,8 @@ function SignUpDog() {  //Registo del Perro
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'start',
-
+                    height: '100%',
+                    width: '100',
                     textAlign: 'start',
                   }}
                 >
@@ -216,7 +225,7 @@ function SignUpDog() {  //Registo del Perro
                     md={9}
                     className="uploadPhoto"
                   >
-                    Select a photo of your dog
+                    Select a photo
                     <input
                       className="inputUpload"
                       onChange={handlePhoto}
@@ -251,7 +260,7 @@ function SignUpDog() {  //Registo del Perro
             </Grid>
           </CardActions>
         </Card>
-      </div>
+      </Grid>
     </>
   )
 }
