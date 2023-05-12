@@ -10,7 +10,7 @@ import { useState } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
 
-function CreateDogForm(closeCreate, showCreate) {
+function CreateDogForm({closeCreate, showCreate}) {
 
   const [ dog_photo, setPhoto ] = useState('');
   const [ dog_name, setName ]= useState('');
@@ -186,7 +186,7 @@ function CreateDogForm(closeCreate, showCreate) {
                 onChange={handleChangeValoration}
                 sx={{ width: 300, marginLeft: 35 }}
               />
-              <button
+              <Button
                 type="submit"
                 style={{
                   marginTop: 15,
@@ -201,8 +201,8 @@ function CreateDogForm(closeCreate, showCreate) {
                   fontWeight: 'bold',
                 }}
               >
-                Send
-              </button>
+                Create
+              </Button>
             </form>
           </Typography>
         </Box>

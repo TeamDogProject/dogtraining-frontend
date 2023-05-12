@@ -18,8 +18,10 @@ function EditVideoForm({show, close, videoId, videoUrl, videoTitle, videoDescrip
     const [video_description, setVideoDescription] = useState('')
     const [video_tags, setVideoTags] = useState('')
 
-
-    const handleClose = () => close()
+    const handleClose = () => {
+    close();
+  }
+ 
 
     const handleChangeVideoUrl = (e) => {
     setVideoUrl(e.target.value)
@@ -35,11 +37,6 @@ function EditVideoForm({show, close, videoId, videoUrl, videoTitle, videoDescrip
 
     const handleChangeVideoTags = (e) => {
       setVideoTags(e.target.value)
-    }
-
-    const getVideos = async () => {
-      const result = await listAllVideos()
-      setVideos(result)
     }
 
     const style = {
@@ -73,6 +70,7 @@ function EditVideoForm({show, close, videoId, videoUrl, videoTitle, videoDescrip
         }
         
         await saveVideo( videoId, obj)
+        handleClose();
       } catch (error) {
         console.log(error)
       }
@@ -109,6 +107,16 @@ return (
             />
             <FormLabel sx={{ width: 300, marginLeft: 20 }}>
               Title
+            </FormLabel>
+            <TextField
+              type="text"
+              variant="outlined"
+              placeholder={videoTitle}
+              onChange={handleChangeVideoTitle}
+              sx={{ width: 300, marginLeft: 20 }}
+            />
+            <FormLabel sx={{ width: 300, marginLeft: 20 }}>
+              Description
             </FormLabel>
             <TextField
               type="text"

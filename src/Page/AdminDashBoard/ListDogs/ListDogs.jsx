@@ -16,6 +16,7 @@ const ListDogs = () => {
   const [dogs, setDogs] = useState([]);
 
   const[showModal, setShowModal] = useState(false)
+  const[showModalCreate, setShowModalCreate] = useState(false)
 
   const [dogId, setDogId ] = useState('');
   const [dogPhoto, setDogPhoto ] = useState('');
@@ -47,6 +48,15 @@ const ListDogs = () => {
     setShowModal(false)
   }
 
+  const handleOpenCreate = () => {
+      setShowModalCreate(true)
+    }
+  
+   const handleCloseCreate = () => {
+    forceUpdate()
+    setShowModalCreate(false)
+  }
+
   const getDogs = async () => {
     const result = await listAllDogs();
     setDogs(result);
@@ -74,7 +84,24 @@ const ListDogs = () => {
     
     return (
       <>
+      <Button
+              onClick={() => handleOpenCreate()}
+              style={{
+                marginLeft: 5,
+                backgroundColor: 'green',
+                border: 'none',
+                width: 135,
+                height: 35,
+                borderRadius: 5,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 'bold',
+              }}
+            >
+              New Dog
+      </Button>
       <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogPhoto={dogPhoto} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
+      <CreateDogForm closeCreate={handleCloseCreate} showCreate={showModalCreate}/>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>

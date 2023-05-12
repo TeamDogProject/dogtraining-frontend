@@ -7,17 +7,13 @@ import Typography from '@mui/material/Typography'
 import { createVideo } from '../../../../services/VideoService'
 import { FormLabel } from '@mui/material'
 import { useState } from 'react'
-import { listAllVideos } from '../../../../services/VideoService'
-import { useEffect } from 'react'
 
 
-function CreateVideoForm() {
+function CreateVideoForm({closeCreate, showCreate}) {
 
-    const [open, setOpen] = React.useState(false)
-    const [videos, setVideos] = useState([])
-
-    const handleOpen = () => setOpen(true)
-    const handleClose = () => setOpen(false)
+  const handleCloseCreate = () => {
+    closeCreate()
+  }
 
     const [video_url, setVideoUrl] = useState('')
     const [video_title, setVideoTitle] = useState('')
@@ -40,9 +36,20 @@ function CreateVideoForm() {
       setVideoTags(e.target.value)
     }
 
-    const getVideos = async () => {
-      const result = await listAllVideos()
-      setVideos(result)
+    const handleSubtmit = async (e) => {
+      e.preventDefault()
+      const createNewVideo = {
+        url: video_url,
+        title: video_title,
+        description: video_description,
+        tags: video_tags,
+      }
+      try {
+        await createVideo(createNewVideo)
+        handleCloseCreate()
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     const style = {
@@ -57,44 +64,11 @@ function CreateVideoForm() {
     p: 4,
     }
 
-    useEffect(() => {
-      getVideos()
-    }, [])
-
-    const handleSubtmit = async (e) => {
-      e.preventDefault()
-      const createNewVideo = {
-        url: course_name,
-        title: course_description,
-        description: course_duration,
-        tags: course_price,
-       
-      }
-      await createVideo(createNewVideo)
-      setVideos(getVideos())
-    }
-
     return (
       <div>
-        <Button
-          onClick={handleOpen}
-          style={{
-            marginLeft: 5,
-            backgroundColor: 'green',
-            border: 'none',
-            width: 135,
-            height: 35,
-            borderRadius: 5,
-            color: 'white',
-            fontSize: 15,
-            fontWeight: 'bold',
-          }}
-        >
-          New Video
-        </Button>
         <Modal
-          open={open}
-          onClose={handleClose}
+          open={showCreate}
+          onClose={handleCloseCreate}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -105,7 +79,7 @@ function CreateVideoForm() {
               component="h2"
               sx={{ width: 300, marginLeft: 25 }}
             >
-              Create Course Form
+              Create Video Form
             </Typography>
             <Typography
               id="modal-modal-description"
@@ -148,7 +122,7 @@ function CreateVideoForm() {
                   onChange={handleChangeVideoTags}
                   sx={{ width: 300, marginLeft: 20 }}
                 />
-                <button
+                <Button
                   type="submit"
                   style={{
                     marginTop: 15,
@@ -163,8 +137,8 @@ function CreateVideoForm() {
                     fontWeight: 'bold',
                   }}
                 >
-                  Send
-                </button>
+                  Create
+                </Button>
               </form>
             </Typography>
           </Box>
