@@ -32,6 +32,7 @@ function UserDashboard() {
     setMyDogs(false)
     const data = await getVideos()
     setOnVideos(data)
+    console.log(data)
   }
 
   const handleGetPackages = async () => {
