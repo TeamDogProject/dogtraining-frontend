@@ -5,46 +5,69 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateUserForm from './CreateUserForm/CreateUserForm';
-import Button from '@mui/material/Button';
 import EditUserForm from './EditUserForm/EditUserForm';
+import Button from '@mui/material/Button';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const ListUsers = () => {
 
   const [refresh, updateState] = useState()
   const forceUpdate = useCallback(() => updateState({}), [])
 
-  const [showModal, setShowModal] = useState(false)
-
   const [ users, setUsers] = useState([])
 
-    const [userId, setId]= useState('')
-    const [userName, setName]= useState('')
-    const [userSurname, setSurname ] = useState('')
-    const [userUserName, setUserName ] = useState('')
-    const [userEmail, setEmail ] = useState('')
-    const [userIdentityCard, setIdentityCard] = useState('')
-    const [userPassword, setPassword] = useState('')
-    const [userPhone, setPhone] = useState('')
-    const [userConfirmationPassword, setConfirmationPassword]= useState('')
-    const [userRole, setRole]= useState('')
+  const [userId, setId]= useState('')
+  const [userName, setName]= useState('')
+  const [userSurname, setSurname ] = useState('')
+  const [userUserName, setUserName ] = useState('')
+  const [userEmail, setEmail ] = useState('')
+  const [userIdentityCard, setIdentityCard] = useState('')
+  const [userPassword, setPassword] = useState('')
+  const [userPhone, setPhone] = useState('')
+  const [userConfirmationPassword, setConfirmationPassword]= useState('')
+  const [userRole, setRole]= useState('')
 
-    const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
-      setShowModal(true)
-      setId(userId)
-      setName(userName)
-      setSurname(userSurname)
-      setEmail(userEmail)
-      setIdentityCard(userIdentityCard)
-      setPassword(userPassword)
-      setPhone(userPhone)
-      setConfirmationPassword(userConfirmationPassword)
-      setRole(userRole)
-    }
+  const [showModal, setShowModal] = useState(false)
+  const [showModalCreate, setShowModalCreate] = useState(false)
+
+  const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
+    setShowModal(true)
+    setId(userId)
+    setName(userName)
+    setSurname(userSurname)
+    setEmail(userEmail)
+    setIdentityCard(userIdentityCard)
+    setPassword(userPassword)
+    setPhone(userPhone)
+    setConfirmationPassword(userConfirmationPassword)
+    setRole(userRole)
+  }
 
   const handleClose = () => {
     forceUpdate(); 
     setShowModal(false)
   }
+
+  const handleOpenCreate = () => {
+    setShowModalCreate(true)
+  }
+
+  const handleCloseCreate = () => {
+    forceUpdate()
+    setShowModalCreate(false)
+  }
+
 
   const getUsers = async () => {
     const result = await listAllUsers();
@@ -73,7 +96,27 @@ const ListUsers = () => {
     
     return (
     <>
+    <Button
+        onClick={() => handleOpenCreate()}
+        style={{
+          marginLeft: 5,
+          backgroundColor: 'green',
+          border: 'none',
+          width: 135,
+          height: 35,
+          borderRadius: 5,
+          color: 'white',
+          fontSize: 15,
+          fontWeight: 'bold',
+        }}
+      >
+        New User
+    </Button>
     <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userSurname={userSurname} userUserName={userUserName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole}/>
+    <CreateUserForm 
+      closeCreate={handleCloseCreate}
+      showCreate={showModalCreate}
+    />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
@@ -89,7 +132,7 @@ const ListUsers = () => {
               <TableHead>
                     <Typography variant="h6" style={{ color: 'white', fontSize: 17, marginLeft:15 }}> 
                     <div>
-                      <CreateUserForm close={handleClose}/>
+                      <CreateUserForm />
                     </div>
                     </Typography>
               </TableHead>
