@@ -15,6 +15,7 @@ import { deleteDog } from '../../services/userService'
 import { getMyPackages } from '../../services/userService'
 import { getVideos } from '../../services/userService'
 
+
 function UserDashboard() {
   const [newDog, setNewdog] = useState(false)
   const [myDogs, setMyDogs] = useState(null)
@@ -22,6 +23,7 @@ function UserDashboard() {
   const [onDeleteDog, setOnDeleteDog] = useState(false)
   const [onGetPackages, setOnGetPackages] = useState(false)
   const [onVideos, setOnVideos] = useState(false)
+
 
   const handlerCategories = async () => {
     setNewdog(false)
@@ -48,7 +50,8 @@ function UserDashboard() {
       const data = await deleteDog(id)
 
       if (onDeleteDog === true) 
-       location.reload() 
+       window.location.reload()
+      await getMyDogs()
     
       alert('Dog deleted')     
     } catch (error) {
@@ -64,7 +67,8 @@ function UserDashboard() {
   } 
 
 
-  const getMyDogs = async () => { //función listado de perros usuario
+
+  const getMyDogs = async () => { //User Dogs List
     try {
       setMyDogs(true)
       setNewdog(false)
@@ -340,9 +344,7 @@ function UserDashboard() {
 
               {myDogs && (
                 <Paper
-                  item
-                  xs={12}
-                  sm={6}
+                  item xs={12} sm={6}
                   sx={{
                     backgroundColor: 'white',
                     boxShadow: 0,
@@ -359,24 +361,21 @@ function UserDashboard() {
                   }}
                 >
                   <CardHeader
-                    
                     title="User Dogs"
                     sx={{
                       width: '100%',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
-                    
                     }}
                   />
 
-                  {onDog.map((dog) => (
-                    <Card
+                  {onDog.map((dog, idx) => (
+                    <Card key={idx}
                       sx={{
                         marginLeft: 2,
                         marginRight: 2,
                         marginBottom: 4,
-
                         border: '2px solid #088395',
                       }}
                     >

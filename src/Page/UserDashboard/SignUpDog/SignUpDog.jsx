@@ -2,22 +2,19 @@ import {
   Card,
   CardHeader,
   TextField,
-  IconButton,
-  Divider,
   CardActions,
   CardContent,
   Button,
-  Box,
-  Container,
   Typography,
   Grid,
   FormControl,
   Select,
-   MenuItem,
+  MenuItem,
 } from '@mui/material'
 import {InputLabel } from '@mui/material'
 import React, { useState } from 'react'
 import './SignUpDog.css'
+import { useNavigate } from 'react-router-dom'
 import { createdog } from '../../../services/userService/'
 import { getProfile } from '../../../services/userService'
 
@@ -30,6 +27,7 @@ function SignUpDog() {  //Registo del Perro
   const [sex, setSex] = useState('')
   const [userId, setUserId] = useState('')
   const [photo, setPhoto] = useState(null)
+  const navigate = useNavigate()
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
@@ -39,8 +37,7 @@ function SignUpDog() {  //Registo del Perro
 
   const handleChangeSex = async (e) => {
     setSex(e.target.value)
-   
-  }
+     }
 
   const handleNewDog = async () => {
 
@@ -50,10 +47,13 @@ function SignUpDog() {  //Registo del Perro
     const result = await createdog(form) //Hace el Post al BackEnd con los datos del form.
 
     if (result) {
-      console.log('Dog created')
+      alert('Dog created')
+      window.location.reload()
     } else {
-      console.log('Dog creation failed')
-    }
+      alert('Dog creation failed')
+    } 
+
+     
   }
 
   const handlePass = (e) => {
@@ -100,13 +100,8 @@ function SignUpDog() {  //Registo del Perro
           }}
         >
           <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-            xs={12}
-            sm={6}
-            md={9}
+            sx={{display: 'flex',flexDirection: 'column',}}
+            item xs={12} sm={6} md={9}
           >
             <CardHeader title="Dog Registration Form"></CardHeader>
             <Grid item xs={12} sm={6} md={9}>
@@ -159,8 +154,8 @@ function SignUpDog() {  //Registo del Perro
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">sex</InputLabel>
                 <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
+                  labelId="sex-select-label"
+                  id="sex-simple-select"
                   value={sex}
                   label="sex"
                   onChange={handleChangeSex}
