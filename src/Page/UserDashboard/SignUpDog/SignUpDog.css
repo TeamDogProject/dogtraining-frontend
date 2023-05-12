@@ -1,27 +1,15 @@
 
 
-.containerSignUp {
-
-    display: flex;
-    flex-direction: column;
-   /*  overflow-y:scroll; */
-    height: 100%;
-    min-height: 100%;
-    margin: 0 auto;
-    width: 600px;
-}
-
 .uploadPhoto {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-align: start;
     min-height: 80px;
-    width: 400px;
-  /*  height:400px;
-    min-height: 100%;*/
+    width: 300px;
 }
 
 .inputUpload{
+  width: 300px;
  margin-top: 10px;
  margin-right: 0px;
  padding-right: 0px;

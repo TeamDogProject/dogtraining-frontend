@@ -254,24 +254,23 @@ function UserDashboard() {
                     flexWrap: 'wrap',
                     justifyContent: 'center',
                     textAlign: 'center',
-                    alignContent: 'flex-start'  ,
+                    alignContent: 'flex-start',
                     margin: '0 auto',
                     marginBottom: '20px',
                     boxShadow: 0,
                     border: 0,
                   }}
                 >
-                  <CardHeader 
+                  <CardHeader
                     title="My videos"
                     sx={{
                       width: '100%',
-                     height: '40px',
+                      height: '40px',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
                       boxShadow: 0,
                       border: 0,
-                      
                     }}
                   />
 
@@ -293,7 +292,6 @@ function UserDashboard() {
                           border: '2px solid #088395',
                           textAlign: 'start',
                           paddingLeft: '10px',
-                         
                         }}
                       >
                         <Typography
@@ -357,6 +355,7 @@ function UserDashboard() {
                   }}
                 >
                   <CardHeader
+                    
                     title="User Dogs"
                     sx={{
                       width: '100%',
