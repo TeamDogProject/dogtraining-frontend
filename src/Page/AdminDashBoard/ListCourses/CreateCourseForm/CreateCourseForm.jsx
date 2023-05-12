@@ -12,19 +12,17 @@ import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
 
-function CreateCourseForm() {
-
-  const [ open, setOpen ] = useState(false);
-  const [ courses, setCourses ] = useState([]);
-  
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false)
+function CreateCourseForm({closeCreate, showCreate}) {
 
   const [course_name, setCourseName ] = useState('');
   const [course_description, setCourseDescription ] = useState('');
   const [course_duration, setCourseDuration ] = useState('');
   const [course_price, setCoursePrice ] = useState('');
   const [course_place, setCoursePlace ] = useState('');
+
+  const handleCloseCreate = () => {
+    closeCreate()
+  }
 
   const handleChangeCourseName = (e) => {
     setCourseName(e.target.value)
@@ -46,11 +44,6 @@ function CreateCourseForm() {
     setCoursePlace(e.target.value)
   }
 
-  const getCourses = async () => {
-    const result = await listAllCourses();
-    setCourses(result)
-};
-
   const style = {
     position: 'absolute',
     top: '50%',
@@ -63,9 +56,6 @@ function CreateCourseForm() {
     p: 4,
   };
 
-  useEffect(()=> {
-    getCourses();
-}, []);
 
 const handleSubtmit = async (e) => {
   e.preventDefault();
@@ -76,31 +66,19 @@ const handleSubtmit = async (e) => {
     price: course_price, 
     place: course_place
   };
-  await createCourse(createNewCourse);
-  setCourses(getCourses())
+  try {
+    await createCourse(createNewCourse);
+    handleCloseCreate()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        style={{
-          marginLeft: 5,
-          backgroundColor: 'green',
-          border: 'none',
-          width: 135,
-          height: 35,
-          borderRadius: 5,
-          color: 'white',
-          fontSize: 15,
-          fontWeight: 'bold',
-        }}
-      >
-        New Package
-      </Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={showCreate}
+        onClose={handleCloseCreate}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -181,7 +159,7 @@ const handleSubtmit = async (e) => {
                   fontWeight: 'bold',
                 }}
               >
-                Send
+                Create
               </button>
             </form>
           </Typography>

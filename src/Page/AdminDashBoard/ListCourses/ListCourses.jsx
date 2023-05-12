@@ -8,6 +8,17 @@ import CreateCourseForm from './CreateCourseForm/CreateCourseForm';
 import EditCourseForm from './EditCourseForm/EditCourseForm';
 import Button from '@mui/material/Button';
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 const ListCourses = () => { 
 
@@ -17,6 +28,7 @@ const ListCourses = () => {
   const [courses, setCourses] = useState([]);
 
   const[showModal, setShowModal] = useState(false)
+  const[showModalCreate, setShowModalCreate] = useState(false)
 
   const [courseId, setCourseId ] = useState('');
   const [courseName,setCourseName  ] = useState('');
@@ -35,8 +47,17 @@ const ListCourses = () => {
     setCoursePlace(coursePlace)
   }
 
+  const handleOpenCreate = () => {
+    setShowModalCreate(true)
+  }
+
+  const handleCloseCreate = () => {
+    forceUpdate()
+    setShowModalCreate(false)
+  }
+
   const handleClose = () => {
-    forceUpdate();
+    forceUpdate()
     setShowModal(false)
   }
 
@@ -66,6 +87,22 @@ const ListCourses = () => {
   function displayCourses() {
     return (
       <>
+      <Button
+          onClick={() => handleOpenCreate()}
+          style={{
+            marginLeft: 5,
+            backgroundColor: 'green',
+            border: 'none',
+            width: 135,
+            height: 35,
+            borderRadius: 5,
+            color: 'white',
+            fontSize: 15,
+            fontWeight: 'bold',
+          }}
+        >
+          New Package
+        </Button>
         <EditCourseForm
           close={handleClose}
           show={showModal}
@@ -76,6 +113,10 @@ const ListCourses = () => {
           coursePrice={coursePrice}
           coursePlace={coursePlace}
         />
+        <CreateCourseForm
+              closeCreate={handleCloseCreate}
+              showCreate={showModalCreate}
+            />
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Box>

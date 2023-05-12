@@ -20,11 +20,13 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
     const [course_price, setCoursePrice] = useState('');
     const [course_place, setCoursePlace] = useState('');
 
+    const handleClose = () => {
+      close();
+    }
+
     const handleChangeCourseName = (e) => {
       setCourseName(e.target.value)
     }
-
-    const handleClose = () => close();
 
     const handlChangeCourseDescription = (e) => {
       setCourseDescription(e.target.value)
@@ -78,8 +80,7 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
             courseId,
             obj
           )
-
-          close()
+          handleClose();
         } catch (error) {
           console.log(error)
         }
