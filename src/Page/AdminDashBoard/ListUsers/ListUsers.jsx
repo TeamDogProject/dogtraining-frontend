@@ -39,7 +39,6 @@ const ListUsers = () => {
       setPhone(userPhone)
       setConfirmationPassword(userConfirmationPassword)
       setRole(userRole)
-      console.log(userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
     }
 
   const handleClose = () => {

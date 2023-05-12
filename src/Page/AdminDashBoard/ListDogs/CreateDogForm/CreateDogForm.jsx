@@ -7,15 +7,10 @@ import Typography from '@mui/material/Typography';
 import { createDog } from '../../../../services/DogService';
 import {FormLabel} from '@mui/material';
 import { useState } from 'react';
-import { listAllDogs } from '../../../../services/DogService';
-import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
 
-function CreateDogForm() {
-
-  const [open, setOpen] = useState(false)
-  const [dogs, setDogs] = useState([])
+function CreateDogForm(closeCreate, showCreate) {
 
   const [ dog_photo, setPhoto ] = useState('');
   const [ dog_name, setName ]= useState('');
@@ -26,8 +21,9 @@ function CreateDogForm() {
   const [ dog_problem, setProblem ] = useState('');
   const [ dog_valoration, setValoration ] = useState('');
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false)
+  const handleCloseCreate = () => {
+    closeCreate()
+  }
 
   const handleChangePhoto = (e) => {
     setPhoto(e.target.value)
@@ -61,10 +57,26 @@ function CreateDogForm() {
     setValoration(e.target.value)
   }
 
-  const getDogs = async () => {
-    const result = await listAllDogs();
-    setDogs(result)
-  };
+    const handleSubtmit = async (e) => {
+        e.preventDefault();
+        const createNewDog = {
+        photo: dog_photo,
+        name: dog_name, 
+        breed: dog_breed,
+        age: dog_age,
+        sex: dog_sex,
+        chip: dog_chip,
+        problem: dog_problem,  
+        valoration: dog_valoration
+        }
+        try {
+          await createDog(createNewDog);
+          handleCloseCreate()
+        } catch (error) {
+          console.log(error)
+        }
+        
+  }
 
   const style = {
     position: 'absolute',
@@ -80,47 +92,11 @@ function CreateDogForm() {
     p: 4,
   };
 
-  useEffect(()=> {
-    getDogs();
-}, []);
-
-    const handleSubtmit = async (e) => {
-        e.preventDefault();
-        const createNewDog = {
-        photo: dog_photo,
-        name: dog_name, 
-        breed: dog_breed,
-        age: dog_age,
-        sex: dog_sex,
-        chip: dog_chip,
-        problem: dog_problem,  
-        valoration: dog_valoration
-        };
-        await createDog(createNewDog);
-        setDogs(getDogs())
-  }
-
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        style={{
-          marginLeft: 5,
-          backgroundColor: 'green',
-          border: 'none',
-          width: 135,
-          height: 35,
-          borderRadius: 5,
-          color: 'white',
-          fontSize: 15,
-          fontWeight: 'bold',
-        }}
-      >
-        New Dog
-      </Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={showCreate}
+        onClose={handleCloseCreate}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

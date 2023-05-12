@@ -39,7 +39,7 @@ const ListDogs = () => {
     setDogChip(dogChip)
     setDogProblem(dogProblem)
     setDogValoration(dogValoration)
-    console.log(dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration)
+    
   }
 
   const handleClose = () => {

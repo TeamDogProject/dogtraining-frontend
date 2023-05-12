@@ -22,7 +22,7 @@ const style = {
 
 const ListCategories =  () => {
 
-    const [, updateState] = useState()
+    const [refresh, updateState] = useState()
     const forceUpdate = useCallback(() => updateState({}), [])
 
     const [ categories, setCategories ] = useState([]);
@@ -30,11 +30,21 @@ const ListCategories =  () => {
     const [categoryId, setCategoryId] = useState('');
     const [categoryName, setCategoryName] = useState('');
     const [showModal, setShowModal] = useState(false)
+    const [showModalCreate, setShowModalCreate] = useState(false)
 
     const handleOpen = (categoryId, categoryName) => {
       setShowModal(true)
       setCategoryId(categoryId)
       setCategoryName(categoryName)
+    }
+
+    const handleOpenCreate = () => {
+      setShowModalCreate(true)
+    }
+
+    const handleCloseCreate = () => {
+      forceUpdate()
+      setShowModalCreate(false)
     }
 
     const handleClose = () => {
@@ -49,10 +59,8 @@ const ListCategories =  () => {
 
     useEffect(()=> {
       getCategories();
-  }, []);
+  }, [refresh]);
 
-
-  
     const deleteCategory = async (id) => {
         try {
           const { data } = await api.delete(`/categories/${id}`, {
@@ -71,24 +79,55 @@ const ListCategories =  () => {
 
         return (
           <>
-          <EditCategoryForm close={handleClose} show={showModal} categoryId={categoryId} categoryName={categoryName} />
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Box>
-                <Typography /* variant="h6" */ color="white" marginLeft={2}>
-                  List Categories
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-            <TableContainer>
+            <Button
+              onClick={() => handleOpenCreate()}
+              style={{
+                marginLeft: 5,
+                backgroundColor: 'green',
+                border: 'none',
+                width: 135,
+                height: 35,
+                borderRadius: 5,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 'bold',
+              }}
+            >
+              New Category
+            </Button>
+            <EditCategoryForm
+              close={handleClose}
+              show={showModal}
+              categoryId={categoryId}
+              categoryName={categoryName}
+            />
+            <CreateCategoryForm
+              closeCreate={handleCloseCreate}
+              showCreate={showModalCreate}
+            />
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Box>
+                  <Typography /* variant="h6" */ color="white" marginLeft={2}>
+                    List Categories
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TableContainer>
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <Typography  style={{ color: 'white', fontSize: 17, marginLeft: 15 }}>
-                        <div>
-                          <CreateCategoryForm/>
-                        </div>
+                        <Typography
+                          style={{
+                            color: 'white',
+                            fontSize: 17,
+                            marginLeft: 15,
+                          }}
+                        >
+                          <div>
+                            <CreateCategoryForm />
+                          </div>
                         </Typography>
                       </TableRow>
                       <TableRow>
@@ -110,33 +149,80 @@ const ListCategories =  () => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {categories?.length>0 && categories.map((category) => (
-                        <TableRow key={category.id}>
-                          <TableCell>
-                            <Typography /* variant="h6" */ style={{ color: 'white', fontSize: 17 }}>
-                              {category.id}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography /* variant="h6" */ style={{ color: 'white', fontSize: 17 }}>
-                              {category.category_name}
-                            </Typography>
-                          </TableCell>
-                          <TableCell style={{ color: 'white', fontSize: 17 }}>
-                            <div>
-                            <Button onClick={() => handleOpen(category.id,category.category_name)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
-                              <button  onClick={() => deleteCategory(category.id)} style={{ marginLeft:105, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold' }}>Delete</button>
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                      {categories?.length > 0 &&
+                        categories.map((category) => (
+                          <TableRow key={category.id}>
+                            <TableCell>
+                              <Typography
+                                /* variant="h6" */ style={{
+                                  color: 'white',
+                                  fontSize: 17,
+                                }}
+                              >
+                                {category.id}
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography
+                                /* variant="h6" */ style={{
+                                  color: 'white',
+                                  fontSize: 17,
+                                }}
+                              >
+                                {category.category_name}
+                              </Typography>
+                            </TableCell>
+                            <TableCell style={{ color: 'white', fontSize: 17 }}>
+                              <div>
+                                <Button
+                                  onClick={() =>
+                                    handleOpen(
+                                      category.id,
+                                      category.category_name
+                                    )
+                                  }
+                                  style={{
+                                    marginRight: 50,
+                                    backgroundColor: 'lightgray',
+                                    border: 'none',
+                                    width: 100,
+                                    height: 35,
+                                    borderRadius: 5,
+                                    color: 'black',
+                                    fontSize: 15,
+                                    fontWeight: 'bold',
+                                    position: 'absolute',
+                                  }}
+                                >
+                                  Edit
+                                </Button>
+                                <button
+                                  onClick={() => deleteCategory(category.id)}
+                                  style={{
+                                    marginLeft: 105,
+                                    backgroundColor: 'red',
+                                    border: 'none',
+                                    width: 100,
+                                    height: 35,
+                                    borderRadius: 5,
+                                    color: 'white',
+                                    fontSize: 15,
+                                    fontWeight: 'bold',
+                                  }}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
+              </Grid>
             </Grid>
-          </Grid>
           </>
-        );
+        )
       }
 
       return <div>{displayCategories()}</div>;

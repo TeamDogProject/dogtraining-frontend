@@ -2,22 +2,19 @@ import {
   Card,
   CardHeader,
   TextField,
-  IconButton,
-  Divider,
   CardActions,
   CardContent,
   Button,
-  Box,
-  Container,
   Typography,
   Grid,
   FormControl,
   Select,
-   MenuItem,
+  MenuItem,
 } from '@mui/material'
 import {InputLabel } from '@mui/material'
 import React, { useState } from 'react'
 import './SignUpDog.css'
+import { useNavigate } from 'react-router-dom'
 import { createdog } from '../../../services/userService/'
 import { getProfile } from '../../../services/userService'
 
@@ -30,6 +27,7 @@ function SignUpDog() {  //Registo del Perro
   const [sex, setSex] = useState('')
   const [userId, setUserId] = useState('')
   const [photo, setPhoto] = useState(null)
+  const navigate = useNavigate()
 
   const [isPassVisible, setIsPassVisible] = useState(false)
 
@@ -39,8 +37,7 @@ function SignUpDog() {  //Registo del Perro
 
   const handleChangeSex = async (e) => {
     setSex(e.target.value)
-   
-  }
+     }
 
   const handleNewDog = async () => {
 
@@ -50,10 +47,13 @@ function SignUpDog() {  //Registo del Perro
     const result = await createdog(form) //Hace el Post al BackEnd con los datos del form.
 
     if (result) {
-      console.log('Dog created')
+      alert('Dog created')
+      window.location.reload()
     } else {
-      console.log('Dog creation failed')
-    }
+      alert('Dog creation failed')
+    } 
+
+     
   }
 
   const handlePass = (e) => {
@@ -81,7 +81,7 @@ function SignUpDog() {  //Registo del Perro
 
   return (
     <>
-      <div className="containerSignUp">
+      <Grid sx={{ marginBottom: '100px' }} container spacing={0}>
         <Card
           xs={12}
           sm={6}
@@ -90,22 +90,18 @@ function SignUpDog() {  //Registo del Perro
             display: 'flex',
             flexDirection: 'column',
             alignContent: 'center',
-            overflowY: 'scroll',
             backgroundColor: 'white',
             padding: 1,
             border: '2px #088395 solid',
             justifyContent: 'center',
+            height: '100%',
+            width: '600px',
+            margin: ' 0 auto',
           }}
         >
           <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              
-            }}
-            xs={12}
-            sm={6}
-            md={9}
+            sx={{display: 'flex',flexDirection: 'column',}}
+            item xs={12} sm={6} md={9}
           >
             <CardHeader title="Dog Registration Form"></CardHeader>
             <Grid item xs={12} sm={6} md={9}>
@@ -120,7 +116,13 @@ function SignUpDog() {  //Registo del Perro
 
             <Grid item xs={12} sm={6} md={9}>
               <TextField
-                sx={{ marginLeft: 0, display: 'flex' }}
+                sx={{
+                  marginLeft: 0,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  textAlign: 'center',
+                }}
                 label="Breed of dog"
                 variant="outlined"
                 margin="dense"
@@ -138,8 +140,6 @@ function SignUpDog() {  //Registo del Perro
               />
             </Grid>
 
-           
-
             <Grid item xs={12} sm={6} md={9}>
               <TextField
                 sx={{ display: 'flex', flexDirection: 'column' }}
@@ -150,21 +150,20 @@ function SignUpDog() {  //Registo del Perro
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={9} >
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">sex</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={sex}
-                label="sex"
-                onChange={handleChangeSex}
-              >
-                <MenuItem value={'female'}>Female</MenuItem>
-                <MenuItem value={'male'}>Male</MenuItem>
-                
-              </Select>
-            </FormControl>
+            <Grid item xs={12} sm={6} md={9}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">sex</InputLabel>
+                <Select
+                  labelId="sex-select-label"
+                  id="sex-simple-select"
+                  value={sex}
+                  label="sex"
+                  onChange={handleChangeSex}
+                >
+                  <MenuItem value={'female'}>Female</MenuItem>
+                  <MenuItem value={'male'}>Male</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
 
             <Grid item xs={12} sm={6} md={9}>
@@ -186,15 +185,16 @@ function SignUpDog() {  //Registo del Perro
               color="primary"
               variant="outlined"
               sx={{
-                marginRight: 1,
-                padding: '0 5',
                 fontFamily: 'roboto',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'flex-start',
+                marginTop: '10px',
+                paddingLeft: '10px',
+                maxWidth: '410px',
+                overflow: 'visible',
               }}
             >
-              <Grid item xs={12} sm={6} md={9}>
+              <Grid item xs={12} sm={6} md={9} sx={{ height: '100%' }}>
                 <Typography
                   item
                   xs={12}
@@ -202,13 +202,15 @@ function SignUpDog() {  //Registo del Perro
                   md={9}
                   color="text.secondary"
                   sx={{
-                    paddingBottomg: 1,
-                    marginLeft: 10,
-                    right: 20,
-                    paddingTop: 1,
+                    paddingBottom: 1,
+                    marginLeft: 0,
+                    paddingTop: 0,
                     display: 'flex',
-                    flexDirection: 'colum',
+                    flexDirection: 'column',
                     justifyContent: 'start',
+                    height: '100%',
+                    width: '100',
+                    textAlign: 'start',
                   }}
                 >
                   <label
@@ -216,10 +218,11 @@ function SignUpDog() {  //Registo del Perro
                     xs={12}
                     sm={6}
                     md={9}
-                    className="uploadPhoto" 
+                    className="uploadPhoto"
                   >
-                    Select a photo of your dog
-                    <input 
+                    Select a photo
+                    <input
+                      className="inputUpload"
                       onChange={handlePhoto}
                       id="upload-photo"
                       type="file"
@@ -252,7 +255,7 @@ function SignUpDog() {  //Registo del Perro
             </Grid>
           </CardActions>
         </Card>
-      </div>
+      </Grid>
     </>
   )
 }

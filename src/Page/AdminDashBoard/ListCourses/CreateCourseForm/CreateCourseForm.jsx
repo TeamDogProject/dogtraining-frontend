@@ -18,10 +18,7 @@ function CreateCourseForm() {
   const [ courses, setCourses ] = useState([]);
   
   const handleOpen = () => setOpen(true);
-  const handleClose = async (e) => {
-    await handleSubtmit(e)
-    setOpen(false);
-  }
+  const handleClose = () => setOpen(false)
 
   const [course_name, setCourseName ] = useState('');
   const [course_description, setCourseDescription ] = useState('');
@@ -80,7 +77,7 @@ const handleSubtmit = async (e) => {
     place: course_place
   };
   await createCourse(createNewCourse);
-  //setCourses(getCourses())
+  setCourses(getCourses())
 }
 
   return (
@@ -118,7 +115,7 @@ const handleSubtmit = async (e) => {
             id="modal-modal-description"
             sx={{ width: 300, marginTop: 4 }}
           >
-            <form /* onSubmit={handleSubtmit} */>
+            <form onSubmit={handleSubtmit}>
               <FormLabel sx={{ width: 300, marginLeft: 20 }}>Name</FormLabel>
               <TextField
                 type="text"
@@ -170,7 +167,7 @@ const handleSubtmit = async (e) => {
                 <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
               </Select>
               <button
-                onClick={handleClose}
+                type="submit"
                 style={{
                   marginTop: 15,
                   marginLeft: 340,
