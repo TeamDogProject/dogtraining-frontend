@@ -33,8 +33,6 @@ const ListCourses = () => {
     setCourseDuration(courseDuration)
     setCoursePrice(coursePrice)
     setCoursePlace(coursePlace)
-
-    console.log(courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace)
   }
 
   const handleClose = () => {
