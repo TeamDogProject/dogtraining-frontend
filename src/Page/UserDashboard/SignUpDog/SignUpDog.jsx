@@ -90,18 +90,17 @@ function SignUpDog() {  //Registo del Perro
             display: 'flex',
             flexDirection: 'column',
             alignContent: 'center',
-            overflowY: 'scroll',
             backgroundColor: 'white',
             padding: 1,
             border: '2px #088395 solid',
             justifyContent: 'center',
+            marginBottom: '40px'
           }}
         >
           <CardContent
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              
             }}
             xs={12}
             sm={6}
@@ -138,8 +137,6 @@ function SignUpDog() {  //Registo del Perro
               />
             </Grid>
 
-           
-
             <Grid item xs={12} sm={6} md={9}>
               <TextField
                 sx={{ display: 'flex', flexDirection: 'column' }}
@@ -150,21 +147,20 @@ function SignUpDog() {  //Registo del Perro
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={9} >
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">sex</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={sex}
-                label="sex"
-                onChange={handleChangeSex}
-              >
-                <MenuItem value={'female'}>Female</MenuItem>
-                <MenuItem value={'male'}>Male</MenuItem>
-                
-              </Select>
-            </FormControl>
+            <Grid item xs={12} sm={6} md={9}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">sex</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={sex}
+                  label="sex"
+                  onChange={handleChangeSex}
+                >
+                  <MenuItem value={'female'}>Female</MenuItem>
+                  <MenuItem value={'male'}>Male</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
 
             <Grid item xs={12} sm={6} md={9}>
@@ -186,12 +182,13 @@ function SignUpDog() {  //Registo del Perro
               color="primary"
               variant="outlined"
               sx={{
-                marginRight: 1,
-                padding: '0 5',
                 fontFamily: 'roboto',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'flex-start',
+                
+                marginTop: '10px',
+                paddingLeft: '10px',
+                maxWidth: '410px',
               }}
             >
               <Grid item xs={12} sm={6} md={9}>
@@ -202,13 +199,14 @@ function SignUpDog() {  //Registo del Perro
                   md={9}
                   color="text.secondary"
                   sx={{
-                    paddingBottomg: 1,
-                    marginLeft: 10,
-                    right: 20,
-                    paddingTop: 1,
+                    paddingBottom: 1,
+                    marginLeft: 0,
+                    paddingTop: 0,
                     display: 'flex',
-                    flexDirection: 'colum',
+                    flexDirection: 'column',
                     justifyContent: 'start',
+
+                    textAlign: 'start',
                   }}
                 >
                   <label
@@ -216,10 +214,11 @@ function SignUpDog() {  //Registo del Perro
                     xs={12}
                     sm={6}
                     md={9}
-                    className="uploadPhoto" 
+                    className="uploadPhoto"
                   >
                     Select a photo of your dog
-                    <input 
+                    <input
+                      className="inputUpload"
                       onChange={handlePhoto}
                       id="upload-photo"
                       type="file"

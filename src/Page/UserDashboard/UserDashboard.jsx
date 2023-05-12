@@ -84,12 +84,12 @@ function UserDashboard() {
     <React.Fragment>
       <Grid container spacing={0}>
         <Grid item xs={12} md={3}>
-          <Box
+          <Box //Menu Buttons
             sx={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              height: { xs: 'auto', md: '100vh' },
+              height: { xs: 'auto', md: '100%' },
               margin: '0 auto',
               backgroundColor: '#0A4D68',
               padding: '1%',
@@ -100,10 +100,10 @@ function UserDashboard() {
               sx={{
                 width: 150,
                 display: 'flex',
-                backgroundColor:'#088395',
-                color:'white',
+                backgroundColor: '#088395',
+                color: 'white',
                 border: 1,
-                borderColor:'#0A4D68',
+                borderColor: '#0A4D68',
                 margin: '0 auto',
               }}
               onClick={createDogForm}
@@ -165,10 +165,11 @@ function UserDashboard() {
                 sm={6}
                 md={9}
                 sx={{
-                  maxWidth: '800px',
+                  Width: '800px',
                   margin: '0 auto',
                   flexWrap: 'wrap',
                   display: 'flex',
+                  marginTop: '40px',
                 }}
               >
                 {newDog && <SignUpDog />}
@@ -181,6 +182,8 @@ function UserDashboard() {
                   sm={6}
                   sx={{
                     backgroundColor: 'white',
+                    boxShadow: 0,
+                    border: 0,
                     Width: '100%',
                     height: '100%',
                     color: 'white',
@@ -189,13 +192,12 @@ function UserDashboard() {
                     justifyContent: 'center',
                     textAlign: 'center',
                     margin: '0 auto',
-                    marginBottom: 4,
                   }}
                 >
                   <CardHeader
                     title="My Packages"
                     sx={{
-                      width: '100%',
+                      width: '600px',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
@@ -208,7 +210,7 @@ function UserDashboard() {
                         marginRight: 2,
                         marginBottom: 4,
                         border: '2px solid #088395',
-                        width: 300,
+                        width: 600,
                       }}
                     >
                       <Typography
@@ -233,7 +235,6 @@ function UserDashboard() {
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Place:</b> {pack.place}
                       </Typography>
-                    
                     </Card>
                   ))}
                 </Paper>
@@ -246,24 +247,31 @@ function UserDashboard() {
                   sm={6}
                   sx={{
                     backgroundColor: 'white',
-                    Width: '100%',
-                    height: '100%',
+                    width: '100%',
+                    height: '100vh',
                     color: 'white',
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
                     textAlign: 'center',
+                    alignContent: 'flex-start'  ,
                     margin: '0 auto',
-                    marginBottom: 4,
+                    marginBottom: '20px',
+                    boxShadow: 0,
+                    border: 0,
                   }}
                 >
-                  <CardHeader
+                  <CardHeader 
                     title="My videos"
                     sx={{
                       width: '100%',
+                     height: '40px',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
+                      boxShadow: 0,
+                      border: 0,
+                      
                     }}
                   />
 
@@ -277,9 +285,15 @@ function UserDashboard() {
                         sx={{
                           marginLeft: 2,
                           marginRight: 2,
-                          marginBottom: 4,
-
+                          marginBottom: '10px',
+                          paddingTop: '20px',
+                          width: '600px',
+                          height: '80px',
+                          minHeight: '100px',
                           border: '2px solid #088395',
+                          textAlign: 'start',
+                          paddingLeft: '10px',
+                         
                         }}
                       >
                         <Typography
@@ -295,9 +309,27 @@ function UserDashboard() {
                           key={video.id}
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
-                        <b>Url: </b>
+                        <Typography
+                          sx={{
+                            fontWeight: 'bold',
+                            display: 'inline-flex',
+                            marginLeft: 5,
+                          }}
+                        >
+                          Url:
+                        </Typography>
 
-                        <Link href={video.url}>link to the video</Link>
+                        <Link href={video.url}>
+                          <Typography
+                            sx={{
+                              display: 'inline-flex',
+                              marginLeft: 1,
+                              paddingBottom: '0px',
+                            }}
+                          >
+                            link to the video
+                          </Typography>
+                        </Link>
                       </Card>
                     ))
                   )}
@@ -311,6 +343,8 @@ function UserDashboard() {
                   sm={6}
                   sx={{
                     backgroundColor: 'white',
+                    boxShadow: 0,
+                    border: 0,
                     Width: '100%',
                     height: '100%',
                     color: 'white',
