@@ -94,6 +94,9 @@ function UserDashboard() {
               backgroundColor: '#0A4D68',
               padding: '1%',
               border: '2px #088395 solid',
+              minHeight: { xs: 'auto', md: '1000px' },
+              paddingTop: '40px', 
+              paddingBottom: '40px'
             }}
           >
             <Button
@@ -137,7 +140,7 @@ function UserDashboard() {
               }}
               onClick={handleGetPackages}
             >
-              Get Packages
+              Courses Packages
             </Button>
 
             <Button
@@ -195,7 +198,7 @@ function UserDashboard() {
                   }}
                 >
                   <CardHeader
-                    title="My Packages"
+                    title="Courses Packages"
                     sx={{
                       width: '600px',
                       display: 'block',
@@ -345,13 +348,13 @@ function UserDashboard() {
                     border: 0,
                     Width: '100%',
                     height: '100%',
-                    color: 'white',
+                    color: 'red',
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
                     textAlign: 'center',
                     margin: '0 auto',
-                    marginBottom: 4,
+                    marginBottom: 0,
                   }}
                 >
                   <CardHeader
@@ -362,6 +365,7 @@ function UserDashboard() {
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
+                    
                     }}
                   />
 
