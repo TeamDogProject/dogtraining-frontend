@@ -60,56 +60,29 @@ function AdminDashBoard() {
     <React.Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12} style={{ marginTop:9 }}>
-          <Box sx={{ bgcolor: '#0A4D68', height: 40,width:'100%'}}>
+          <Box sx={{ bgcolor: '#0A4D68'}}>
                   <Typography variant='caption' style={{ fontSize:20, marginLeft:15, color:'white' }}>Welcome Admin</Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
                     <List
-                sx={{width:'100%', bgcolor:'#0A4D68', color:'white', position:'absolute' }}
+                sx={{bgcolor:'#0A4D68', color:'white' }}
                 aria-label="contacts"
               >
                 <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText>
+                  <ListItemButton style={{ display: 'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', justifyContent:'space-around' }}>
                       <Link onClick={handleClickDogs} style={{ textDecoration:'none', color:'white'}}><Typography>Dogs</Typography></Link>
-                    </ListItemText>
-                  </ListItemButton>
+                      <Link onClick={handleClickBooks} style={{ textDecoration:'none', color:'white' }}><Typography>Books</Typography></Link>
+                      <Link onClick={handleClickVideos} style={{ textDecoration:'none', color:'white' }}><Typography>Videos</Typography></Link>
+                      <Link onClick={handleClickPackages} style={{ textDecoration:'none', color:'white' }}><Typography>Packages</Typography></Link>
+                      <Link onClick={handleClickUsers} style={{ textDecoration:'none', color:'white' }}><Typography>Users</Typography></Link>
+                      <Link onClick={handleClickCategories} style={{ textDecoration:'none', color:'white' }}><Typography>Categories</Typography></Link>
+                </ListItemButton>
                 </ListItem>
-              
-                <ListItemButton>
-                    <ListItemText>
-                      <Link onClick={handleClickBooks} style={{ textDecoration:'none', color:'white' }}>Books</Link>
-                    </ListItemText>
-                </ListItemButton>
-              
-                <ListItemButton>
-                    <ListItemText>
-                      <Link onClick={handleClickVideos} style={{ textDecoration:'none', color:'white' }}>Videos</Link>
-                    </ListItemText>
-                </ListItemButton>
-               
-                <ListItemButton>
-                    <ListItemText>
-                      <Link onClick={handleClickPackages} style={{ textDecoration:'none', color:'white' }}>Packages</Link>
-                    </ListItemText>
-                </ListItemButton>
-                
-                <ListItemButton>
-                    <ListItemText>
-                      <Link onClick={handleClickUsers} style={{ textDecoration:'none', color:'white' }}>Users</Link>
-                    </ListItemText>
-                </ListItemButton>
-
-                <ListItemButton>
-                    <ListItemText>
-                      <Link onClick={handleClickCategories} style={{ textDecoration:'none', color:'white' }}>Categories</Link>
-                    </ListItemText>
-                </ListItemButton>
               </List>
       </Grid>
-      <Grid item xs={12} sm={12} style={{ marginTop:30}}>
-          <Box sx={{ bgcolor: '#0E2B44', height: '100%', position:'relative', marginTop:33, padding:2}}>
+      <Grid item xs={12} sm={12} style={{}}>
+          <Box sx={{ bgcolor: '#0E2B44', height: '100%', padding:2}}>
                     {
                       showContent()
                     }
