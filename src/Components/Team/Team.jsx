@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { Grid, Container, Typography, Button, CardMedia, CardContent,CardActions, Card} from '@mui/material';  
-
+import Tino from '../../assets/Images/tino.png'
+import Aday from '../../assets/Images/aday.png'
+import Cesar from '../../assets/Images/cesar.png'
 
 function Team(){
 
@@ -51,7 +53,7 @@ function Team(){
             <Card item xs={12} md={4} lg={4} sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
               <CardMedia
                 sx={{ height: 250, width: 250 , }}
-                image="src/assets/Images/tino.png"
+                image={Tino}
                 title="Tino Míguez"
               />
               <CardContent  sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
@@ -119,7 +121,7 @@ function Team(){
             <Card item xs={12} md={4} lg={4} sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
               <CardMedia
                 sx={{ height: 250, width: 250 ,  }}
-                image="src/assets/Images/aday.png"
+                image={Aday}
                 title="Aday Ortega"
               />
               <CardContent sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
@@ -183,7 +185,7 @@ function Team(){
           <Card sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
             <CardMedia
               sx={{ height: 250, width: 250 , }}
-              image="src/assets/Images/cesar.png"
+              image={Cesar}
               title="César García"
             />
             <CardContent sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
