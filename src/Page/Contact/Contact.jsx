@@ -110,6 +110,7 @@ function Contact() {
 
           <Divider sx={{ paddingTop: 2 }} />
 
+          <Grid item xs={12} sm={6} paddingRight={2} paddingTop={2}>
           <div className="politics">
             <Checkbox
               id="checkCons"
@@ -135,7 +136,7 @@ function Contact() {
                 de su entidad con opción a darme de baja en cualquier momento.*
               </p>
             </div>
-
+            </Grid>
             <p className="ContactBotton">
               <Button
                 size="small"
@@ -177,7 +178,7 @@ function Contact() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1759.0781455550655!2d-15.431924561293483!3d28.141729959113768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40953f81279153%3A0xa4fd7a8fe1518a95!2sC.%20Luis%20Morote%2C%206%2C%2035007%20Las%20Palmas%20de%20Gran%20Canaria%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1682768005532!5m2!1ses!2ses"
                 width="600"
                 height="450"
-                style={{ border: 0 }}
+                style={{ border: 0, margin:0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
