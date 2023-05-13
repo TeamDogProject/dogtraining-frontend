@@ -135,7 +135,7 @@ function Footer() {
           color={'white'}
         >
           <Typography sx={{ fontSize: 10 }}>
-            © Reboot Academy 2022 - All Rights Reserved
+            © Dogtraining 2023 - All Rights Reserved
           </Typography>
         </Box>
       </Box>
