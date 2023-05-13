@@ -28,7 +28,7 @@ function Team(){
    </Container>
 
       <Grid
-        spacing={0}
+        
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
