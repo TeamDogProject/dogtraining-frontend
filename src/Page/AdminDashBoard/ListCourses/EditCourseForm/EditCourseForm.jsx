@@ -10,15 +10,19 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { saveCourse } from '../../../../services/CourseService'
+import { listAllCategories } from '../../../../services/CategoryService';
+import { saveCategory } from '../../../../services/CategoryService';
 
-
-function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace}) {
+function EditCourseForm({show, close, courseId, courseName, courseDescription, courseDuration, coursePrice, coursePlace, courseCategoryId}) {
     
     const [course_name, setCourseName] = useState('');
     const [course_description, setCourseDescription] = useState('');
     const [course_duration, setCourseDuration] = useState('');
     const [course_price, setCoursePrice] = useState('');
     const [course_place, setCoursePlace] = useState('');
+    const [course_categoryId, setCourseCategoryId] = useState('');
+
+    const[categories, setCategories] = useState([])
 
     const handleClose = () => {
       close();
@@ -44,6 +48,10 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
       setCoursePlace(e.target.value)
     }
 
+    const handleChangeCourseCategoryId = (e) => {
+      setCourseCategoryId(e.target.value)
+    }
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -55,6 +63,25 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
         boxShadow: 24,
         p: 4,
       };
+
+      const getCategories = async () => {
+        const result = await listAllCategories();
+        setCategories(result);
+      };
+
+      useEffect(()=> {
+        getCategories();
+    }, []);
+
+      const handleUpdateCategory = () => {
+    // Check if course_categoryId is not null or undefined before accessing the first element
+    const categoryId = course_categoryId?.[0];
+
+    if (categoryId) {
+      // Update category in backend database using categoryId and your existing updateCategory service function
+      updateCategory(categoryId);
+    }
+  };
 
       const handleSaveCourse = async (e) => {
         console.log(courseId)
@@ -75,6 +102,9 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
           }
           if(course_place){
             obj.place = course_place
+          }
+          if(course_categoryId){
+            obj.categoryId = course_categoryId
           }
           await saveCourse(
             courseId,
@@ -112,7 +142,7 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
                 <Select
                     labelId="place"
                     id="place"
-                    placeholder={course_place}
+                    placeholder={coursePlace}
                     label="place"
                     onChange={handleChangeCoursePlace}
                     sx={{ width:300, marginLeft:20 }}
@@ -120,6 +150,25 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
                     <MenuItem value={"online"}>Online</MenuItem>
                     <MenuItem value={"face-to-face"}>Face-to-Face</MenuItem>
                 </Select>
+                <InputLabel id="courseCategory" sx={{ width: 300, marginLeft: 20 }}>
+                  Select a category
+                </InputLabel>
+                <Select
+                  labelId="courseCategory"
+                  id="courseCategory"
+                  value={courseCategoryId[0] || ''}
+                  onChange={handleChangeCourseCategoryId}
+                  sx={{ width: 300, marginLeft: 20 }}
+                >
+                  {categories.map((category) => (
+                    <MenuItem key={category.id} value={category.id}>
+                      {category.category_name}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <button  style={{ height:35,width: 160, marginLeft: 175, backgroundColor:'green',color:'white', borderRadius:5, marginTop:14, marginRight:30, position:'absolute', fontWeight:'bold', fontSize:16, border:0 }} onClick={handleUpdateCategory}>Update Category</button>
+                {/* <FormLabel sx={{ width:300, marginLeft:20 }}>Category</FormLabel>  */}
+                {/* <TextField type="text" variant='outlined' placeholder={courseCategoryId} onChange={handleChangeCourseCategoryId} sx={{ width:300, marginLeft:20 }} /> */}
                 <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Save</button>
               </form>
             </Typography>

@@ -36,8 +36,9 @@ const ListCourses = () => {
   const [courseDuration, setCourseDuration ] = useState('');
   const [coursePrice, setCoursePrice ] = useState('');
   const [coursePlace, setCoursePlace ] = useState('');
+  const [courseCategoryId, setCourseCategoryId ] = useState('');
 
-  const handleOpen = (courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace) => {
+  const handleOpen = (courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace, courseCategoryId) => {
     setShowModal(true)
     setCourseId(courseId)
     setCourseName(courseName)
@@ -45,6 +46,7 @@ const ListCourses = () => {
     setCourseDuration(courseDuration)
     setCoursePrice(coursePrice)
     setCoursePlace(coursePlace)
+    setCourseCategoryId(courseCategoryId)
   }
 
   const handleOpenCreate = () => {
@@ -112,6 +114,7 @@ const ListCourses = () => {
           courseDuration={courseDuration}
           coursePrice={coursePrice}
           coursePlace={coursePlace}
+          courseCategoryId={courseCategoryId}
         />
         <CreateCourseForm
               closeCreate={handleCloseCreate}
@@ -193,6 +196,14 @@ const ListCourses = () => {
                         variant="h6"
                         style={{ color: 'white', fontSize: 17 }}
                       >
+                        CATEGORY
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography
+                        variant="h6"
+                        style={{ color: 'white', fontSize: 17 }}
+                      >
                         ACTIONS
                       </Typography>
                     </TableCell>
@@ -250,6 +261,14 @@ const ListCourses = () => {
                             {course.place}
                           </Typography>
                         </TableCell>
+                        <TableCell>
+                          <Typography
+                            variant="h6"
+                            style={{ color: 'white', fontSize: 17 }}
+                          >
+                            {course.categoryId}
+                          </Typography>
+                        </TableCell>
 
                         <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
@@ -261,7 +280,8 @@ const ListCourses = () => {
                                   course.description,
                                   course.duration,
                                   course.price,
-                                  course.place
+                                  course.place, 
+                                  course.categoryId
                                 )
                               }
                               style={{
