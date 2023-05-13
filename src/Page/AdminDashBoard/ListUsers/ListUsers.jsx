@@ -5,47 +5,69 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import { Box } from '@mui/material';
 import api from '../../../services/config';
 import CreateUserForm from './CreateUserForm/CreateUserForm';
-import Button from '@mui/material/Button';
 import EditUserForm from './EditUserForm/EditUserForm';
+import Button from '@mui/material/Button';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const ListUsers = () => {
 
   const [refresh, updateState] = useState()
   const forceUpdate = useCallback(() => updateState({}), [])
 
-  const [showModal, setShowModal] = useState(false)
-
   const [ users, setUsers] = useState([])
 
-    const [userId, setId]= useState('')
-    const [userName, setName]= useState('')
-    const [userSurname, setSurname ] = useState('')
-    const [userUserName, setUserName ] = useState('')
-    const [userEmail, setEmail ] = useState('')
-    const [userIdentityCard, setIdentityCard] = useState('')
-    const [userPassword, setPassword] = useState('')
-    const [userPhone, setPhone] = useState('')
-    const [userConfirmationPassword, setConfirmationPassword]= useState('')
-    const [userRole, setRole]= useState('')
+  const [userId, setId]= useState('')
+  const [userName, setName]= useState('')
+  const [userSurname, setSurname ] = useState('')
+  const [userUserName, setUserName ] = useState('')
+  const [userEmail, setEmail ] = useState('')
+  const [userIdentityCard, setIdentityCard] = useState('')
+  const [userPassword, setPassword] = useState('')
+  const [userPhone, setPhone] = useState('')
+  const [userConfirmationPassword, setConfirmationPassword]= useState('')
+  const [userRole, setRole]= useState('')
 
-    const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
-      setShowModal(true)
-      setId(userId)
-      setName(userName)
-      setSurname(userSurname)
-      setEmail(userEmail)
-      setIdentityCard(userIdentityCard)
-      setPassword(userPassword)
-      setPhone(userPhone)
-      setConfirmationPassword(userConfirmationPassword)
-      setRole(userRole)
-      console.log(userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole)
-    }
+  const [showModal, setShowModal] = useState(false)
+  const [showModalCreate, setShowModalCreate] = useState(false)
+
+  const handleOpen = (userId, userName, userSurname,userUserName, userEmail, userIdentityCard, userPassword, userPhone, userConfirmationPassword, userRole) => {
+    setShowModal(true)
+    setId(userId)
+    setName(userName)
+    setSurname(userSurname)
+    setEmail(userEmail)
+    setIdentityCard(userIdentityCard)
+    setPassword(userPassword)
+    setPhone(userPhone)
+    setConfirmationPassword(userConfirmationPassword)
+    setRole(userRole)
+  }
 
   const handleClose = () => {
     forceUpdate(); 
     setShowModal(false)
   }
+
+  const handleOpenCreate = () => {
+    setShowModalCreate(true)
+  }
+
+  const handleCloseCreate = () => {
+    forceUpdate()
+    setShowModalCreate(false)
+  }
+
 
   const getUsers = async () => {
     const result = await listAllUsers();
@@ -74,12 +96,34 @@ const ListUsers = () => {
     
     return (
     <>
+    
     <EditUserForm close={handleClose} show={showModal} userId={userId} userName={userName} userSurname={userSurname} userUserName={userUserName} userEmail={userEmail} userIdentityCard={userIdentityCard} userPassword={userPassword} userPhone={userPhone} userConfirmationPassword={userConfirmationPassword} userRole={userRole}/>
+    <CreateUserForm 
+      closeCreate={handleCloseCreate}
+      showCreate={showModalCreate}
+    />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
-            <Typography variant="h6" color='white' marginLeft={2}>List Users
+            <Typography sx={{ fontWeight:'bold',fontSize:20, position:'absolute' }} color="white" marginLeft={2}>
+              List Users
             </Typography>
+            <Button
+              onClick={() => handleOpenCreate()}
+              style={{
+                backgroundColor: 'green',
+                border: 'none',
+                width: 135,
+                height: 35,
+                borderRadius: 5,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 'bold',
+                marginLeft:1355,
+              }}
+            >
+              New User
+          </Button>
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -94,22 +138,22 @@ const ListUsers = () => {
                     </Typography>
               </TableHead>
               <TableRow >
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ID</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>NAME</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white',  fontSize:17 }}>EMAIL</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>PHONE</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ROLE</Typography></TableCell>
-                <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>ACTIONS</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ID</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>NAME</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white',  fontSize:17 }}>EMAIL</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>PHONE</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ROLE</Typography></TableCell>
+                <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>ACTIONS</Typography></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {users?.length>0 && users.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.email}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.phone}</Typography></TableCell>
-                  <TableCell><Typography variant='h6' style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.id}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.name}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.email}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.phone}</Typography></TableCell>
+                  <TableCell><Typography /* variant='h6' */ style={{ color:'white', fontSize:17 }}>{user.role}</Typography></TableCell>
                   <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
                             <Button onClick={() => handleOpen(user.id,user.name, user.surname,user.username, user.email, user.identity_card, user.password,user.phone,user.confirmation_password, user.role)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>

@@ -91,6 +91,7 @@ function EditDogForm({ show, close, dogId, dogPhoto, dogName, dogBreed, dogAge, 
         dogId,
         obj
       )
+      handleClose();
     } catch (error) {
       console.log(error)
     }

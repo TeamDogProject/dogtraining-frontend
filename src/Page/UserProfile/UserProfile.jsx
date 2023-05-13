@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import api from '../../services/config'
 import { getProfile } from '../../services/userService'
 import { deleteUser } from '../../services/userService'
-import {changePassword } from '../../services/userService'
+import { changePassword } from '../../services/userService'
 import { useContext } from 'react'
 import {
   Card,
@@ -18,7 +17,6 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-
 } from '@mui/material'
 import './UserProfile.css'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -28,7 +26,6 @@ import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 
 function UserProfilePage() {
-
   const [userProfile, setUserProfile] = useState('')
   const [userToDelete, setUserToDelete] = useState('')
   const { isLoggedIn, setIsLoggedIn } = useContext(LogingContext)
@@ -39,29 +36,29 @@ function UserProfilePage() {
   const [confirmationPassword, setConfirmationPassword] = useState('') // Estado del campo confirmation_password
   const [validateConfirmation, setValidateConfirmation] = useState(null) // si hay match me cambia este estado, para cambiar color imput en función del estado
 
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
-useEffect(() => {
-  fetchUserProfile()
-}, [])
+  useEffect(() => {
+    fetchUserProfile()
+  }, [])
 
-const fetchUserProfile = async () => {
-  const result = await getProfile()
-  setUserProfile(result)
-}
+  const fetchUserProfile = async () => {
+    const result = await getProfile() //llamada al servicio 
+    setUserProfile(result)
+  }
 
-//cambia Contraseña
-const handleOpenForm = () => {
-  setShowForm(true)
-}
+  //cambia Contraseña
+  const handleOpenForm = () => {
+    setShowForm(true)
+  }
 
-const handleCloseForm = () => {
-  setShowForm(false)
-}
+  const handleCloseForm = () => {
+    setShowForm(false)
+  }
 
-const handlePasswordChange = (event) => {
-  setPassword(event.target.value)
-}
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value)
+  }
 
   const handleConfirmationPasswordChange = (event) => {
     setConfirmationPassword(event.target.value)
@@ -79,6 +76,8 @@ const handlePasswordChange = (event) => {
       }
 
       const data = await changePassword(password)
+      location.reload()
+
       return data
     } catch (error) {
       console.error(error)
@@ -109,7 +108,6 @@ const handlePasswordChange = (event) => {
         sx={{
           padding: 5,
           width: '100%',
-
           maxWidth: '800px',
           margin: '0 auto',
           backgroundColor: 'white',
@@ -120,12 +118,9 @@ const handlePasswordChange = (event) => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Paper
-                item
-                xs={12}
-                sm={6}
                 sx={{
                   backgroundColor: '#088395',
-                  maxWidth: '500px',
+                  maxWidth: '800px',
                   color: 'white',
                   display: 'flex',
                   flexDirection: 'column',
@@ -137,14 +132,11 @@ const handlePasswordChange = (event) => {
               >
                 <CardHeader
                   title="User Profile"
-                  sx={{ width: '100%', maxWidth: '500px' }}
+                  sx={{ width: '100%', maxWidth: '00px' }}
                 />
               </Paper>
 
               <Paper
-                item
-                xs={12}
-                sm={6}
                 sx={{ padding: 2, backgroundColor: '#088395', color: 'white' }}
               >
                 <Typography variant="body1">
@@ -175,7 +167,7 @@ const handlePasswordChange = (event) => {
         </CardContent>
 
         <CardActions>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <>
                 <Button

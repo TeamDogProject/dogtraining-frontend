@@ -8,13 +8,13 @@ function Footer() {
   const elements = [
     {
       header: 'Side Map',
-      links: [{name:'Home', url:'Home'}, {name:'About', url: 'About'}, {name:'Login', url:'Login'}, {name:'SignUp', url:'SignUp'}],
+      links: [{name:'Home', url:''}, {name:'About', url: 'About'}, {name:'Login', url:'Login'}, {name:'SignUp', url:'SignUp'}],
     }, 
   ]
 
   const elements2 = [
     {
-      header: 'Siguenos',
+      header: 'Síguenos',
       links: [
         { name: 'Facebook', url: 'https://www.facebook.com' },
         { name: 'Instagram', url: 'https://www.instagram.com' },
@@ -135,7 +135,7 @@ function Footer() {
           color={'white'}
         >
           <Typography sx={{ fontSize: 10 }}>
-            © Reboot Academy 2022 - All Rights Reserved
+            © Dogtraining 2023 - All Rights Reserved
           </Typography>
         </Box>
       </Box>

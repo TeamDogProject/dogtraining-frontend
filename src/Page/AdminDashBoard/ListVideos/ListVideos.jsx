@@ -34,6 +34,7 @@ const ListVideos = () => {
   const [videos, setVideos] = useState([])
 
   const [showModal, setShowModal] = useState(false)
+    const [showModalCreate, setShowModalCreate] = useState(false)
 
   const [videoId, setVideoId] = useState('')
   const [videoUrl, setVideoUrl] = useState('')
@@ -54,6 +55,15 @@ const ListVideos = () => {
     setVideoTitle(videoTitle)
     setVideoDescription(videoDescription)
     setVideoTags(videoTags)
+  }
+
+  const handleOpenCreate = () => {
+    setShowModalCreate(true)
+  }
+
+  const handleCloseCreate = () => {
+    forceUpdate()
+    setShowModalCreate(false)
   }
 
   const handleClose = () => {
@@ -96,12 +106,32 @@ const ListVideos = () => {
           videoDescription={videoDescription}
           videoTags={videoTags}
         />
+        <CreateVideoForm 
+          closeCreate={handleCloseCreate}
+          showCreate={showModalCreate}
+        />
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Box>
-              <Typography variant="h6" color="white" marginLeft={2}>
+              <Typography sx={{ fontWeight:'bold',fontSize:20, position:'absolute' }} color="white" marginLeft={2}>
                 List Videos
               </Typography>
+              <Button
+              onClick={() => handleOpenCreate()}
+              style={{
+                backgroundColor: 'green',
+                border: 'none',
+                width: 135,
+                height: 35,
+                borderRadius: 5,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 'bold',
+                marginLeft:1670,
+              }}
+            >
+              New Video
+          </Button>
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>

@@ -21,7 +21,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 import { useNavigate } from 'react-router-dom'
 import { LogingContext } from '../../context/loginContext'
 import { useContext } from 'react'
-const pages = ['Home', 'About', 'contact', 'courses'] /* 'Login', 'Signup */
+const pages = [{name:'Home', path:''}, {name:'About', path:'About'}, {name:'Contact', path:'Contact'}, {name: 'Courses', path: 'Courses'}] /* 'Login', 'Signup */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 const settings2 = ['Login', 'Signup']
 
@@ -63,7 +63,7 @@ function ResponsiveAppBar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token')
-    navigate('/home')
+    navigate('/')
     if (isLoggedIn) location.reload()
   }
 
@@ -160,14 +160,14 @@ function ResponsiveAppBar() {
                   <Link
                     color={'#088395'}
                     overline="true"
-                    href={`/${page}`}
+                    href={`/${page.path}`}
                     underline="none"
                   >
                     <Typography
                       textAlign="center"
                       sx={{ fontFamily: 'roboto' }}
                     >
-                      {page}
+                      {page.name}
                     </Typography>
                   </Link>
                 </MenuItem>
@@ -197,22 +197,17 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, idx) => (
-              <Link underline="none" href={`/${page}`} key={idx}>
-                <Button
-                  key={page}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
+              <Link key={idx} underline="none" href={`/${page.path}`}>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  {page.name}
                 </Button>
               </Link>
             ))}
-            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-
             {isLoggedIn && (
-              <Tooltip title="Open settings">
+              <Tooltip  title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="#" />
                 </IconButton>
@@ -221,11 +216,39 @@ function ResponsiveAppBar() {
 
             {!isLoggedIn && (
               <div>
-                <Button key={settings2[0]} onClick={handleLoginBottom} sx={{ p: 0 }}>
-                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[0]}</Typography>
+                <Button
+                  
+                  onClick={handleLoginBottom}
+                  sx={{ p: 0 }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontSize: '0.875rem',
+                      color: 'white',
+                      borderRadius: 4,
+                      fontWeight: 500,
+                      lineHeight: 1.75,
+                    }}
+                    textAlign="center"
+                  >
+                    {settings2[0]}
+                  </Typography>
                 </Button>
-                <Button key={settings2[1]} onClick={handleSignUp} sx={{ p: 0 }}>
-                  <Typography sx={{ fontFamily: "Roboto", fontSize: '0.875rem', color: 'white', borderRadius:4,fontWeight:500,lineHeight:1.75 }} textAlign="center">{settings2[1]}</Typography>
+                <Button  onClick={handleSignUp} sx={{ p: 0 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: 'Roboto',
+                      fontSize: '0.875rem',
+                      color: 'white',
+                      borderRadius: 4,
+                      fontWeight: 500,
+                      lineHeight: 1.75,
+                    }}
+                    textAlign="center"
+                  >
+                    {settings2[1]}
+                  </Typography>
                 </Button>
               </div>
             )}
@@ -246,21 +269,24 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser) && isLoggedIn}
               onClose={handleCloseUserMenu} //esta función cierra el menu
             >
-              
-             
-              <MenuItem key={settings[0]} onClick={handleGetProfile} //MenuAvatar Profile  
+              <MenuItem
+                
+                onClick={handleGetProfile} //MenuAvatar Profile
               >
                 <Typography textAlign="center">{settings[0]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[2]} onClick={handleDashboard} //MenuAvatar DashBoard
+              <MenuItem
+               
+                onClick={handleDashboard} //MenuAvatar DashBoard
               >
                 <Typography textAlign="center">{settings[2]}</Typography>
               </MenuItem>
 
-              <MenuItem key={settings[3]} onClick={handleLogout} //MenuAvatar Logout
+              <MenuItem
+               
+                onClick={handleLogout} //MenuAvatar Logout
               >
-
                 <Typography textAlign="center">{settings[3]}</Typography>
               </MenuItem>
             </Menu>
