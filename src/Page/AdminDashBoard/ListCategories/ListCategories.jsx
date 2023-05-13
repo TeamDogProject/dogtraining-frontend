@@ -79,22 +79,7 @@ const ListCategories =  () => {
 
         return (
           <>
-            <Button
-              onClick={() => handleOpenCreate()}
-              style={{
-                marginLeft: 5,
-                backgroundColor: 'green',
-                border: 'none',
-                width: 135,
-                height: 35,
-                borderRadius: 5,
-                color: 'white',
-                fontSize: 15,
-                fontWeight: 'bold',
-              }}
-            >
-              New Category
-            </Button>
+            
             <EditCategoryForm
               close={handleClose}
               show={showModal}
@@ -108,9 +93,26 @@ const ListCategories =  () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Box>
-                  <Typography /* variant="h6" */ color="white" marginLeft={2}>
+                  <Typography sx={{ fontWeight:'bold', position:'absolute' }} color="white" marginLeft={2}>
                     List Categories
                   </Typography>
+                  <Button
+              onClick={() => handleOpenCreate()}
+              style={{
+                marginLeft: 5,
+                backgroundColor: 'green',
+                border: 'none',
+                width: 135,
+                height: 35,
+                borderRadius: 5,
+                color: 'white',
+                fontSize: 15,
+                fontWeight: 'bold',
+                marginLeft:1200,
+              }}
+            >
+              New Category
+            </Button>
                 </Box>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
