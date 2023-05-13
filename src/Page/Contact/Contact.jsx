@@ -116,21 +116,22 @@ function Contact() {
               name="politycs"
               checked={true}
             />
-            <p className="consentimiento">
+            <Typography  variant='p'  className="consentimiento">
               Consiento el uso de mis datos para los fines indicados en la
               política de privacidad “SUS DATOS SEGUROS” disponibles en la web
               www.dogtraining.com*
-            </p>
+           
+            </Typography>
           </div>
 
           <div className="politics">
             <Checkbox
               id="informacion"
               name="información"
-              checked={true}
+              
             />
             <p className="consentimiento">
-              Consiento el uso de mis datos personales para recibir publicidad
+                Consiento el uso de mis datos personales para recibir publicidad
                 de su entidad con opción a darme de baja en cualquier momento.*
               </p>
             </div>
@@ -183,40 +184,41 @@ function Contact() {
             </div>
 
             <div className="dataProtection">
-              <Typography sx={{fontSize:'24',color:'inherit', fontWeight:'bold', textAlign:'center'}}> Información básica sobre la protección de datos </Typography>
-              <p>
+              <Typography sx={{fontSize:'24',color:'inherit', fontWeight:'bold', textAlign:'center', fontFamily: 'roboto', marginLeft: 3}}> Información básica sobre la protección de datos </Typography>
+              <Typography marginLeft={2} marginRight={2}>
                 <strong>Responsable del tratamiento</strong> Dog Training
-              </p>
-              <p>
+                </Typography>
+              <Typography marginLeft={2} marginRight={2}>
                 <strong>Finalidad</strong> Sus datos serán usados para poder
                 atender sus solicitudes y prestarle nuestros servicios.
-              </p>
-              <p>
+                </Typography>
+               <Typography marginLeft={2} marginRight={2}>
                 <strong>Publicidad</strong> Solo le enviaremos publicidad con su
                 autorización previa, que podrá facilitarnos mediante la casilla
                 correspondiente establecida al efecto.
-              </p>
-              <p>
+                </Typography>
+              <Typography marginLeft={2} marginRight={2}>
                 <strong>Legitimación</strong> Únicamente trataremos sus datos
                 con su consentimiento previo, que podrá facilitarnos mediante la
                 casilla correspondiente establecida al efecto
-              </p>
-              <p>
+              </Typography>
+              <Typography marginLeft={2} marginRight={2}>
                 <strong>Destinatarios</strong> Con carácter general, sólo el
                 personal de nuestra entidad que esté debidamente autorizado
                 podrá tener conocimiento de la información que le pedimos.
-              </p>
-              <p>
+              </Typography>
+            
+              <Typography marginLeft={2} marginRight={2}>
                 <strong>Derechos</strong> Tiene derecho a saber qué información
                 tenemos sobre usted, corregirla y eliminarla, tal y como se
                 explica en la información adicional disponible en nuestra página
                 web. Así mismo, también podrá ejercer el derecho de
                 Portabilidad, solicitando el traspaso de su información a otra
                 entidad.
-              </p>
-              <p><strong>Información adicional</strong> para más información vaya
+                </Typography>
+              <Typography marginLeft={2} marginRight={2}><strong>Información adicional</strong> para más información vaya
                 al apartado "Política de privacidad” de nuestra página web.
-              </p>
+              </Typography>
             </div>
           </CardContent>
         </Card>
