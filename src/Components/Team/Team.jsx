@@ -193,32 +193,25 @@ function Team(){
               César García
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Nuestro plan de trabajo y objetivo es que el perro desarrolle
-                unas capacidades de afrontamiento activo, que son habilidades
-                para el afrontamiento necesarias para que el perro elija
-                voluntariamente, de manera proactiva y con emocionalidad de
-                valencia positiva, entrar y/o permanecer en la situación
-                activadora de la ansiedad.
+                Apasionado por la tecnologia y el desarrollo web con experiencia gracias 
+                a que ha sido participante en diferentes programas, como el programa
+                Diginnova - Becas África ,Grupo Galaco, Betanzos - Cabo Verde y ha obtenido diferentes becas gracias a la Fundación Universitaria
+                de Las Palmas.
                 <br></br>
-                <br></br> Que desarrolle también capacidades de afrontamiento
-                pasivo, que son habilidades para el afrontamiento de la
-                situación aquellas necesarias para que el perro permanezca y
-                acepte la situación activadora de la ansiedad, aunque no desee
-                permanecer en ella. <br></br>
-                <br></br>Estas situaciones serán fuera de la situación
-                generadora de ansiedad para ir progresivamente aumentando
-                intensidad hasta llegar a la situación real de ansiedad. El
-                programa de ansiedad es un programa cerrado de 10
-                sesiones-semanas que nos permite solucionar el problema de
-                ansiedad virtualmente, con sesiones semanales tuteladas y con
-                contenido en video, que explica paso a paso y de manera
-                personalizada, las pautas a seguir por el educador canino, con
-                una duración de 60 min. Aprox. con un trabajo autónomo que
-                realizaran los tutores en su domicilio semanalmente siguiendo
-                las pautas y trabajos del educador. <br></br>
-                <br></br>El coste del programa de tutor individual es de 295
-                euros, existiendo también la posibilidad de realizar el
-                programa online grupal 4 personas.
+                <br></br> En cuanto a la formación, estoy Graduado en Seguridad y Control de Riesgos 
+                por la Universidad de Las Palmas, destacando en su título final de proyecto, un proyecto que 
+                en el mundo de la seguridad y de las emergencias tuvo repercusión en Canarias, ya que hace uso de drones RPAS.
+                Mis prácticas fueron realizadas en la Jefatura de la Policía Local de Las Palmas de GC, pasando
+                por las distintas unidades del cuerpo policial, desde las unidades caninas hasta bomberos. Además, 
+                he cursado un FP2 en el año 2010 sobre desarrollo de aplicaciones informáticas, pero mi forma autodidacta
+                en cuanto al aprendizaje me ha permitido estar al día de todo.
+                <br></br>
+                <br></br>Actualmente, me encuentro finalizando el Bootcamp en Reboot Academy de Full Stack de Desarrollo Web y Mobile.
+                <br></br>Por último, destacar que he obtenido títulos oficiales de Idiomas como son el First Certificate B1, B2 y tengo cursos 
+                de competencia comunicativa de C1, siendo otro de mis principales trabajos el mundo de la música ya que compongo música 
+                electrónica desde los 16 años y sigo ampliando conocimientos también en este plano profesional que día a día avanza
+                de forma rápida.
+
               </Typography>
             </CardContent>
             <CardActions  sx={{marginTop:2}}>
