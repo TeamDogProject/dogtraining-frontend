@@ -11,31 +11,23 @@ import { listAllCourses } from '../../../../services/CourseService';
 import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
-import { listAllCategories } from '../../../../services/CategoryService';
 
-function CreateCourseForm({closeCreate, showCreate}) {
+function CreateCourseForm() {
+
+  const [open, setOpen] = useState(false);
+  const [ courses, setCourses ] = useState([]);
+  
+  const handleOpen = () => setOpen(true);
+  const handleClose = async (e) => {
+    await handleSubtmit(e)
+    setOpen(false);
+  }
 
   const [course_name, setCourseName ] = useState('');
   const [course_description, setCourseDescription ] = useState('');
   const [course_duration, setCourseDuration ] = useState('');
   const [course_price, setCoursePrice ] = useState('');
   const [course_place, setCoursePlace ] = useState('');
-  const [course_categoryId, setCourseCategoryId ] = useState('');
-
-  const [categories, setCategories] = useState([]);
-
-  const getCategories = async () => {
-    const result = await listAllCategories();
-    setCategories(result);
-  };
-
-  useEffect(()=> {
-    getCategories();
-}, []);
-
-  const handleCloseCreate = () => {
-    closeCreate()
-  }
 
   const handleChangeCourseName = (e) => {
     setCourseName(e.target.value)
@@ -57,10 +49,10 @@ function CreateCourseForm({closeCreate, showCreate}) {
     setCoursePlace(e.target.value)
   }
 
-  const handleChangeCourseCategoryId = (e) => {
-    const categoryId = e.target.value;
-    setCourseCategoryId(categoryId)
-  }
+  const getCourses = async () => {
+    const result = await listAllCourses();
+    setCourses(result)
+};
 
   const style = {
     position: 'absolute',
@@ -74,6 +66,9 @@ function CreateCourseForm({closeCreate, showCreate}) {
     p: 4,
   };
 
+  useEffect(()=> {
+    getCourses();
+}, []);
 
 const handleSubtmit = async (e) => {
   e.preventDefault();
@@ -82,23 +77,33 @@ const handleSubtmit = async (e) => {
     description: course_description,
     duration: course_duration, 
     price: course_price, 
-    place: course_place,
-    categoryId: course_categoryId
+    place: course_place
   };
-  console.log(createNewCourse)
-  try {
-    await createCourse(createNewCourse);
-    handleCloseCreate()
-  } catch (error) {
-    console.log(error)
-  }
+  await createCourse(createNewCourse);
+  //setCourses(getCourses())
 }
 
   return (
     <div>
+      <Button
+        onClick={handleOpen}
+        style={{
+          marginLeft: 5,
+          backgroundColor: 'green',
+          border: 'none',
+          width: 135,
+          height: 35,
+          borderRadius: 5,
+          color: 'white',
+          fontSize: 15,
+          fontWeight: 'bold',
+        }}
+      >
+        New Package
+      </Button>
       <Modal
-        open={showCreate}
-        onClose={handleCloseCreate}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -113,7 +118,7 @@ const handleSubtmit = async (e) => {
             id="modal-modal-description"
             sx={{ width: 300, marginTop: 4 }}
           >
-            <form onSubmit={handleSubtmit}>
+            <form /* onSubmit={handleSubtmit} */>
               <FormLabel sx={{ width: 300, marginLeft: 20 }}>Name</FormLabel>
               <TextField
                 type="text"
@@ -164,21 +169,8 @@ const handleSubtmit = async (e) => {
                 <MenuItem value={'online'}>Online</MenuItem>
                 <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
               </Select>
-              <InputLabel id="courseCategory" value={course_categoryId} sx={{ width: 300, marginLeft: 20 }}>
-                  Select a category
-                </InputLabel>
-                <Select
-                  labelId="courseCategory"
-                  id="courseCategory"
-                  onChange={handleChangeCourseCategoryId}
-                  sx={{ width: 300, marginLeft: 20 }}
-                >
-                  {categories.map((category) => (
-                    <MenuItem key={category.id} value={category.id}>{category.category_name}</MenuItem>
-                  ))}
-                </Select>
               <button
-                type="submit"
+                onClick={handleClose}
                 style={{
                   marginTop: 15,
                   marginLeft: 340,
@@ -192,7 +184,7 @@ const handleSubtmit = async (e) => {
                   fontWeight: 'bold',
                 }}
               >
-                Create
+                Send
               </button>
             </form>
           </Typography>

@@ -8,17 +8,6 @@ import CreateCourseForm from './CreateCourseForm/CreateCourseForm';
 import EditCourseForm from './EditCourseForm/EditCourseForm';
 import Button from '@mui/material/Button';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
 const ListCourses = () => { 
 
@@ -28,7 +17,6 @@ const ListCourses = () => {
   const [courses, setCourses] = useState([]);
 
   const[showModal, setShowModal] = useState(false)
-  const[showModalCreate, setShowModalCreate] = useState(false)
 
   const [courseId, setCourseId ] = useState('');
   const [courseName,setCourseName  ] = useState('');
@@ -36,9 +24,8 @@ const ListCourses = () => {
   const [courseDuration, setCourseDuration ] = useState('');
   const [coursePrice, setCoursePrice ] = useState('');
   const [coursePlace, setCoursePlace ] = useState('');
-  const [courseCategoryId, setCourseCategoryId ] = useState('');
 
-  const handleOpen = (courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace, courseCategoryId) => {
+  const handleOpen = (courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace) => {
     setShowModal(true)
     setCourseId(courseId)
     setCourseName(courseName)
@@ -46,20 +33,12 @@ const ListCourses = () => {
     setCourseDuration(courseDuration)
     setCoursePrice(coursePrice)
     setCoursePlace(coursePlace)
-    setCourseCategoryId(courseCategoryId)
-  }
 
-  const handleOpenCreate = () => {
-    setShowModalCreate(true)
-  }
-
-  const handleCloseCreate = () => {
-    forceUpdate()
-    setShowModalCreate(false)
+    console.log(courseId,courseName, courseDescription, courseDuration, coursePrice, coursePlace)
   }
 
   const handleClose = () => {
-    forceUpdate()
+    forceUpdate();
     setShowModal(false)
   }
 
@@ -98,35 +77,13 @@ const ListCourses = () => {
           courseDuration={courseDuration}
           coursePrice={coursePrice}
           coursePlace={coursePlace}
-          courseCategoryId={courseCategoryId}
         />
-        <CreateCourseForm
-              closeCreate={handleCloseCreate}
-              showCreate={showModalCreate}
-            />
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Box>
-              <Typography sx={{ fontWeight:'bold',fontSize:20, position:'absolute' }} color="white" marginLeft={2}>
+              <Typography variant="h6" color="white" marginLeft={2}>
                 List Packages
               </Typography>
-              <Button
-                onClick={() => handleOpenCreate()}
-                style={{
-                  marginLeft: 5,
-                  backgroundColor: 'green',
-                  border: 'none',
-                  width: 135,
-                  height: 35,
-                  borderRadius: 5,
-                  color: 'white',
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                  marginLeft:1665,
-                }}
-              >
-                New Package
-              </Button>
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -197,14 +154,6 @@ const ListCourses = () => {
                         variant="h6"
                         style={{ color: 'white', fontSize: 17 }}
                       >
-                        CATEGORY
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        variant="h6"
-                        style={{ color: 'white', fontSize: 17 }}
-                      >
                         ACTIONS
                       </Typography>
                     </TableCell>
@@ -262,14 +211,6 @@ const ListCourses = () => {
                             {course.place}
                           </Typography>
                         </TableCell>
-                        <TableCell>
-                          <Typography
-                            variant="h6"
-                            style={{ color: 'white', fontSize: 17 }}
-                          >
-                            {course.categoryId}
-                          </Typography>
-                        </TableCell>
 
                         <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
@@ -281,8 +222,7 @@ const ListCourses = () => {
                                   course.description,
                                   course.duration,
                                   course.price,
-                                  course.place, 
-                                  course.categoryId
+                                  course.place
                                 )
                               }
                               style={{

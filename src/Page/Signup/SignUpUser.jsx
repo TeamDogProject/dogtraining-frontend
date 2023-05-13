@@ -3,74 +3,45 @@ import {
   CardHeader,
   TextField,
   IconButton,
+  Divider,
   CardActions,
   CardContent,
   Button,
   Grid,
 } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { blue, grey } from '@mui/material/colors'
 import React, { useState } from 'react'
-import { VisibilityOff, Lock, Visibility, Password } from '@mui/icons-material'
+import { VisibilityOff, Lock, Visibility } from '@mui/icons-material'
 import './SignUpPage.css'
-import SignUpService from '../../services/SignUpService'
 
 function SignUpUser() {
   const [name, setName] = useState('')
   const [surname, setSurName] = useState('')
-  const [username, setUsername] = useState('')
-  const [identity_card, setIdentity_card] = useState('')
-  const [email, setEmail] = useState('')
-  const [userConfirmEmail, setUserConfirmEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [confirmation_password, setConfirmation_password] = useState('')
-  const [password, setPassword] = useState('')
+  const [userName, setUserName] = useState('')
+  const [userDNI, setUserDNI] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userPhone, setUserPhone] = useState('')
+  const [userConfirmPassword, setconfirmPassword] = useState('')
+  const [userPassword, setPassword] = useState('')
+  const [passwordValidate, setPasswordValidate] = useState(false)
+  const [similarPassword, setNotSimilarPassword] = useState(false)
 
-  const navigate = useNavigate()
-  
   const [isPassVisible, setIsPassVisible] = useState(false)
-
-const handleChangeForm = async ()=> {
-  const form = {
-    name,
-    surname,
-    username,
-    identity_card,
-    email,
-    phone,
-    password,
-    confirmation_password,
-  } 
-  try {
-    if (validatePassword && validateEmail ) {
-       const result = await SignUpService(form)
-        navigate('/UserDashboard')
-    } 
-  } catch (error) {
-    console.log(error)
-  } 
-  
-  
-}
-
-const validatePassword =() =>{
-  return password === confirmation_password
-}
-
-const validateEmail= ()=> {
-  return email === userConfirmEmail
-}
-
-
-const passwordLength = ()=>{
-  return password.length > 8
-}
 
   const handlePassword = (e) => {
     setPassword(e.target.value)
+    if (
+      userPassword.length > 8 &&
+      userPassword.includes('^(?=w*d)(?=w*[A-Z])(?=w*[a-z])S{8,16}')
+    ) {
+      setPasswordValidate(true)
+    } else {
+      setPasswordValidate(false)
+    }
   }
 
-  const handleConfirmPassword = (e) => {
-    setConfirmation_password(e.target.value)
+  const handleChangePassword = (e) => {
+    setconfirmPassword(e.target.value)
   }
 
   const handlePass = (e) => {
@@ -84,22 +55,20 @@ const passwordLength = ()=>{
   const handleChangeSurname = (e) => {
     setSurName(e.target.value)
   }
- const handleChangeConfirmUserEmail = (e) => { 
-  setUserConfirmEmail(e.target.value)
- }
+
   const handleChangeUserName = (e) => {
-    setUsername(e.target.value)
+    setUserName(e.target.value)
   }
   const handleChangeUserDNI = (e) => {
-    setIdentity_card(e.target.value)
+    setUserDNI(e.target.value)
   }
 
   const handleChangeUserEmail = (e) => {
-    setEmail(e.target.value)
+    setUserEmail(e.target.value)
   }
 
   const handleChangeUserPhone = (e) => {
-    setPhone(e.target.value)
+    setUserPhone(e.target.value)
   }
 
   return (
@@ -115,7 +84,9 @@ const passwordLength = ()=>{
             border: '2px #088395 solid',
           }}
         >
+    
           <CardHeader title="User Register Form"></CardHeader>
+          
 
           <CardContent sx={{ width: '100%' }}>
             <Grid container spacing={2}>
@@ -169,8 +140,7 @@ const passwordLength = ()=>{
                   label="Confirm Email"
                   variant="outlined"
                   margin="dense"
-                  color={validateEmail() ? 'success' : 'warning'}
-                  onChange={handleChangeConfirmUserEmail}
+                  onChange={handleChangeUserEmail}
                 />
               </Grid>
 
@@ -179,7 +149,7 @@ const passwordLength = ()=>{
                   label="Password"
                   onChange={handlePassword}
                   variant="outlined"
-                  color={passwordLength() ? 'success' : 'warning'}
+                  color={passwordValidate ? 'success' : 'warning'}
                   margin="dense"
                   type={isPassVisible ? 'text' : 'password'}
                   InputProps={{
@@ -196,10 +166,9 @@ const passwordLength = ()=>{
               <Grid item xs={12} sm={6}>
                 <TextField
                   label=" Confirm Password"
-                  onChange={handleConfirmPassword}
+                  onChange={handleChangePassword}
                   variant="outlined"
                   margin="dense"
-                  color={validatePassword() ? 'success' : 'warning'}
                   type={isPassVisible ? 'text' : 'password'}
                   InputProps={{
                     startAdornment: <Lock />,
@@ -228,7 +197,6 @@ const passwordLength = ()=>{
               size="small"
               color="secondary"
               variant="contained"
-              onClick={handleChangeForm}
               sx={{
                 backgroundColor: '#088395',
                 borderTop: 2,

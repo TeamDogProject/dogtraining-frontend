@@ -37,7 +37,7 @@ const listAllCourses = async () => {
 
 const saveCourse = async (id, obj) => {
     try {
-    console.log('save')
+    console.log('savve')
        const {data} = await api.put(`/packages/${id}`,obj, {
         headers: {
           'token': localStorage.getItem('token'),

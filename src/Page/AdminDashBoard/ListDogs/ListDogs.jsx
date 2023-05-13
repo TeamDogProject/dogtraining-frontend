@@ -16,7 +16,6 @@ const ListDogs = () => {
   const [dogs, setDogs] = useState([]);
 
   const[showModal, setShowModal] = useState(false)
-  const[showModalCreate, setShowModalCreate] = useState(false)
 
   const [dogId, setDogId ] = useState('');
   const [dogPhoto, setDogPhoto ] = useState('');
@@ -40,21 +39,12 @@ const ListDogs = () => {
     setDogChip(dogChip)
     setDogProblem(dogProblem)
     setDogValoration(dogValoration)
-    
+    console.log(dogId, dogPhoto, dogName, dogBreed, dogAge, dogSex, dogChip, dogProblem, dogValoration)
   }
 
   const handleClose = () => {
     forceUpdate()
     setShowModal(false)
-  }
-
-  const handleOpenCreate = () => {
-      setShowModalCreate(true)
-    }
-  
-   const handleCloseCreate = () => {
-    forceUpdate()
-    setShowModalCreate(false)
   }
 
   const getDogs = async () => {
@@ -84,32 +74,13 @@ const ListDogs = () => {
     
     return (
       <>
-      
       <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogPhoto={dogPhoto} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
-      <CreateDogForm closeCreate={handleCloseCreate} showCreate={showModalCreate}/>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box>
-            <Typography sx={{ fontWeight:'bold', position:'absolute',fontSize:20 }} color="white" marginLeft={2}>
+            <Typography variant="h6" color="white" marginLeft={2}>
               List Dogs
             </Typography>
-            <Button
-              onClick={() => handleOpenCreate()}
-              style={{
-                marginLeft: 5,
-                backgroundColor: 'green',
-                border: 'none',
-                width: 135,
-                height: 35,
-                borderRadius: 5,
-                color: 'white',
-                fontSize: 15,
-                fontWeight: 'bold',
-                marginLeft:1560,
-              }}
-            >
-              New Dog
-            </Button>
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
