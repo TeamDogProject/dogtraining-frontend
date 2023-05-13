@@ -93,7 +93,7 @@ const ListCategories =  () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Box>
-                  <Typography sx={{ fontWeight:'bold', position:'absolute' }} color="white" marginLeft={2}>
+                  <Typography sx={{ fontWeight:'bold', position:'absolute',fontSize:20 }} color="white" marginLeft={2}>
                     List Categories
                   </Typography>
                   <Button

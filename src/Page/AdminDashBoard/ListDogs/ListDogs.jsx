@@ -84,7 +84,16 @@ const ListDogs = () => {
     
     return (
       <>
-      <Button
+      
+      <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogPhoto={dogPhoto} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
+      <CreateDogForm closeCreate={handleCloseCreate} showCreate={showModalCreate}/>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Box>
+            <Typography sx={{ fontWeight:'bold', position:'absolute',fontSize:20 }} color="white" marginLeft={2}>
+              List Dogs
+            </Typography>
+            <Button
               onClick={() => handleOpenCreate()}
               style={{
                 marginLeft: 5,
@@ -96,18 +105,11 @@ const ListDogs = () => {
                 color: 'white',
                 fontSize: 15,
                 fontWeight: 'bold',
+                marginLeft:1560,
               }}
             >
               New Dog
-      </Button>
-      <EditDogForm close={handleClose} show={showModal} dogId={dogId} dogPhoto={dogPhoto} dogName={dogName} dogBreed={dogBreed} dogAge={dogAge} dogSex={dogSex} dogChip={dogChip} dogProblem={dogProblem} dogValoration={dogValoration} />
-      <CreateDogForm closeCreate={handleCloseCreate} showCreate={showModalCreate}/>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Box>
-            <Typography variant="h6" color="white" marginLeft={2}>
-              List Dogs
-            </Typography>
+            </Button>
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
