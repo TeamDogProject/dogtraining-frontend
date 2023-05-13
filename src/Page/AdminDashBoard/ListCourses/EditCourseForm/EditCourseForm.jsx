@@ -73,13 +73,14 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
         getCategories();
     }, []);
 
-      const handleUpdateCategory = () => {
-    // Check if course_categoryId is not null or undefined before accessing the first element
+    const handleUpdateCategory = () => {
+
     const categoryId = course_categoryId?.[0];
 
     if (categoryId) {
-      // Update category in backend database using categoryId and your existing updateCategory service function
+
       updateCategory(categoryId);
+
     }
   };
 

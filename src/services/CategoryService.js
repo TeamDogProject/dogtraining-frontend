@@ -3,6 +3,7 @@ import api from "./config";
 // Create a category
 
 const createCategory = async (obj) => {
+    console.log(obj)
     const {data} = await api.post('/categories/', obj, {
         headers: {
             'token': localStorage.getItem('token')

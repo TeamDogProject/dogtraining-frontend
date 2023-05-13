@@ -11,6 +11,7 @@ import { listAllCourses } from '../../../../services/CourseService';
 import { useEffect } from 'react';
 import {InputLabel} from '@mui/material';
 import {MenuItem} from '@mui/material';
+import { listAllCategories } from '../../../../services/CategoryService';
 
 function CreateCourseForm({closeCreate, showCreate}) {
 
@@ -19,6 +20,18 @@ function CreateCourseForm({closeCreate, showCreate}) {
   const [course_duration, setCourseDuration ] = useState('');
   const [course_price, setCoursePrice ] = useState('');
   const [course_place, setCoursePlace ] = useState('');
+  const [course_categoryId, setCourseCategoryId ] = useState('');
+
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    const result = await listAllCategories();
+    setCategories(result);
+  };
+
+  useEffect(()=> {
+    getCategories();
+}, []);
 
   const handleCloseCreate = () => {
     closeCreate()
@@ -44,6 +57,11 @@ function CreateCourseForm({closeCreate, showCreate}) {
     setCoursePlace(e.target.value)
   }
 
+  const handleChangeCourseCategoryId = (e) => {
+    const categoryId = e.target.value;
+    setCourseCategoryId(categoryId)
+  }
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -64,8 +82,10 @@ const handleSubtmit = async (e) => {
     description: course_description,
     duration: course_duration, 
     price: course_price, 
-    place: course_place
+    place: course_place,
+    categoryId: course_categoryId
   };
+  console.log(createNewCourse)
   try {
     await createCourse(createNewCourse);
     handleCloseCreate()
@@ -144,6 +164,19 @@ const handleSubtmit = async (e) => {
                 <MenuItem value={'online'}>Online</MenuItem>
                 <MenuItem value={'face-to-face'}>Face-to-Face</MenuItem>
               </Select>
+              <InputLabel id="courseCategory" value={course_categoryId} sx={{ width: 300, marginLeft: 20 }}>
+                  Select a category
+                </InputLabel>
+                <Select
+                  labelId="courseCategory"
+                  id="courseCategory"
+                  onChange={handleChangeCourseCategoryId}
+                  sx={{ width: 300, marginLeft: 20 }}
+                >
+                  {categories.map((category) => (
+                    <MenuItem key={category.id} value={category.id}>{category.category_name}</MenuItem>
+                  ))}
+                </Select>
               <button
                 type="submit"
                 style={{
