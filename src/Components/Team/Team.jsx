@@ -10,7 +10,7 @@ function Team(){
   return (
     <>
      <Container item xs={12} md={12} lg={12} sx={{marginBottom:5,marginTop:2 }}>
-     <Typography variant="h2">Wellcome Dogtraining</Typography>
+     <Typography variant="h2">Wellcome to Dogtraining</Typography>
      <Typography item xs={12} md={12} lg={12} variant="body2" color="text.secondary" sx={{marginBottom:8, marginTop:2 }}>
        Dogtraining surge del entusiasmo por la tecnología y el amor por los animales de nuestro equipo de 3 programadores, quienes se han unido a un adiestrador y formador de guías caninos 
        ara crear una herramienta revolucionaria que te ayudará a superar los desafíos de conciliar tu vida profesional con el cuidado y adiestramiento de tu mascota. Con Dogtraining,
