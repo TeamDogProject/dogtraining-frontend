@@ -117,7 +117,7 @@ function Contact() {
               name="politycs"
               checked={true}
             />
-            <Typography  variant='p'  className="consentimiento">
+            <Typography  sx={{fontFamily: 'roboto'}} variant='p'  className="consentimiento">
               Consiento el uso de mis datos para los fines indicados en la
               política de privacidad “SUS DATOS SEGUROS” disponibles en la web
               www.dogtraining.com*
@@ -131,10 +131,10 @@ function Contact() {
               name="información"
               
             />
-            <p className="consentimiento">
+            <Typography sx={{fontFamily: 'roboto'}} variant='p' className="consentimiento">
                 Consiento el uso de mis datos personales para recibir publicidad
                 de su entidad con opción a darme de baja en cualquier momento.*
-              </p>
+            </Typography>
             </div>
             </Grid>
             <p className="ContactBotton">
