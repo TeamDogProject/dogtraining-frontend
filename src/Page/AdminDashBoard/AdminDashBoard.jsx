@@ -70,7 +70,7 @@ function AdminDashBoard() {
                 aria-label="contacts"
               >
                 <ListItem disablePadding>
-                  <ListItemButton style={{ display: 'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', justifyContent:'space-around' }}>
+                  <ListItemButton style={{ display: 'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-around' }}>
                       <Link onClick={handleClickDogs} style={{ textDecoration:'none', color:'white'}}><Typography>Dogs</Typography></Link>
                       <Link onClick={handleClickBooks} style={{ textDecoration:'none', color:'white' }}><Typography>Books</Typography></Link>
                       <Link onClick={handleClickVideos} style={{ textDecoration:'none', color:'white' }}><Typography>Videos</Typography></Link>

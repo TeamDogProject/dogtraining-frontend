@@ -119,7 +119,6 @@ const ListVideos = () => {
               <Button
               onClick={() => handleOpenCreate()}
               style={{
-                marginLeft: 5,
                 backgroundColor: 'green',
                 border: 'none',
                 width: 135,
