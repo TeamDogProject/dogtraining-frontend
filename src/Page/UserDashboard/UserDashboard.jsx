@@ -215,7 +215,7 @@ function UserDashboard() {
                     backgroundColor: 'white',
                     boxShadow: 0,
                     border: 0,
-                    width: '100%',
+                    Width: '100%',
                     height: '100%',
                     color: 'white',
                     display: 'flex',
@@ -300,7 +300,7 @@ function UserDashboard() {
                     title="My videos"
                     sx={{
                       width: '100%',
-                      height: 'auto',
+                      height: '40px',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
@@ -321,20 +321,21 @@ function UserDashboard() {
                         
                           marginLeft: 2,
                           marginRight: 2,
-                          marginBottom: 4,
-                          width:'360px',
+                          marginBottom: '10px',
+                          paddingTop: '20px',
+                          width: '600px',
                           height: 'auto',
+                          minHeight: '100px',
                           border: '2px solid #088395',
                           textAlign: 'start',
                           paddingLeft: '10px',
                         }}
                       >
-                        
                         <Typography
                           variant="body1"
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
-                          <Typography sx={{ fontWeight:'bold' }}> Title: </Typography>
+                          <b> Title: </b>
                           {video.title}
                         </Typography>
                         <Typography

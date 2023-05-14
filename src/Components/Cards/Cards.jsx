@@ -14,7 +14,7 @@ function MediaCard() {
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          justifyContent: 'space-between',
+          justifyContent: 'space-evenly',
           height: '100%',
           overflow: 'scroll',
         }}
