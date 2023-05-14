@@ -110,23 +110,29 @@ const ListCourses = () => {
               <Typography sx={{ fontWeight:'bold',fontSize:20, position:'absolute' }} color="white" marginLeft={2}>
                 List Packages
               </Typography>
-              <Button
-                onClick={() => handleOpenCreate()}
-                style={{
-                  backgroundColor: 'green',
-                  border: 'none',
-                  width: 135,
-                  height: 35,
-                  borderRadius: 5,
-                  color: 'white',
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                  marginLeft:1665,
-                }}
-              >
-                New Package
-              </Button>
             </Box>
+            <div>
+              <Button
+  variant="contained"
+  onClick={handleOpenCreate}
+  sx={{
+    borderRadius: 2,
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+    backgroundColor: 'green',
+    height: 'auto',
+    m: 'auto',
+    mt: 0,
+    mb: 1,
+    display: 'block',
+    left:'auto',
+    marginRight:'95px'
+  }}
+>
+  New Package
+</Button>
+          </div>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <TableContainer>
@@ -285,36 +291,36 @@ const ListCourses = () => {
                                 )
                               }
                               style={{
-                                marginRight: 50,
                                 backgroundColor: 'lightgray',
-                                border: 'none',
-                                width: 100,
-                                height: 35,
-                                borderRadius: 5,
+                                width:'90px',
+                                height:'auto',
+                                borderRadius: 8,
                                 color: 'black',
                                 fontSize: 15,
                                 fontWeight: 'bold',
-                                position: 'absolute',
+                                margin:2,
+                                left:'auto'
                               }}
                             >
                               Edit
                             </Button>
-                            <button
+                            <Button
                               onClick={() => deleteCourse(course.id)}
                               style={{
                                 marginLeft: 105,
-                                backgroundColor: 'red',
-                                border: 'none',
-                                width: 100,
-                                height: 35,
-                                borderRadius: 5,
-                                color: 'white',
+                                width:'90px',
+                                height:'auto',
+                                borderRadius: 8,
                                 fontSize: 15,
+                                color: 'white',
                                 fontWeight: 'bold',
+                                margin:2,
+                                left:'auto',
+                                backgroundColor:'red',
                               }}
                             >
                               Delete
-                            </button>
+                            </Button>
                           </div>
                         </TableCell>
                       </TableRow>
