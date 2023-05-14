@@ -284,14 +284,14 @@ const ListVideos = () => {
                               style={{
                                 marginLeft: 105,
                                 width: '90px',
-          height: 'auto',
-          borderRadius: 8,
-          fontSize: 15,
-          fontWeight: 'bold',
-          margin:2,
-          left:'auto',
-          backgroundColor:'red',
-          color:'white'
+                                height: 'auto',
+                                borderRadius: 8,
+                                fontSize: 15,
+                                fontWeight: 'bold',
+                                margin:2,
+                                left:'auto',
+                                backgroundColor:'red',
+                                color:'white'
                               }}
                             >
                               Delete
