@@ -113,7 +113,7 @@ const ListCategories =  () => {
     mb: 1,
     display: 'block',
     left:'auto',
-    marginRight:'400px'
+    marginRight:'500px'
   }}
 >
   New Category
