@@ -75,7 +75,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small" sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -120,7 +120,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -176,7 +176,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -230,7 +230,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -282,7 +282,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -335,7 +335,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -398,7 +398,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -457,7 +457,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>
@@ -523,7 +523,7 @@ function MediaCard() {
           <CardActions>
             <Link to="/signUp">
               <Button size="small">¡Inscríbete!</Button>
-              <Button size="small">Saber Más</Button>
+              <Button size="small"  sx={{ color:'white', backgroundColor:'#FFA500' }}>Saber Más</Button>
             </Link>
           </CardActions>
         </Card>

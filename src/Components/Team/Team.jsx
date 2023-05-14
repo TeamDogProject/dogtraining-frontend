@@ -15,7 +15,7 @@ function Team(){
      <Typography variant="h3" component="h3" textAlign={"center"}>Conoce al equipo de desarrolladores de DogTraining</Typography>
      <Typography item xs={12} md={12} lg={12} variant="body2" color="text.secondary" sx={{marginBottom:8, marginTop:2 }}>
        Dogtraining surge del entusiasmo por la tecnología y el amor por los animales de nuestro equipo de 3 programadores, quienes se han unido a un adiestrador y formador de guías caninos 
-       ara crear una herramienta revolucionaria que te ayudará a superar los desafíos de conciliar tu vida profesional con el cuidado y adiestramiento de tu mascota. Con Dogtraining,
+       para crear una herramienta revolucionaria que te ayudará a superar los desafíos de conciliar tu vida profesional con el cuidado y adiestramiento de tu mascota. Con Dogtraining,
       podrás convertirte en un referente en la formación y adiestramiento canino. 
      <br />
      <br />
@@ -52,12 +52,12 @@ function Team(){
           >
             <Card item xs={12} md={4} lg={4} sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
               <CardMedia
-                sx={{ height: 250, width: 250 , }}
+                sx={{ height: 250, width: 250 , margin:'0 auto' }}
                 image={Tino}
                 title="Tino Míguez"
               />
               <CardContent  sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>
                   Tino Míguez
                 </Typography>
                 <Typography item xs={12} md={4} lg={4} variant="body2" color="text.secondary">
@@ -120,12 +120,12 @@ function Team(){
           >
             <Card item xs={12} md={4} lg={4} sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
               <CardMedia
-                sx={{ height: 250, width: 250 ,  }}
+                sx={{ height: 250, width: 250 , margin:'0 auto'}}
                 image={Aday}
                 title="Aday Ortega"
               />
               <CardContent sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>
                   Aday Ortega
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -184,12 +184,12 @@ function Team(){
         >
           <Card sx={{ maxWidth: 450, marginBottom: 10, boxShadow: 0, marginLeft:'10px' }}>
             <CardMedia
-              sx={{ height: 250, width: 250 , }}
+              sx={{ height: 250, width: 250, margin:'0 auto' }}
               image={Cesar}
               title="César García"
             />
             <CardContent sx={{ maxHeight: 'auto', textAlign: 'justify' }}>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h5" component="div" sx={{ textAlign:'center' }}>
               César García
               </Typography>
               <Typography variant="body2" color="text.secondary">
