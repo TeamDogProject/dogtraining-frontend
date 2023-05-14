@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SignUpDog from './SignUpDog/SignUpDog'
+import Iframe from 'react-iframe'
 import {
   Grid,
   Box,
@@ -8,13 +9,12 @@ import {
   CardHeader,
   Typography,
   Card,
-  Link
+  Link,
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
 import { deleteDog } from '../../services/userService'
 import { getMyPackages } from '../../services/userService'
 import { getVideos } from '../../services/userService'
-
 
 function UserDashboard() {
   const [newDog, setNewdog] = useState(false)
@@ -23,7 +23,6 @@ function UserDashboard() {
   const [onDeleteDog, setOnDeleteDog] = useState(false)
   const [onGetPackages, setOnGetPackages] = useState(false)
   const [onVideos, setOnVideos] = useState(false)
-
 
   const handlerCategories = async () => {
     setNewdog(false)
@@ -44,17 +43,17 @@ function UserDashboard() {
     setOnGetPackages(data)
   }
 
-  const handleDeleteDog = async(id) => { //función elimina perros
+  const handleDeleteDog = async (id) => {
+    //función elimina perros
     try {
       setOnDeleteDog(true)
       setOnGetPackages(false)
       const data = await deleteDog(id)
 
-      if (onDeleteDog === true) 
-       window.location.reload()
+      if (onDeleteDog === true) window.location.reload()
       await getMyDogs()
-    
-      alert('Dog deleted')     
+
+      alert('Dog deleted')
     } catch (error) {
       console.error(error)
     }
@@ -65,11 +64,10 @@ function UserDashboard() {
     setMyDogs(false)
     setOnGetPackages(false)
     setOnVideos(false)
-  } 
+  }
 
-
-
-  const getMyDogs = async () => { //User Dogs List
+  const getMyDogs = async () => {
+    //User Dogs List
     try {
       setMyDogs(true)
       setNewdog(false)
@@ -100,8 +98,8 @@ function UserDashboard() {
               padding: '1%',
               border: '2px #088395 solid',
               minHeight: { xs: 'auto', md: '1000px' },
-              paddingTop: '40px', 
-              paddingBottom: '40px'
+              paddingTop: '40px',
+              paddingBottom: '40px',
             }}
           >
             <Button
@@ -213,30 +211,34 @@ function UserDashboard() {
                     }}
                   />
                   {onGetPackages.map((pack, idx) => (
-                    <Card key={idx}
+                    <Card
+                      key={idx}
                       sx={{
                         marginLeft: 2,
                         marginRight: 2,
                         marginBottom: 4,
                         border: '2px solid #088395',
-                        width: 600,
+                        width: 800,
                       }}
                     >
                       <Typography
-                        variant="body1"
-                        
-                        sx={{ display: 'flex', marginLeft: 2 }}
+                        sx={{
+                          display: 'flex',
+                          marginLeft: 2,
+                          textAlign: 'left',
+                        }}
                       >
-                        <b> Package Name: </b>
+                        <b>Package Name: </b>
                         {pack.name}
                       </Typography>
 
-                      <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Package Descriotion:</b> {pack.description}
+                      <Typography sx={{ marginLeft: 2, textAlign: 'left' }}>
+                        <b>Description:</b> {pack.description}
                       </Typography>
 
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
-                        <b>Duration:</b> {pack.duration}min.
+                        <b>Duration:</b>
+                        {pack.duration}
                       </Typography>
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Price:</b> {pack.price}€
@@ -289,14 +291,15 @@ function UserDashboard() {
 
                   {onVideos.map((category) =>
                     category.videos.map((video, idx) => (
-                      <Card key={idx}
+                      <Card
+                        key={idx}
                         sx={{
                           marginLeft: 2,
                           marginRight: 2,
                           marginBottom: '10px',
                           paddingTop: '20px',
                           width: '600px',
-                          height: '80px',
+                          height: 'auto',
                           minHeight: '100px',
                           border: '2px solid #088395',
                           textAlign: 'start',
@@ -305,7 +308,6 @@ function UserDashboard() {
                       >
                         <Typography
                           variant="body1"
-                          
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
                           <b> Title: </b>
@@ -313,7 +315,6 @@ function UserDashboard() {
                         </Typography>
                         <Typography
                           variant="body1"
-                       
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
                         <Typography
@@ -326,7 +327,7 @@ function UserDashboard() {
                           Url:
                         </Typography>
 
-                        <Link href={video.url}>
+                        {/*<Link href={video.url}>
                           <Typography
                             sx={{
                               display: 'inline-flex',
@@ -336,7 +337,18 @@ function UserDashboard() {
                           >
                             link to the video
                           </Typography>
-                        </Link>
+                          </Link>*/}
+                          console.log(video.url)
+                        <Iframe
+                          url={`https://wwww.youtube.com/embed/${embedId}`}
+                         
+                          width="640px"
+                          height="320px"
+                          id=""
+                          className=""
+                          display="block"
+                          position="relative"
+                        />
                       </Card>
                     ))
                   )}
@@ -345,7 +357,9 @@ function UserDashboard() {
 
               {myDogs && (
                 <Paper
-                  item xs={12} sm={6}
+                  item
+                  xs={12}
+                  sm={6}
                   sx={{
                     backgroundColor: 'white',
                     boxShadow: 0,
@@ -372,7 +386,8 @@ function UserDashboard() {
                   />
 
                   {onDog.map((dog, idx) => (
-                    <Card key={idx}
+                    <Card
+                      key={idx}
                       sx={{
                         marginLeft: 2,
                         marginRight: 2,
