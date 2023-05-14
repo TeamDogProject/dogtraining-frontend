@@ -61,32 +61,11 @@ function Team(){
                   Tino Míguez
                 </Typography>
                 <Typography item xs={12} md={4} lg={4} variant="body2" color="text.secondary">
-                  Nuestro plan de trabajo y objetivo es que el perro desarrolle
-                  unas capacidades de afrontamiento activo, que son habilidades
-                  para el afrontamiento necesarias para que el perro elija
-                  voluntariamente, de manera proactiva y con emocionalidad de
-                  valencia positiva, entrar y/o permanecer en la situación
-                  activadora de la ansiedad.
-                  <br></br>
-                  <br></br> Que desarrolle también capacidades de afrontamiento
-                  pasivo, que son habilidades para el afrontamiento de la
-                  situación aquellas necesarias para que el perro permanezca y
-                  acepte la situación activadora de la ansiedad, aunque no desee
-                  permanecer en ella. <br></br>
-                  <br></br>Estas situaciones serán fuera de la situación
-                  generadora de ansiedad para ir progresivamente aumentando
-                  intensidad hasta llegar a la situación real de ansiedad. El
-                  programa de ansiedad es un programa cerrado de 10
-                  sesiones-semanas que nos permite solucionar el problema de
-                  ansiedad virtualmente, con sesiones semanales tuteladas y con
-                  contenido en video, que explica paso a paso y de manera
-                  personalizada, las pautas a seguir por el educador canino, con
-                  una duración de 60 min. Aprox. con un trabajo autónomo que
-                  realizaran los tutores en su domicilio semanalmente siguiendo
-                  las pautas y trabajos del educador. <br></br>
-                  <br></br>El coste del programa de tutor individual es de 295
-                  euros, existiendo también la posibilidad de realizar el
-                  programa online grupal 4 personas.
+                Soy un profesional que ha tenido la oportunidad de aprender y desarrollarme en entornos laborales muy diversos, tanto en España como en el extranjero. Mi trayectoria me ha llevado a trabajar en empresas muy dispares, como Endesa, Canarias7 y France Telecom.<br></br>
+                <br></br>Soy Licenciado en Historia y Máster en Estudios Estratégicos y Seguridad Internacional, lo que me ha permitido tener una visión amplia y crítica de los procesos históricos, políticos y económicos que influyen en el mundo empresarial actual.
+                Recientemente he estudiado programación para convertirme en desarrollador web full stack.<br></br>
+                <br></br>Mi trayectoria profesional ha estado marcada por la diversidad.Trabajar en diferentes sectores, con equipos multidisciplinares y multiculturales en contextos internacionales, me ha enseñado a valorar la importancia de la adaptabilidad y la flexibilidad, habilidades esenciales en un mundo globalizado y en constante cambio.
+                En cada una de estas experiencias laborales, he aprendido de los diferentes enfoques y filosofías que  utilizan en distintas empresas y sectores, obteniendo una visión amplia y diversa, capaz de integrar perspectivas diversas para la toma de decisiones estratégicas.  
                 </Typography>
               </CardContent>
               <CardActions sx={{marginTop:2}}>

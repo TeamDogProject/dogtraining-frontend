@@ -191,7 +191,7 @@ function UserDashboard() {
                     backgroundColor: 'white',
                     boxShadow: 0,
                     border: 0,
-                    Width: '100%',
+                    width: '100%',
                     height: '100%',
                     color: 'white',
                     display: 'flex',
@@ -276,7 +276,7 @@ function UserDashboard() {
                     title="My videos"
                     sx={{
                       width: '100%',
-                      height: '40px',
+                      height: 'auto',
                       display: 'block',
                       margin: '0 auto',
                       color: '#088395',
@@ -296,27 +296,23 @@ function UserDashboard() {
                         sx={{
                           marginLeft: 2,
                           marginRight: 2,
-                          marginBottom: '10px',
-                          paddingTop: '20px',
-                          width: '600px',
+                          marginBottom: 4,
+                          width:'360px',
                           height: 'auto',
-                          minHeight: '100px',
                           border: '2px solid #088395',
                           textAlign: 'start',
                           paddingLeft: '10px',
                         }}
                       >
+                        
                         <Typography
                           variant="body1"
                           sx={{ display: 'flex', marginLeft: 5 }}
                         >
-                          <b> Title: </b>
+                          <Typography sx={{ fontWeight:'bold' }}> Title: </Typography>
                           {video.title}
                         </Typography>
-                        <Typography
-                          variant="body1"
-                          sx={{ display: 'flex', marginLeft: 5 }}
-                        ></Typography>
+
                         {/*<Link href={video.url}>
                           <Typography
                             sx={{
@@ -328,7 +324,7 @@ function UserDashboard() {
                             link to the video
                           </Typography>
                           </Link>*/}
-                          <Iframe width="560" height="315" src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></Iframe>
+                          <Iframe width="350" height="215" src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></Iframe>
                       </Card>
                     ))
                   )}
