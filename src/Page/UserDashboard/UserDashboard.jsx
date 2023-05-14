@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SignUpDog from './SignUpDog/SignUpDog'
 import Iframe from 'react-iframe'
 import {
@@ -9,7 +9,6 @@ import {
   CardHeader,
   Typography,
   Card,
-  Link,
 } from '@mui/material'
 import { getUserDogs } from '../../services/userService'
 import { deleteDog } from '../../services/userService'
@@ -24,6 +23,31 @@ function UserDashboard() {
   const [onGetPackages, setOnGetPackages] = useState(false)
   const [onVideos, setOnVideos] = useState(false)
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Limpia el listener del evento resize al desmontar el componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const { width } = windowSize;
+
+
+
   const handlerCategories = async () => {
     setNewdog(false)
     setMyDogs(false)
@@ -31,7 +55,7 @@ function UserDashboard() {
     setMyDogs(false)
     const data = await getVideos()
     setOnVideos(data)
-    console.log(data)
+    
   }
 
   const handleGetPackages = async () => {
@@ -259,7 +283,6 @@ function UserDashboard() {
                   sx={{
                     backgroundColor: 'white',
                     width: '100%',
-                    height: '100vh',
                     color: 'white',
                     display: 'flex',
                     flexWrap: 'wrap',
@@ -270,6 +293,7 @@ function UserDashboard() {
                     marginBottom: '20px',
                     boxShadow: 0,
                     border: 0,
+                    height: 'auto'
                   }}
                 >
                   <CardHeader
@@ -294,6 +318,7 @@ function UserDashboard() {
                       <Card
                         key={idx}
                         sx={{
+                        
                           marginLeft: 2,
                           marginRight: 2,
                           marginBottom: 4,
@@ -312,19 +337,32 @@ function UserDashboard() {
                           <Typography sx={{ fontWeight:'bold' }}> Title: </Typography>
                           {video.title}
                         </Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{ display: 'flex', marginLeft: 5 }}
+                        ></Typography>
+                        <Typography 
+                          sx={{
+                            fontWeight: 'bold',
+                            display: 'inline-flex',
+                            margin: '0 auto',
+                            alignContent: 'center', 
+                            justifyContent: 'center'
+                          }}
+                        > 
+                        </Typography>
+                         <Grid  item xs={12} sm={6} >
+                        <iframe 
+                          style={{
+                            width: width >= 600 ? '560px' : '100%',
+                            height: width >= 600 ? '315px' : '100%',
+                          }}
+                        
+                       width="560" height="315" src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </Grid>
+                       
 
-                        {/*<Link href={video.url}>
-                          <Typography
-                            sx={{
-                              display: 'inline-flex',
-                              marginLeft: 1,
-                              paddingBottom: '0px',
-                            }}
-                          >
-                            link to the video
-                          </Typography>
-                          </Link>*/}
-                          <Iframe width="350" height="215" src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></Iframe>
+                        
                       </Card>
                     ))
                   )}
