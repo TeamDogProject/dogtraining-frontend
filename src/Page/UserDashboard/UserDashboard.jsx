@@ -317,16 +317,6 @@ function UserDashboard() {
                           variant="body1"
                           sx={{ display: 'flex', marginLeft: 5 }}
                         ></Typography>
-                        <Typography
-                          sx={{
-                            fontWeight: 'bold',
-                            display: 'inline-flex',
-                            marginLeft: 5,
-                          }}
-                        >
-                          Url:
-                        </Typography>
-
                         {/*<Link href={video.url}>
                           <Typography
                             sx={{
@@ -338,17 +328,7 @@ function UserDashboard() {
                             link to the video
                           </Typography>
                           </Link>*/}
-                          console.log(video.url)
-                        <Iframe
-                          url={`https://wwww.youtube.com/embed/${embedId}`}
-                         
-                          width="640px"
-                          height="320px"
-                          id=""
-                          className=""
-                          display="block"
-                          position="relative"
-                        />
+                          <Iframe width="560" height="315" src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></Iframe>
                       </Card>
                     ))
                   )}
