@@ -35,7 +35,6 @@ function Footer() {
                 color: 'white',
                 fontWeight: 'bold',
                 padding: 1,
-                
               }}
             >
               {column.header}
@@ -123,7 +122,7 @@ function Footer() {
       >
         <Box bgcolor="#0A4D68" color="white" padding={1}>
           <Container>
-            <Grid container columnSpacing={5} sx={{ marginLeft:'300px' }}>
+            <Grid container columnSpacing={5}>
               {generateFooterElements()} {generateFooterElementsSocial()}
             </Grid>
           </Container>
