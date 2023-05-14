@@ -201,15 +201,18 @@ const ListDogs = () => {
           fontWeight: 'bold',
           margin:2,
           left:'auto'}}>Edit</Button>
-                          <Button  onClick={() => deleteDog(dog.id)} style={{ width: '90px',
+                          <Button  onClick={() => deleteDog(dog.id)} style={{ 
+                                marginLeft: 105,
+                                width: '90px',
           height: 'auto',
           borderRadius: 8,
           color: 'white',
           fontSize: 15,
           fontWeight: 'bold',
-          left:'auto',
           margin:2,
-          backgroundColor:'red'}}>Delete</Button>
+          left:'auto',
+          backgroundColor:'red',
+          }}>Delete</Button>
                           </div>
                     </TableCell>
                   </TableRow>

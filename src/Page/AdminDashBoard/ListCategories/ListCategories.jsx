@@ -96,23 +96,29 @@ const ListCategories =  () => {
                   <Typography sx={{ fontWeight:'bold', position:'absolute',fontSize:20 }} color="white" marginLeft={2}>
                     List Categories
                   </Typography>
-                  <Button
-              onClick={() => handleOpenCreate()}
-              style={{
-                backgroundColor: 'green',
-                border: 'none',
-                width: 135,
-                height: 35,
-                borderRadius: 5,
-                color: 'white',
-                fontSize: 15,
-                fontWeight: 'bold',
-                marginLeft:1200,
-              }}
-            >
-              New Category
-            </Button>
                 </Box>
+                <div>
+          <Button
+  variant="contained"
+  onClick={handleOpenCreate}
+  sx={{
+    borderRadius: 2,
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+    backgroundColor: 'green',
+    height: 'auto',
+    m: 'auto',
+    mt: 0,
+    mb: 1,
+    display: 'block',
+    left:'auto',
+    marginRight:'400px'
+  }}
+>
+  New Category
+</Button>
+                    </div>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TableContainer>
