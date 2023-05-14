@@ -93,23 +93,30 @@ const ListDogs = () => {
             <Typography sx={{ fontWeight:'bold', position:'absolute',fontSize:20 }} color="white" marginLeft={2}>
               List Dogs
             </Typography>
-            <Button
-              onClick={() => handleOpenCreate()}
-              style={{
-                backgroundColor: 'green',
-                border: 'none',
-                width: 135,
-                height: 35,
-                borderRadius: 5,
-                color: 'white',
-                fontSize: 15,
-                fontWeight: 'bold',
-                marginLeft:1560,
-              }}
-            >
-              New Dog
-            </Button>
           </Box>
+          <div>
+          <Button
+  variant="contained"
+  onClick={handleOpenCreate}
+  sx={{
+    borderRadius: 2,
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+    backgroundColor: 'green',
+    height: 'auto',
+    m: 'auto',
+    mt: 0,
+    mb: 1,
+    display: 'block',
+    left:'auto',
+    marginRight:'125px'
+  }}
+>
+  New Dog
+</Button>
+                    </div>
+          
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <TableContainer>
@@ -185,8 +192,24 @@ const ListDogs = () => {
                     </TableCell>
                     <TableCell style={{ color: 'white', fontSize: 17 }}>
                           <div>
-                          <Button onClick={() => handleOpen(dog.id,dog.photo, dog.name, dog.breed, dog.age, dog.sex, dog.chip,dog.problem,dog.valoration)} style={{ marginRight: 50,backgroundColor:'lightgray', border:'none',width:100, height:35, borderRadius:5, color:'black', fontSize:15, fontWeight:'bold', position:'absolute' }}>Edit</Button>
-                          <button  onClick={() => deleteDog(dog.id)} style={{ marginLeft:110, backgroundColor:'red', border:'none',width:100, height:35, borderRadius:5, color:'white',fontSize:15, fontWeight:'bold', position:'relative' }}>Delete</button>
+                          <Button onClick={() => handleOpen(dog.id,dog.photo, dog.name, dog.breed, dog.age, dog.sex, dog.chip,dog.problem,dog.valoration)} style={{ backgroundColor: 'lightgray',
+          width: '90px',
+          height: 'auto',
+          borderRadius: 8,
+          color: 'black',
+          fontSize: 15,
+          fontWeight: 'bold',
+          margin:2,
+          left:'auto'}}>Edit</Button>
+                          <Button  onClick={() => deleteDog(dog.id)} style={{ width: '90px',
+          height: 'auto',
+          borderRadius: 8,
+          color: 'white',
+          fontSize: 15,
+          fontWeight: 'bold',
+          left:'auto',
+          margin:2,
+          backgroundColor:'red'}}>Delete</Button>
                           </div>
                     </TableCell>
                   </TableRow>
