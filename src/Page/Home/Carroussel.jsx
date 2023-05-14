@@ -84,7 +84,7 @@ function Item(props) {
                 <Link to={'/Courses'}>
                     <Button
                         className="CheckButton"
-                        sx={{ marginTop: 3}}
+                        sx={{ marginTop: 3, color:'white', backgroundColor:'#FFA500', borderRadius:2, width:'200px', height:'50px', fontSize:18}}
                     >
                         Saber Más
                     </Button>
