@@ -18,7 +18,7 @@ import Box from '@mui/material/Box';
 
 function AdminDashBoard() {
 
-  const [section, setSection] = useState('')
+  const [section, setSection] = useState('dog')
 
   const showContent = () => {
     if (section === 'dog') {
@@ -86,8 +86,7 @@ function AdminDashBoard() {
                     {
                       showContent()
                     }
-                  </Box>
-
+          </Box>
       </Grid>
     </Grid>   
   </React.Fragment>
