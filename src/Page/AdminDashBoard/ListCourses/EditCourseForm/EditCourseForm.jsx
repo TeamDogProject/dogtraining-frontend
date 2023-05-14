@@ -167,10 +167,10 @@ function EditCourseForm({show, close, courseId, courseName, courseDescription, c
                     </MenuItem>
                   ))}
                 </Select>
-                <button  style={{ height:35,width: 160, marginLeft: 175, backgroundColor:'green',color:'white', borderRadius:5, marginTop:14, marginRight:30, position:'absolute', fontWeight:'bold', fontSize:16, border:0 }} onClick={handleUpdateCategory}>Update Category</button>
+                <button  style={{ height:35,width: 160, marginLeft: 175, backgroundColor:'green',color:'white', borderRadius:5, marginTop:14, marginRight:30, position:'absolute', fontWeight:'bold', fontSize:16, border:0 }} onClick={handleUpdateCategory}>UPDATE</button>
                 {/* <FormLabel sx={{ width:300, marginLeft:20 }}>Category</FormLabel>  */}
                 {/* <TextField type="text" variant='outlined' placeholder={courseCategoryId} onChange={handleChangeCourseCategoryId} sx={{ width:300, marginLeft:20 }} /> */}
-                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Save</button>
+                <button type="submit" style={{ marginTop:15, marginLeft:340, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>SAVE</button>
               </form>
             </Typography>
           </Box>

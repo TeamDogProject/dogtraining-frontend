@@ -145,7 +145,7 @@ const handleChangeConfirmationPassword = (e) => {
                   <MenuItem value={'admin'}>Admin</MenuItem>
                   <MenuItem value={'user'}>User</MenuItem>
               </Select>
-              <button type="submit" style={{ marginTop:15, marginLeft:460, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>Create</button>
+              <button type="submit" style={{ marginTop:15, marginLeft:460, backgroundColor:'purple', border:'none',width:120, height:35, borderRadius:5, color:'white', fontSize:15, fontWeight:'bold' }}>CREATE</button>
             </form>
           </Typography>
         </Box>

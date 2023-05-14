@@ -104,11 +104,13 @@ const handleSubtmit = async (e) => {
       >
         <Box sx={style}>
           <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            sx={{ width: 300, marginLeft: 25 }}
-          ></Typography>
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              sx={{ width: 300, marginLeft: 25 }}
+            >
+              Create Package Form
+            </Typography>
           <Typography
             id="modal-modal-description"
             sx={{ width: 300, marginTop: 4 }}
@@ -192,7 +194,7 @@ const handleSubtmit = async (e) => {
                   fontWeight: 'bold',
                 }}
               >
-                Create
+                CREATE
               </button>
             </form>
           </Typography>

@@ -59,7 +59,7 @@ function EditCategoryForm({ show, close, categoryId, categoryName }) {
             <form onSubmit={handleSaveCategory}>
               <FormLabel sx={{ width: 300, marginLeft: 20 }}>Name</FormLabel>
               <TextField type="text" variant='outlined' placeholder={categoryName} onChange={handleChangeCategoryName} sx={{ width: 300, marginLeft: 20 }} />
-              <Button variant="contained"  type="submit" style={{ marginTop: 15, marginLeft: 340, backgroundColor:'purple',color:'white' }}>
+              <Button variant="contained"  type="submit" style={{ marginTop: 15, marginLeft: 390, backgroundColor:'purple',color:'white' }}>
                 Save
               </Button>
             </form>
