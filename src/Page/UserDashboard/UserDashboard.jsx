@@ -408,12 +408,13 @@ function UserDashboard() {
                         marginRight: 2,
                         marginBottom: 4,
                         border: '2px solid #088395',
+                        width: '500px'
                       }}
                     >
                       <Typography
                         variant="body1"
                         key={dog.id}
-                        sx={{ display: 'flex', marginLeft: 2 }}
+                        sx={{ display: 'flex', marginLeft: 2, paddingTop: 2}}
                       >
                         <b> Dog Name: </b>
                         {dog.name}
@@ -434,7 +435,7 @@ function UserDashboard() {
                       <Typography sx={{ display: 'flex', marginLeft: 2 }}>
                         <b>Dog Age:</b> {dog.age}
                       </Typography>
-                      <Typography sx={{ display: 'flex', marginLeft: 2 }}>
+                      <Typography sx={{ marginLeft: 2, textAlign:' left'}}>
                         <b>Behavior Problem: </b>
                         {dog.problem}
                       </Typography>
